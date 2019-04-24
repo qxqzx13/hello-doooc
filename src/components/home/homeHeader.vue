@@ -16,10 +16,10 @@
                     <div class="login" id="load">
                         <img class="my" src="../../assets/home/img/touxiang.svg" />
                         <ul class="navList">
-                            <li><a href="javascript:;">我的信息</a></li>
-                            <li><a href="javascript:;">订单中心</a></li>
-                            <li><a href="javascript:;">我的购物</a></li>
-                            <li><a href="javascript:;">我的晒宠</a></li>
+                            <router-link to="/personal"><li>我的信息</li></router-link>
+                            <router-link to="/personal/personalCenter"><li>订单中心</li></router-link>
+                            <router-link to="/"><li>我的购物</li></router-link>
+                            <router-link to="/"><li>我的晒宠</li></router-link>
                         </ul>
                     </div>
                 </div>
@@ -30,6 +30,7 @@
 </template>
 
 <script>
+    import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
     import homeBanner from "./homeBanner";
     export default {
         name: "home-header",
@@ -45,10 +46,6 @@
             fn(a){
                 this.topHeight = {height : a + "px"}
             }
-        },
-        destroyed(){
-            clearInterval(this.timer);
-            clearInterval(this.timerTwo);
         }
     }
 </script>
@@ -140,12 +137,13 @@
         width: 66px;
     }
 
-    #top .topArea .navBox .navRight .navList a {
+    #top .topArea .navBox .navRight .navList li{
         color: #fff;
     }
 
-    #top .topArea .navBox .navRight .navList a:hover {
+    #top .topArea .navBox .navRight .navList li:hover {
         color: #F5A64A;
+        cursor: pointer;
     }
 
     #top .topArea .navBox .navRight:hover {

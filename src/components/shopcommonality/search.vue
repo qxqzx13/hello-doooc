@@ -11,11 +11,11 @@
                     </div>
                 </div>
                 <div class="header-bottom">
-                    <div class="pet-foot" @click="$router.push('/')">
+                    <div class="pet-foot" @click="$router.push('/food')">
                         <p>宠物食品</p>
                         <h3></h3>
                     </div>
-                    <div class="pet-daily" @click="$router.push('/')">
+                    <div class="pet-daily" @click="$router.push('/daily')">
                         <p>宠物日常</p>
                         <h3></h3>
                     </div>

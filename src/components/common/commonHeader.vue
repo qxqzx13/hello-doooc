@@ -7,8 +7,8 @@
             <div class="navBox">
                 <div class="navLeft">
                     <ul>
-                        <li>首页</li>
-                        <li>商城</li>
+                        <li @click="$router.push('/')">首页</li>
+                        <li @click="$router.push('/shop')">商城</li>
                         <li>知宠</li>
                     </ul>
                 </div>
@@ -19,10 +19,10 @@
                     <div class="login" id="load">
                         <img class="my" src="../../assets/common/img/touxiang.svg" />
                         <ul class="navList">
-                            <li><b>我的信息</b></li>
-                            <li><b>订单中心</b></li>
-                            <li><b>我的购物</b></li>
-                            <li><b>我的晒宠</b></li>
+                            <li @click="$router.push('/personal')"><b>我的信息</b></li>
+                            <li @click="$router.push('/personal/personalCenter')"><b>订单中心</b></li>
+                            <li @click="$router.push('/')"><b>我的购物</b></li>
+                            <li @click="$router.push('/')"><b>我的晒宠</b></li>
                         </ul>
                     </div>
                 </div>
