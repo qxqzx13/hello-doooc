@@ -231,7 +231,7 @@ export default {
         border-bottom: 8px solid #fff;
         position: absolute;
         bottom: 16px;
-        right: 598px;
+        right: 588px;
         cursor: pointer
     }
 </style>

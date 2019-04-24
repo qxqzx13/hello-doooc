@@ -1,5 +1,8 @@
 import shop from "../../views/shop";
-import shoppingcar from "../../views/shoppingcar"
+import shoppingcar from "../../views/shoppingcar";
+import petmarket from "../../views/petmarket";
+import petmarkettwo from "../../views/petmarkettwo";
+import account from "../../views/account";
 export default [
     {
         path: '/shop',
@@ -13,5 +16,23 @@ export default [
             meta:{
                 isAuthorization:true
             }
+        },{
+        path:"/petmarket",
+        name:"petmarket",
+        component:petmarket,
+        meta:{
+            isAuthorization:false
         }
+    },{
+        path:"/petmarkettwo",
+        name:"petmarkettwo",
+        component:petmarkettwo,
+        meta:{
+            isAuthorization:false
+        }
+    },{
+        path:"/account",
+        name:"account",
+        component:account
+    }
 ]

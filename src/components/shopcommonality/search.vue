@@ -12,15 +12,15 @@
                 </div>
                 <div class="header-bottom">
                     <div class="pet-foot" @click="$router.push('/food')">
-                        <p>宠物食品</p>
+                        <div class="ctfoot">宠物食品</div>
                         <h3></h3>
                     </div>
                     <div class="pet-daily" @click="$router.push('/daily')">
-                        <p>宠物日常</p>
+                        <div class="ctlife">宠物日常</div>
                         <h3></h3>
                     </div>
                     <div class="pet-market" @click="$router.push('/petmarket')">
-                        <p>宠物市场</p>
+                        <div class="ctmarket">宠物市场</div>
                         <h3></h3>
                     </div>
                 </div>
@@ -53,7 +53,7 @@ export default {
         margin: 0 auto;
         height: 110px;
         background: #c3c3c1;
-        background-color: hsla(60, 2%, 76%, .2)
+        background-color: hsla(60, 2%, 76%, .7)
     }
 
     .header .header-box .seek {
