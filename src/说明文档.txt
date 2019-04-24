@@ -1,0 +1,22 @@
+assets
+	文件中存放
+		图片  css 每个页面分开创建文件夹,防止混杂commit是公用的头和尾
+bus 
+	传值
+components
+	组件,分开
+		commit是公共头尾 
+filters
+	过滤器,
+store 
+	vuex分开创建文件夹写管理数据
+views
+	里面是你的页面 也就是原来的html用组件搭建,可以在这里引入自己的css
+App.vue 
+	里面不要引入css不然会影响其他人这里应该不需要改动
+	
+main
+	可以引入element-ui
+router 
+	路由分开写自己创文件夹整理单个页面用数组方法链接 
+
