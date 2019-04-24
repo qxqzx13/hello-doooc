@@ -7,11 +7,12 @@ export default [
         meta:{
             isAuthorization:false
         }
-    },{
-            path:"/shoppingcar",
-            component:shoppingcar,
-            meta:{
-                isAuthorization:true
-            }
+    },
+    {
+        path:"/shoppingcar",
+        component:shoppingcar,
+        meta:{
+            isAuthorization:true
         }
+    }
 ]

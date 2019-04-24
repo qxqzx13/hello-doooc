@@ -8,11 +8,11 @@
             <span></span>
         </h3>
         <ul>
-            <!--<li v-for="item in homeFood" @click="getHomeFood">-->
+            <!--<li v-for="item in homeFood">-->
                 <!--<img src="../../assets/home/img/a.jpg" />-->
                 <!--<p>深海鱼油含有非常丰富的多元不饱和脂肪酸促进毛囊脂腺和表皮分泌,让毛发更加靓丽,还可以健脑益智,使宠物更加活泼聪明</p>-->
             <!--</li>-->
-            <li @click="">
+            <li>
                 <img src="../../assets/home/img/a.jpg" />
                 <p>深海鱼油含有非常丰富的多元不饱和脂肪酸促进毛囊脂腺和表皮分泌,让毛发更加靓丽,还可以健脑益智,使宠物更加活泼聪明</p>
             </li>
@@ -29,8 +29,12 @@
 </template>
 <script>
     import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
-    export default {
-    name:"foodSelection"
+export default {
+    name:"foodSelection",
+    methods:mapActions(["getChoose"]),
+    mounted(){
+        this.getChoose();
+    }
 }
 </script>
 <style scoped>
