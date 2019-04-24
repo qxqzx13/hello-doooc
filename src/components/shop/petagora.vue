@@ -1,6 +1,6 @@
 <template>
     <div class="agora-box">
-        <div><img src="../../assets/petshop/img/004.png" alt=""></div>
+        <div><img src="../../assets/petshop/img/004.png" title="1111111"></div>
         <div><img src="../../assets/petshop/img/004_01.png" alt=""></div>
         <div class="agora-list">
             <ul>

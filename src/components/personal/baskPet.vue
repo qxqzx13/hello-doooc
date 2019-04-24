@@ -1,9 +1,7 @@
 <template>
     <div>
         <baskPetTwo></baskPetTwo>
-
     </div>
-
 </template>
 <script>
 import baskPetTwo from "../../views/baskPetTwo"

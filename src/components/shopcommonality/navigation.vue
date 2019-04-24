@@ -7,7 +7,7 @@
             <ul>
               <li @click="$router.push('/')">首页</li>
               <li @click="$router.push('/shop')">商城</li>
-              <li>知宠</li>
+              <li @click="$router.push('/')">知宠</li>
             </ul>
           </div>
           <div class="logo">
@@ -17,10 +17,10 @@
             <div class="login" id="load">
               <img class="my" src="../../assets/common/img/touxiang.svg">
               <ul class="navList">
-                <li>我的信息</li>
-                <li>订单中心</li>
-                <li>我的购物</li>
-                <li>我的晒宠</li>
+                <li @click="$router.push('/personal')">我的信息</li>
+                <li @click="$router.push('/personal/personalCenter')">订单中心</li>
+                <li @click="$router.push('/')">我的购物</li>
+                <li @click="$router.push('/')">我的晒宠</li>
               </ul>
             </div>
           </div>

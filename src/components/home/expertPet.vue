@@ -1,13 +1,13 @@
 <template>
     <div class="picshow">
         <!-- 达人晒宠 -->
-            <h3 style="width: 293px">
-                <p style="width: 262px;">
+            <h3 style="width: 293px" >
+                <p style="width: 262px;" @click="$router.push('/')">
                     达人晒宠
                 </p>
                 <span></span>
             </h3>
-            <ul class="picture">
+            <ul class="picture" @click="$router.push('/')">
                 <li class="listone"><img class="pic1" src="../../assets/home/img/1.jpg" /></li>
                 <li class="listtwo">
                     <img class="pic2" src="../../assets/home/img/2.jpg" />
@@ -44,6 +44,9 @@ export default {
     .picshow h3 {
         width: 479px;
         height: 36px;
+    }
+    .picshow h3:hover,.picshow ul:hover{
+        cursor:pointer;
     }
     .picshow h3 p {
         float: left;

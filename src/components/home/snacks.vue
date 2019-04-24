@@ -5,25 +5,29 @@
             <img src="../../assets/home/img/snacks.jpg" />
         </div>
         <ul>
+            <!--<li v-for="item in snackhouse" @click="">-->
+                <!--<img src="item.imgSrc" />-->
+            <!--</li>-->
             <li>
-                <a href="javascript"><img src="../../assets/home/img/one.jpg" /></a>
+                <img src="../../assets/home/img/one.jpg" />
             </li>
             <li>
-                <a href="javascript"><img src="../../assets/home/img/two.jpg" /></a>
+                <img src="../../assets/home/img/two.jpg" />
             </li>
             <li>
-                <a href="javascript"><img src="../../assets/home/img/three.jpg" /></a>
+                <img src="../../assets/home/img/three.jpg" />
             </li>
             <li>
-                <a href="javascript"><img src="../../assets/home/img/fure.jpg" /></a>
+                <img src="../../assets/home/img/fure.jpg" />
             </li>
             <li>
-                <a href="javascript"><img src="../../assets/home/img/five.jpg" /></a>
+                <img src="../../assets/home/img/five.jpg" />
             </li>
         </ul>
     </div>
 </template>
 <script>
+
 export default {
     name:"snacks",
 }
@@ -59,6 +63,9 @@ export default {
         border: 2px solid #f5a64a;
         border-radius: 100%;
         margin: 0 20px;
+    }
+    .snackhouse ul li:hover{
+        cursor: pointer;
     }
 </style>
 
