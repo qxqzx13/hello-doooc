@@ -5,11 +5,17 @@
             <div id="car">
                 <div class="petpic"></div>
                 <h3>宠物详情</h3>
-                <h5>
+                <div class="sss">
+                    <h1></h1>
                     <div class="matter">
-                        <h1></h1>
+                        <p>收货地址</p>
+                        <el-form ref="form" :model="form" label-width="80px">
+                            <el-form-item label="详细地址">
+                                <el-input v-model="form.name"></el-input>
+                            </el-form-item>
+                        </el-form>
                     </div>
-                </h5>
+                </div>
             </div>
         </div>
         <commonFooter></commonFooter>
@@ -49,43 +55,50 @@ export default {
         height:105px;
         width:110px;
         background:#000000;
+        margin-left:148px;
     }
     .middle #car h3{
         height:22px;
         width:60px;
         text-align:center;
         position:absolute;
-        left:160px;
+        left:274px;
         top:94px;
         font-size:14px;
         border-bottom:4px solid #f5a64a;
     }
-    .middle #car h5{
+    .middle #car .sss{
         height:432px;
         width:626px;
         background:#f7e2cb;
-        margin-top:-106px;
-        margin-left:294px;
+        margin-top:-88px;
+        margin-left:370px;
+        position: relative;
     }
         
-    .middle #car h5 .matter{
+    .middle #car .sss .matter{
         height:424px;
         width:594px;
         background:#fbf1e6;
-        left:60px;
-        top:30px;
+        left:28px;
+        top:4px;
         position:relative;
         
     }
-    .middle #car h5 .details1 h1{
+    .middle #car .sss .matter p{
+        padding-top:34px;
+        padding-left:60px;
+        font-size:14px;
+    }
+    .middle #car .sss h1{
         width: 0;
         border: 12px solid transparent;
-        border-right: 12px solid #f5a64a;
+        border-right: 12px solid #444341;
         position:absolute;
-        top:186px;
-        left:24px;
+        top:202px;
+        left:0;
     }
-    .middle #car h5 .details1 h2{
+    .middle #car .sss .details1 h2{
         height:270px;
         width:270px;
         background:#fff;

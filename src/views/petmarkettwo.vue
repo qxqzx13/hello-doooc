@@ -23,10 +23,6 @@ export default {
 }
 </script>
 <style scoped>
-div,ul,li,h1,h2,h3,h4,h6,span,img,i,b,p,h5{
-        margin:0;
-        padding:0;
-    }
   #bigBackground{
     height: 100%;
     width:100%;
