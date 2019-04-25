@@ -9,11 +9,10 @@
                     <h1></h1>
                     <div class="matter">
                         <p>收货地址</p>
-                        <el-form ref="form" :model="form" label-width="80px">
-                            <el-form-item label="详细地址">
-                                <el-input v-model="form.name"></el-input>
-                            </el-form-item>
-                        </el-form>
+                        <template>
+                            <el-radio v-model="radio" label="1"><img src="../assets/petshop/img/wechat.svg" alt="" style="height:36px;width: 36px;">&nbsp;&nbsp;&nbsp;微信支付</el-radio>
+                            <el-radio v-model="radio" label="2"><img src="../assets/petshop/img/alipay.svg" alt="" style="height:36px;width: 36px; ">&nbsp;&nbsp;&nbsp;支付宝支付</el-radio>
+                        </template>
                     </div>
                 </div>
             </div>
@@ -31,8 +30,13 @@ export default {
     components:{
         navigation,
         commonFooter,
+    }, data () {
+        return {
+            radio: '1'
+        };
     }
 }
+
 </script>
 
 <style scoped>
