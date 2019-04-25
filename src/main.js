@@ -20,13 +20,13 @@ Vue.prototype.$ajax = axios;
     }
 });*/
 /**************请求拦截添加请求头*******************************/
-/*axios.interceptors.request.use(config=>{
+axios.interceptors.request.use(config=>{
     config.url = "/hello"+config.url;
-    config.headers={
-        "authorization":localStorage.token
-    }
+    // config.headers={
+    //     "authorization":localStorage.token
+    // }
     return config;
-})*/
+})
 
 /*********************超时退出**************************/
 /*axios.interceptors.response.use(({data})=>{
@@ -35,8 +35,10 @@ Vue.prototype.$ajax = axios;
     }
     return data;
 });*/
-
-
+/***********************响应截取***************************/
+axios.interceptors.response.use(({data})=>{
+    return data;
+})
 
 
 

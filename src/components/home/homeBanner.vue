@@ -12,10 +12,8 @@
 </template>
 
 <script>
-    import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
     export default {
         name: "home-banner",
-        computed:mapState(["imgBackground","imgNum","timer","timerTwo"]),
         methods: {
             getImg(){
                 this.$emit("getHeight", this.$refs.imgHeight.offsetHeight);
@@ -39,7 +37,7 @@
                 var numIndex = 0;
                 var opacityIndex = 0;
                 var imgNumTwo = [];
-                this.$store.state.home.timerTwo = setInterval(()=>{
+                this.$store.state.home.imgBackgroundtimerTwo = setInterval(()=>{
                     if(imgIndex >= 2){
                         opacityIndex = opacityIndex === 0 ? 1 : 0 ;
                         imgIndex = 0;
