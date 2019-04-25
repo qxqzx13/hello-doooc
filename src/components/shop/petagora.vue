@@ -1,6 +1,6 @@
 <template>
     <div class="agora-box">
-        <div><img src="../../assets/petshop/img/004.png" title="1111111"></div>
+        <div class="petmarketimg"></div>
         <div><img src="../../assets/petshop/img/004_01.png" alt=""></div>
         <div class="agora-list">
             <ul>
@@ -29,7 +29,11 @@ export default {
         width: 1300px;
         height: 826px
     }
-
+    .agora-box .petmarketimg{
+        height:204px;
+        width: 100%;
+        background: url("../../assets/petshop/img/004.png")no-repeat;
+    }
     .agora-box .agora-list ul li {
         float: left;
         margin-left: 10px;

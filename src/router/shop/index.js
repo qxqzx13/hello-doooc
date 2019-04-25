@@ -2,7 +2,7 @@ import shop from "../../views/shop";
 import shoppingcar from "../../views/shoppingcar";
 import petmarket from "../../views/petmarket";
 import petmarkettwo from "../../views/petmarkettwo";
-import account from "../../views/account";
+import login from "../../views/login";
 export default [
     {
         path: '/shop',
@@ -31,8 +31,11 @@ export default [
             isAuthorization:false
         }
     },{
-        path:"/account",
-        name:"account",
-        component:account
+        path:"/login",
+        name:"login",
+        component:login,
+        meta:{
+            isAuthorization:false
+        }
     }
 ]

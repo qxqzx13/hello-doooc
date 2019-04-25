@@ -1,0 +1,167 @@
+@charset "UTF-8";
+div,ul,li,p,h1,h2,h3,h4,h5,h6,img{
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+	color: #FFFFFF;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    vertical-align: middle;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+body,
+html {
+    height: 100%;
+    font-size: 12px;
+    font-family: "微软雅黑";
+}
+#loginback{
+		width: 1440px;
+		height: 745px;
+		background:url(./img/background.jpeg) no-repeat;
+		background-size: cover;
+		}
+#loginback #login{
+		width: 416px; 
+		height: 412px;
+		 background:rgba(160,160,160,0.4);
+		 position: absolute;
+		 top: 165px;
+		 left: 880px;
+		 border-radius: 10px;
+		 }
+#loginback #login ul{
+	width: 312px;
+	height: 302px;
+	margin: 0 auto;
+	margin-top: 36px;
+}
+#loginback #login ul li:nth-child(1){
+	width: 312px;
+	height: 40px;
+	color:#FFFFFF;
+	font-size: 16px;
+	font-weight: bolder;
+	
+}
+#loginback #login ul li:nth-child(2){
+	margin-top: 14px;
+	width: 312px;
+	height: 26px;
+	border-bottom: 1px solid rgb(160,160,160);
+	background: url(./img/ChatHead.png) no-repeat;
+	background-position-y: -3px;
+}
+#loginback #login ul li:nth-child(2) input{
+	float: right;
+	width: 280px;
+	height: 26px;
+	border: transparent;
+	color: #FFFFFF;
+}
+#loginback #login ul li:nth-child(3){
+	margin-top: 34px;
+	width: 312px;
+	height: 26px;
+	border-bottom: 1px solid rgb(160,160,160);
+	background: url(./img/save.png) no-repeat;
+	background-position-y: -1px;
+	color: #FFFFFF;
+	line-height: 26px;
+}
+#loginback #login ul li:nth-child(3) input{
+	/* float: right; */
+	width: 200px;
+	height: 26px;
+	border: transparent;
+	color: #FFFFFF;
+	margin-left: 34px;
+}
+#loginback #login ul li:nth-child(3) a{
+	float: right;
+	margin-right: 8px;
+}
+#loginback #login ul li:nth-child(3) a:hover{
+	color: #527cf4;
+}
+#loginback #login ul li:nth-child(4) input{
+	/* float: right; */
+	width: 312px;
+	height: 46px;
+	border: transparent;
+	background: rgba(167,171,152,0.6);
+	margin-top: 24px;
+	color: #FFFFFF;
+	font-size: 18px;
+	border-radius: 5px;
+}
+#loginback #login ul li:nth-child(5) a{
+	margin-top: 2px;
+	float: right;
+}
+#loginback #login ul li:nth-child(5) a:hover{
+	color: #527cf4;
+}
+#loginback #login ul li:nth-child(6){
+	clear: both;
+	margin-top: 46px;
+	text-align: center;
+	color: #767c50;
+}
+#loginback #login ul li:nth-child(6) span{
+	font-size: 16px;
+	color: #cccccc;
+}
+#loginback #login ol{
+	width: 312px;
+	height: 36px;
+	margin: 0 auto;
+}
+#loginback #login ol li:nth-child(1){
+	float: left;
+	width: 36px;
+	height: 36px;
+	background: url(./img/qqdown.png) no-repeat;
+	margin-left: 40px;
+}
+#loginback #login ol li:nth-child(1):hover{
+	background: url(./img/qqup.png) no-repeat;
+}
+
+#loginback #login ol li:nth-child(2){
+	float: left;
+	width: 36px;
+	height: 36px;
+	background: url(./img/weixindown.png) no-repeat;
+	margin-left: 65px;
+}
+#loginback #login ol li:nth-child(2):hover{
+	background: url(./img/weixinup.png) no-repeat;
+}
+#loginback #login ol li:nth-child(3){
+	float: left;
+	width: 36px;
+	height: 36px;
+	background: url(./img/sinalogodown.png) no-repeat;
+	margin-left: 60px;
+}
+#loginback #login ol li:nth-child(3):hover{
+	background: url(./img/sinalogoup.png) no-repeat;
+}

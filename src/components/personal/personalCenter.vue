@@ -55,6 +55,7 @@ export default {
         width:200px;
         line-height:54px;
         color: #595959;
+        cursor: pointer;
     }
 
 

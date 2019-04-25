@@ -6,7 +6,7 @@
         <div id="car">
             <div class="petpic"></div>
             <h3>宠物详情</h3>
-            <h5>
+            <div class="nan">
                 <div class="details1">
                     <h1></h1>
                     <h2></h2>
@@ -24,7 +24,9 @@
                         </li>
                         <li>
                             <p class="taste">口味</p>
-                            <span>幼犬配方</span>
+                            <select name="" id="">
+                                <option value="1">xl</option>
+                            </select>
                         </li>
                         <li>
                             <p>生产地址</p>
@@ -39,8 +41,15 @@
                             <span>18个月</span>
                         </li>
                     </ul>
+                    <el-row>
+                        <el-button round>加入购物车</el-button>
+                    </el-row>
+                    <p class="price">单价<span>￥500</span></p>
+                    <p class="total">总计：<span>￥5000</span></p>
+                    <p class="quantity">数量<span>x1</span><img src="../assets/petshop/img/plus.svg" alt=""><img src="../assets/petshop/img/minus.svg"
+                                                                                                               alt=""></p>
                 </div>
-            </h5>
+            </div>
         </div>
 	</div>
 	<commonFooter></commonFooter>
@@ -97,7 +106,7 @@ export default {
         font-size:14px;
         border-bottom:4px solid #f5a64a;
     }
-    #middle #car h5{
+    #middle #car .nan{
         height:578px;
         width:840px;
         background:#f7e2cb;
@@ -105,7 +114,7 @@ export default {
         margin-left:294px;
     }
         
-    #middle #car h5 .details1{
+    #middle #car .nan .details1{
         height:515px;
         width:730px;
         background:#fbf1e6;
@@ -114,7 +123,7 @@ export default {
         position:relative;
         
     }
-    #middle #car h5 .details1 h1{
+    #middle #car .nan .details1 h1{
         width: 0;
         border: 12px solid transparent;
         border-right: 12px solid #f5a64a;
@@ -122,7 +131,7 @@ export default {
         top:186px;
         left:24px;
     }
-    #middle #car h5 .details1 h2{
+    #middle #car .nan .details1 h2{
         height:270px;
         width:270px;
         background:#fff;
@@ -130,15 +139,56 @@ export default {
         top:76px;
         left:64px;
     }
+    .details1 .el-button{
+        height:22px;
+        width:108px;
+        line-height:1px;
+        background: #f99725;
+        color: #000;
+        position: absolute;
+        top: 464px;
+        right:46px;
+    }
+    .details1 .quantity{
+        position:absolute;
+        bottom:154px;
+        right:110px;
+        height:24px;
+        text-align: center;
+    }
+    .details1 .quantity img{
+        height:18px;
+        width:24px;
+        cursor: pointer;
+        vertical-align: middle;
+
+    }
+    .details1 .total{
+        position: absolute;
+        bottom:28px;
+        right:200px;
+        font-size:16px;
+        color:#f99725
+    }
+    .details1 .total span{
+        color:#000;
+    }
+    .details1 .price{
+        position: absolute;
+        bottom:154px;
+        right:274px;
+        font-size:16px;
+    }
     .commodity{
         position:absolute;
         left:384px;
-        top:26px;
+        top:72px;
         height:76px;
         width:186px;
     }
     .commodity p{
         font-size:10px;
+        line-height:24px;
     }
     .details1 ul{
         height:96px;

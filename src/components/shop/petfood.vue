@@ -1,6 +1,6 @@
 <template>
     <div class="food-box">
-        <div><img src="../../assets/petshop/img/001.png" alt=""></div>
+        <div class="foodimg"></div>
         <div class="food-list">
             <ul>
                 <li><img src="../../assets/petshop/img/002_01.jpg" alt=""></li>
@@ -29,7 +29,11 @@ export default {
         width: 1300px;
         height: 470px
     }
-
+    .food-box .foodimg{
+        height:196px;
+        width:1300px;
+        background:url("../../assets/petshop/img/001.png") no-repeat;
+    }
     .food-box .food-list ul li {
         float: left;
         margin-left: 33px

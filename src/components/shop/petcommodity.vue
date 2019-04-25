@@ -1,6 +1,6 @@
 <template>
     <div class="commodity-box">
-        <div class="commodity-img"><img src="../../assets/petshop/img/003.png" alt=""></div>
+        <div class="commodity-img"></div>
         <div class="commodity-list">
             <ul>
                 <li><img src="../../assets/petshop/img/003_01.jpg" alt=""></li>
@@ -29,9 +29,10 @@ export default {
         height: 640px
     }
 
-    .commodity-box .commodity-img img {
+    .commodity-box .commodity-img{
         width: 1300px;
-        height: 249px
+        height: 249px;
+        background: url("../../assets/petshop/img/003.png")no-repeat;
     }
 
     .commodity-box .commodity-list ul li {
