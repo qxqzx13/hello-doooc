@@ -5,32 +5,38 @@
             <img src="../../assets/home/img/snacks.jpg" />
         </div>
         <ul>
-            <!--<li v-for="item in snackhouse" @click="">-->
-                <!--<img src="item.imgSrc" />-->
+            {{$store.state.home.homeSnackse}}
+            <li v-for="item in $store.state.home.homeSnacks" @click="$router.push({path:item.productType})">
+                <img :src="item.productIcon" />
+            </li>
+            <!--<li>-->
+                <!--<img src="../../assets/home/img/one.jpg" />-->
             <!--</li>-->
-            <li>
-                <img src="../../assets/home/img/one.jpg" />
-            </li>
-            <li>
-                <img src="../../assets/home/img/two.jpg" />
-            </li>
-            <li>
-                <img src="../../assets/home/img/three.jpg" />
-            </li>
-            <li>
-                <img src="../../assets/home/img/fure.jpg" />
-            </li>
-            <li>
-                <img src="../../assets/home/img/five.jpg" />
-            </li>
+            <!--<li>-->
+                <!--<img src="../../assets/home/img/two.jpg" />-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<img src="../../assets/home/img/three.jpg" />-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<img src="../../assets/home/img/fure.jpg" />-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<img src="../../assets/home/img/five.jpg" />-->
+            <!--</li>-->
         </ul>
     </div>
 </template>
 <script>
-
-export default {
-    name:"snacks",
-}
+    import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
+    export default {
+        name:"snacks",
+        computed :mapState([]),
+        methods:mapActions(["getSnacks"]),
+        mounted(){
+            this.getSnacks();
+        }
+    }
 </script>
 <style scoped>
     div,ul,li{

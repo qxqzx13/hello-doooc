@@ -8,29 +8,22 @@
             <span></span>
         </h3>
         <ul>
-            <!--<li v-for="item in homeFood" @click="getHomeFood">-->
-                <!--<img src="../../assets/home/img/a.jpg" />-->
-                <!--<p>深海鱼油含有非常丰富的多元不饱和脂肪酸促进毛囊脂腺和表皮分泌,让毛发更加靓丽,还可以健脑益智,使宠物更加活泼聪明</p>-->
-            <!--</li>-->
-            <li @click="">
-                <img src="../../assets/home/img/a.jpg" />
-                <p>深海鱼油含有非常丰富的多元不饱和脂肪酸促进毛囊脂腺和表皮分泌,让毛发更加靓丽,还可以健脑益智,使宠物更加活泼聪明</p>
-            </li>
-            <li>
-                <img src="../../assets/home/img/b.jpg" />
-                <p>精选新鲜优质的鸡肉,均衡的高蛋白、低脂肪及营养素,保障爱宠充沛的体力</p>
-            </li>
-            <li>
-                <img src="../../assets/home/img/c.jpg" />
-                <p>1.壮骨助发育 2.亮毛防皮炎 3.缓解眼部泪痕4.排泄助消化 5.均衡营养</p>
+            <li v-for="item in $store.state.home.homeFood" @click="$router.push({name:'shoppingcar',query:{productId:item.productId}})">
+                <img :src="item.productIcon" />
+                <p>{{item.productDescription}}</p>
             </li>
         </ul>
     </div>
 </template>
 <script>
     import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
-    export default {
-    name:"foodSelection"
+export default {
+    name:"foodSelection",
+    computed :mapState([]),
+    methods:mapActions(["getChoose","toShoppingcCar"]),
+    mounted(){
+        this.getChoose();
+    }
 }
 </script>
 <style scoped>

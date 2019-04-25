@@ -2,43 +2,49 @@
     <div class="teach">
         <h3>爱宠不会养?doooc让你满意</h3>
         <div class="over">
+
             <div class="details">
-                <!--<div v-for="item in homeTeach" @click="">-->
-                    <!--<h4>{{item.name}}</h4>-->
-                    <!--<img :src="item.imgSrc" />-->
+                <div v-for="item in $store.state.home.homeTeach" @click="$router.push({path:item.productType})">
+                    <h4>{{item.productName}}</h4>
+                    <img :src="item.productIcon" />
+                </div>
+                <!--<div @click="">-->
+                    <!--<h4>美容沙龙</h4>-->
+                    <!--<img src="../../assets/home/img/001.jpg" />-->
                 <!--</div>-->
-                <div @click="">
-                    <h4>美容沙龙</h4>
-                    <img src="../../assets/home/img/001.jpg" />
-                </div>
-                <div>
-                    <h4>洗护清洁</h4>
-                    <img src="../../assets/home/img/002.jpg" />
-                </div>
-                <div>
-                    <h4>爱宠训练</h4>
-                    <img src="../../assets/home/img/003.jpg" />
-                </div>
-                <div>
-                    <h4>兽医护理</h4>
-                    <img src="../../assets/home/img/004.jpg" />
-                </div>
-                <div>
-                    <h4>爱宠寄养</h4>
-                    <img src="../../assets/home/img/005.jpg" />
-                </div>
-                <div>
-                    <h4>领养中心</h4>
-                    <img src="../../assets/home/img/006.jpg" />
-                </div>
+                <!--<div>-->
+                    <!--<h4>洗护清洁</h4>-->
+                    <!--<img src="../../assets/home/img/002.jpg" />-->
+                <!--</div>-->
+                <!--<div>-->
+                    <!--<h4>爱宠训练</h4>-->
+                    <!--<img src="../../assets/home/img/003.jpg" />-->
+                <!--</div>-->
+                <!--<div>-->
+                    <!--<h4>兽医护理</h4>-->
+                    <!--<img src="../../assets/home/img/004.jpg" />-->
+                <!--</div>-->
+                <!--<div>-->
+                    <!--<h4>爱宠寄养</h4>-->
+                    <!--<img src="../../assets/home/img/005.jpg" />-->
+                <!--</div>-->
+                <!--<div>-->
+                    <!--<h4>领养中心</h4>-->
+                    <!--<img src="../../assets/home/img/006.jpg" />-->
+                <!--</div>-->
             </div>
         </div>
     </div>
 </template>
 <script>
-export default {
-    name:"raisingPets"
-}
+    import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
+    export default {
+        name:"raisingPets",
+        methods:mapActions(["getTeach"]),
+        mounted(){
+            this.getTeach();
+        }
+    }
 </script>
 <style scoped>
     div,h3,h4,img{

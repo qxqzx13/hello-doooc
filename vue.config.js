@@ -2,6 +2,15 @@ module.exports={
     devServer:{
         open:true,
         port:80,
-        host:"127.0.0.1"
+        host:"127.0.0.1",
+        proxy:{
+            "/hello":{
+                target:"http://10.9.67.150:8080",
+                changeOrigin:true,
+                pathRewrite:{
+                    "^/hello":""
+                }
+            }
+        }
     }
 }

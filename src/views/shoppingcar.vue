@@ -59,13 +59,17 @@
 <script>
 import navigation from "../components/shopcommonality/navigation";
 import commonFooter from "../components/common/commonFooter.vue";
-// @ is an alias to /src
+import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
 export default {
-  name: 'shoppingcar',
-  components: {
-      commonFooter,
-      navigation
-  }
+    name: 'shoppingcar',
+    components: {
+        commonFooter,
+        navigation
+    },
+    methods:mapActions(["toShoppingCar"]),
+    mounted() {
+        this.toShoppingCar(this.$route.query.productId);
+}
 }
 </script>
 <style scoped>
