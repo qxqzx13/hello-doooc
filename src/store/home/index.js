@@ -1,47 +1,51 @@
+import axios from "axios";
 const state = {
-    imgPic:{
-        
-    },
     imgBackground : [{opacity:0},{opacity:100}],
     imgNum:[[0,1],[1,0]],
     timer: null,
     timerTwo: null,
+    homeFood:[],
+    homeTeach:[],
+    homeSnacks:[],
 }
 const actions = {
-    bannerBackground(obj,json){
-        clearInterval(this.$store.state.home.timer);
-        this.$store.state.home.timer = setInterval(()=>{
-            var cur = getComputedStyle(obj,1).opacity * 100;
-        var speed = (json.opacity - cur) / 8;
-        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
-        if(cur === json.opacity){
-            clearInterval(this.$store.state.home.timer);
-        }else{
-            obj.style.opacity = (cur + speed) / 100;
-        }
-    },130)},
-    getChild(){
-        var imgPic = document.querySelectorAll("#banner .picture img")
-        var imgIndex = 0;
-        var numIndex = 0;
-        var opacityIndex = 0;
-        var imgNumTwo = [];
-        this.$store.state.home.timerTwo = setInterval(()=>{
-            if(imgIndex >= 2){
-            opacityIndex = opacityIndex === 0 ? 1 : 0 ;
-            imgIndex = 0;
-        }
-        imgNumTwo = this.$store.state.home.imgNum[opacityIndex];
-        numIndex = imgNumTwo[imgIndex];
-        this.state.bannerBackground(imgPic[numIndex],this.$store.state.home.imgBackground[opacityIndex]);
-        imgIndex += 1;
-    },5000)}
+    getChoose({commit}){
+        axios.get("/buyer/product/homefood").then(
+            ({data})=>{
+                commit("CAHNGE_HOME_FOOD",data.rows);
+            }
+        )
+    },
+    getTeach({commit}){
+        axios.get("/buyer/product/zc").then(
+            ({data})=>{
+                commit("CAHNGE_HOME_TEACH",data.rows);
+            }
+        )
+    },
+    getSnacks({commit}){
+        axios.get("/buyer/product/xw").then(
+            ({data})=>{
+                commit("CAHNGE_HOME_SNACKS",data.rows);
+            }
+        )
+    }
 }
-
+const mutations = {
+    CAHNGE_HOME_FOOD(state,arr){
+        state.homeFood = arr;
+    },
+    CAHNGE_HOME_TEACH(state,arr){
+        state.homeTeach = arr;
+    },
+    CAHNGE_HOME_SNACKS(state,arr){
+        state.homeSnacks = arr;
+    },
+};
 export default{
     state,
     // getters,
     actions,
-    // mutations,
+    mutations,
     // mudoles
 }
