@@ -6,12 +6,14 @@ import account from "../../views/account";
 export default [
     {
         path: '/shop',
+        name:'shop',
         component: shop,
         meta:{
             isAuthorization:false
         }
     },{
             path:"/shoppingcar",
+            name:'shoppingcar',
             component:shoppingcar,
             meta:{
                 isAuthorization:true

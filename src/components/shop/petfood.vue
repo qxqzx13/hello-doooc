@@ -3,19 +3,25 @@
         <div><img src="../../assets/petshop/img/001.png" alt=""></div>
         <div class="food-list">
             <ul>
-                <li><img src="../../assets/petshop/img/002_01.jpg" alt=""></li>
+                <li v-for="item in $store.state.home.shopHomeFood"><img :src="item.productIcon" @click="path({name:'food',query:{productType:item.productType}})"></li>
+                <!--<li><img src="../../assets/petshop/img/002_01.jpg" alt=""></li>
                 <li><img src="../../assets/petshop/img/002_02.jpg" alt=""></li>
                 <li><img src="../../assets/petshop/img/002_03.jpg" alt=""></li>
                 <li><img src="../../assets/petshop/img/002_04.jpg" alt=""></li>
-                <li><img src="../../assets/petshop/img/002_05.jpg" alt=""></li>
+                <li><img src="../../assets/petshop/img/002_05.jpg" alt=""></li>-->
             </ul>
         </div>
     </div>
 </template>
 
 <script>
+import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
 export default {
-    name:"petfood"
+    name:"petfood",
+    methods:mapActions(["shopHomePetfood"]),
+    mounted(){
+        this.shopHomePetfood();
+    }
 }
 </script>
 

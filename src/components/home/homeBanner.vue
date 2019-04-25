@@ -29,7 +29,7 @@
                     }else{
                         obj.style.opacity = (cur + speed) / 100;
                     }
-                },130)
+                },80)
             },
             getChild(){
                 var imgPic = document.querySelectorAll("#banner .picture img")
@@ -47,11 +47,18 @@
                     this.bannerBackground(imgPic[numIndex],this.$store.state.home.imgBackground[opacityIndex]);
                     imgIndex += 1;
                 },5000);
+            },
+            out(){
+                clearInterval(this.$store.state.home.timer);
+                clearInterval(this.$store.state.home.timerTwo);
+                var imgPic = document.querySelectorAll("#banner .picture img");
+                for(let i = 0;i < imgPic.length;i++){
+                    this.bannerBackground(imgPic[i],{opacity:100})
+                }
             }
         },
         destroyed(){
-            clearInterval(this.$store.state.home.timer);
-            clearInterval(this.$store.state.home.timerTwo);
+
         }
     }
 </script>

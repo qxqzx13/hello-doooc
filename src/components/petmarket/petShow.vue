@@ -2,7 +2,14 @@
     <div class="pet">
         <div class="pet-show">
             <h3>宠物展示</h3>
-            <div class="pet-cat1" @click="$router.push('/petmarkettwo')">
+            <div class="pet-cat1" v-for="item in $store.state.home.shopPetmarket" @click="path({name:'petmarkettwo',query:{productId:item.productId}})">
+                <div class="photo"><img :src="item.productIcon"></div>
+                <h2>￥3000</h2>
+                <p>布偶猫</p>
+                <h4>品种：布偶猫</h4>
+                <h5><img src="../../assets/petmarket/img/shopcar.svg" alt=""></h5>
+            </div>
+            <!--<div class="pet-cat1" @click="$router.push('/petmarkettwo')">
                 <div class="photoone"></div>
                 <h2>￥3000</h2>
                 <p>布偶猫</p>
@@ -43,7 +50,7 @@
                 <p>布偶猫</p>
                 <h4>品种：布偶猫</h4>
                 <h5><img src="../../assets/petmarket/img/shopcar.svg" alt=""></h5>
-            </div>
+            </div>-->
             <p class="prevs">
                 上一页
             </p>
@@ -64,6 +71,14 @@ export default {
     div,ul,li,h1,h2,h3,h4,h6,span,img,i,b,p,h5{
         margin:0;
         padding:0;
+    }
+    .photo{
+        width: 370px;
+        height:312px;
+    }
+    .photo img{
+        width: 100%;
+        height: 100%;
     }
     .pet .pet-show {
         width: 1300px;
@@ -150,10 +165,6 @@ export default {
 
     .pet .pet-show .uanext {
         right: 500px
-    }
-
-    .pet .pet-show .pet-cat2 {
-        margin: 0 45px
     }
 
     .pet .pet-show div:nth-child(4),

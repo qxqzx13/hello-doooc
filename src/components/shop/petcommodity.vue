@@ -3,22 +3,28 @@
         <div class="commodity-img"><img src="../../assets/petshop/img/003.png" alt=""></div>
         <div class="commodity-list">
             <ul>
-                <li><img src="../../assets/petshop/img/003_01.jpg" alt=""></li>
+                <li v-for="item in $store.state.home.homeCommodity"><img :src="item.productIcon" @click="path({name:'daily',query:{productType:item.productType}})"></li>
+                <!--<li><img src="../../assets/petshop/img/003_01.jpg" alt=""></li>
                 <li><img src="../../assets/petshop/img/003_02.jpg" alt=""></li>
                 <li><img src="../../assets/petshop/img/003_03.jpg" alt=""></li>
-                <li><img src="../../assets/petshop/img/003_04.jpg" alt=""></li>
+                <li><img src="../../assets/petshop/img/003_04.jpg" alt=""></li>-->
             </ul>
         </div>
     </div>
 </template>
 
 <script>
+import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
 export default {
-    name:"petcommodity"
+    name:"petcommodity",
+    methods:mapActions(["shopHomeCommodity"]),
+    mounted(){
+        this.shopHomeCommodity();
+    }
 }
 </script>
 
-<style>
+<style scoped>
     div,ul,li,h1,h2,h3,h4,h6,span,img,i,b,p,h5{
         margin:0;
         padding:0;

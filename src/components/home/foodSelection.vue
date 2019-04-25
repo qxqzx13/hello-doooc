@@ -19,7 +19,6 @@
     import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
 export default {
     name:"foodSelection",
-    computed :mapState([]),
     methods:mapActions(["getChoose","toShoppingcCar"]),
     mounted(){
         this.getChoose();
