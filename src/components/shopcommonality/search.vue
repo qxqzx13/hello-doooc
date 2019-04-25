@@ -12,7 +12,19 @@
                 </div>
                 <div class="header-bottom">
                     <div class="pet-foot" @click="$router.push('/food')">
-                        <div class="ctfoot">宠物食品</div>
+                        <ul>
+                            <li class="ctfoot">
+                                宠物食品
+                            </li>
+                            <li class="classify-foot">
+                                <ul>
+                                    <li>宠物主粮</li>
+                                    <li>宠物零食</li>
+                                    <li>宠物保健</li>
+                                </ul>
+                            </li>
+                        </ul>
+
                         <h3></h3>
                     </div>
                     <div class="pet-daily" @click="$router.push('/daily')">
@@ -123,7 +135,9 @@ export default {
         height: 36px
     }
 
-    .header .header-box .header-bottom div {
+    .pet-foot,
+    .pet-daily,
+    .pet-market {
         height: 36px;
         width: 160px;
         display: inline-table;
@@ -133,30 +147,19 @@ export default {
         position: relative;
         cursor: pointer
     }
+    .ctfoot:hover{
+        background:#fcfefd;
+    }
+    .ctfoot:hover .classify-foot{
 
-    .header .header-box .header-bottom div h3 {
-        opacity: 1;
-        margin-left: 10px;
-        width: 0;
-        border: 8px solid transparent;
-        border-top: 8px solid #9c9c96;
+        display: block;
+    }
+    .pet-foot ul .classify-foot{
+        background:#fcfefd;
         display: none;
-        position: absolute;
-        top: 15px;
-        right: 24px
     }
-
-    .header .header-box .header-bottom .pet-market h3 {
-        border: none
-    }
-
-    .header .header-box .header-bottom div:hover {
-        background: #fff;
-        color: #272727
-    }
-
-    .header .header-box .header-bottom div:hover h3 {
-        display: block
+    .pet-foot ul .classify-foot ul{
+        height:108px;
     }
 </style>
 
