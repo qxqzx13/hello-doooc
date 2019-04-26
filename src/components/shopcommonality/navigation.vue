@@ -7,7 +7,7 @@
             <ul>
               <li @click="$router.push('/')">首页</li>
               <li @click="$router.push('/shop')">商城</li>
-              <li @click="$router.push('/')">知宠</li>
+              <li @click="$router.push('/pet')">知宠</li>
             </ul>
           </div>
           <div class="logo">

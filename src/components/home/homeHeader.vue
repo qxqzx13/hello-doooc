@@ -6,7 +6,7 @@
                     <ul>
                         <li><router-link to="/">首页</router-link></li>
                         <li><router-link to="/shop">商城</router-link></li>
-                        <li><router-link to="/shop">知宠</router-link></li>
+                        <li><router-link to="/pet">知宠</router-link></li>
                     </ul>
                 </div>
                 <div class="logo">
