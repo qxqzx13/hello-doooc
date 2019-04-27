@@ -2,11 +2,11 @@
     <div class="pet">
         <div class="pet-show">
             <h3>宠物展示</h3>
-            <div class="pet-cat1" v-for="item in $store.state.home.shopPetmarket" @click="path({name:'petmarkettwo',query:{productId:item.productId}})">
+            <div class="pet-cat1" v-for="item in petmarket.petShowArr" @click="path({name:'petmarkettwo',query:{productId:item.productId}})">
                 <div class="photo"><img :src="item.productIcon"></div>
-                <h2>￥3000</h2>
-                <p>布偶猫</p>
-                <h4>品种：布偶猫</h4>
+                <h2>{{item.productPrice}}</h2>
+                <p>{{item.productName}}</p>
+                <h4>品种：{{item.productType}}</h4>
                 <h5><img src="../../assets/petmarket/img/shopcar.svg" alt=""></h5>
             </div>
             <!--<div class="pet-cat1" @click="$router.push('/petmarkettwo')">
@@ -51,10 +51,11 @@
                 <h4>品种：布偶猫</h4>
                 <h5><img src="../../assets/petmarket/img/shopcar.svg" alt=""></h5>
             </div>-->
-            <p class="prevs">
+            <p class="prevs" @click="changePageNum(-1)">
                 上一页
             </p>
-            <p class="uanext">
+            <p>当前第{{petmarket.pageIndex}}页/共{{petmarket.pageSum}}页</p>
+            <p class="uanext" @click="changePageNum(1)">
                 下一页
             </p>
         </div>
@@ -62,9 +63,20 @@
 </template>
 
 <script>
-export default {
-    name:"petShow",
-}
+    import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
+    export default {
+        name:"petShow",
+        computed : mapState(["petmarket"]),
+        methods: Object.assign(mapActions(["getPetShow"]),{
+            changePageNum(num){
+                this.$store.commit("TO_NEXT",num);
+                this.getPetShow(this.petmarket.productType,this.petmarket.pageIndex,this.petmarket.boyOrGirl,this.petmarket.petAge,this.petmarket.dogOrCat);
+            }
+        }),
+        mounted(){
+            this.getPetShow(this.petmarket.productType,this.petmarket.pageIndex,this.petmarket.boyOrGirl,this.petmarket.petAge,this.petmarket.dogOrCat);
+        }
+    }
 </script>
 
 <style scoped>

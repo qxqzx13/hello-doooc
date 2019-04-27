@@ -17,51 +17,28 @@ const actions = {
             commit("CAHNGE_SHOPPING_CAR",data.rows);
             }
         )
-    },
-    shopHomeAgora({commit},id){
-        axios.get("/",{
-            params:{
-                productType:id
-            }
-        }).then(
+    },/*
+    shopHomeAgora({commit}){
+        axios.get("/").then(
             data=>{
             commit("CAHNGE_SHOP_HOME_AGORA",data.rows);
     }
     )
     },
-    shopHomeCommodity({commit},id){
-        axios.get("/",{
-            params:{
-                productType:id
-            }
-        }).then(
+    shopHomeCommodity({commit}){
+        axios.get("/").then(
             data=>{
             commit("CAHNGE_SHOP_HOME_COMMODITY",data.rows);
     }
     )
-    },
-    shopHomePetfood({commit},id){
-        axios.get("/",{
-            params:{
-                productType:id
-            }
-        }).then(
+    },*/
+    shopHomePetfood({commit}){
+        axios.get("/buyer/product/xw").then(
             data=>{
             commit("CAHNGE_SHOP_HOME_PETFOOD",data.rows);
     }
     )
-    },
-    shopHomePetfood({commit},id){
-        axios.get("/",{
-            params:{
-                productId:id
-            }
-        }).then(
-            data=>{
-            commit("CAHNGE_SHOP_HOME_PETFOOD",data.rows);
     }
-    )
-    },
 }
 const mutations = {
     CAHNGE_SHOPPING_CAR(state,arr){

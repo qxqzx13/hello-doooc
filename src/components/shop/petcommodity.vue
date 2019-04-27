@@ -1,9 +1,11 @@
 <template>
+    <!--商城日用品-->
+
     <div class="commodity-box">
         <div class="commodity-img"><img src="../../assets/petshop/img/003.png" alt=""></div>
         <div class="commodity-list">
             <ul>
-                <li v-for="item in $store.state.home.homeCommodity"><img :src="item.productIcon" @click="path({name:'daily',query:{productType:item.productType}})"></li>
+                <li v-for="item in home.homeCommodity"><img :src="item.productIcon" @click="path({name:'daily',query:{productType:item.productType}})"></li>
                 <!--<li><img src="../../assets/petshop/img/003_01.jpg" alt=""></li>
                 <li><img src="../../assets/petshop/img/003_02.jpg" alt=""></li>
                 <li><img src="../../assets/petshop/img/003_03.jpg" alt=""></li>
@@ -17,6 +19,7 @@
 import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
 export default {
     name:"petcommodity",
+    computed:mapState(["home"]),
     methods:mapActions(["shopHomeCommodity"]),
     mounted(){
         this.shopHomeCommodity();

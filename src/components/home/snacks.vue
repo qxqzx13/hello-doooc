@@ -5,8 +5,7 @@
             <img src="../../assets/home/img/snacks.jpg" />
         </div>
         <ul>
-            {{$store.state.home.homeSnackse}}
-            <li v-for="item in $store.state.home.homeSnacks" @click="$router.push({path:item.productType})">
+            <li v-for="item in home.homeSnacks" @click="$router.push({path:item.productType})">
                 <img :src="item.productIcon" />
             </li>
             <!--<li>-->
@@ -31,7 +30,7 @@
     import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
     export default {
         name:"snacks",
-        computed :mapState([]),
+        computed :mapState(["home"]),
         methods:mapActions(["getSnacks"]),
         mounted(){
             this.getSnacks();

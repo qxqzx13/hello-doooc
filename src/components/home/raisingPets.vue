@@ -4,7 +4,7 @@
         <div class="over">
 
             <div class="details">
-                <div v-for="item in $store.state.home.homeTeach" @click="$router.push({path:item.productType})">
+                <div v-for="item in home.homeTeach" @click="$router.push({path:item.productType})">
                     <h4>{{item.productName}}</h4>
                     <img :src="item.productIcon" />
                 </div>
@@ -40,6 +40,7 @@
     import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
     export default {
         name:"raisingPets",
+        computed :mapState(["home"]),
         methods:mapActions(["getTeach"]),
         mounted(){
             this.getTeach();

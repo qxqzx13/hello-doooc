@@ -1,10 +1,11 @@
 <template>
+    <!--商城市场-->
     <div class="agora-box">
         <div><img src="../../assets/petshop/img/004.png" title=""></div>
         <div><img src="../../assets/petshop/img/004_01.png" alt=""></div>
         <div class="agora-list">
             <ul>
-                <li v-for="item in $store.state.home.homeAgora"><img :src="item.productIcon" @click="path({name:'petmarket',query:{productType:item.productType}})"></li>
+                <li v-for="item in home.homeAgora"><img :src="item.productIcon" @click="path({name:'petmarket',query:{productType:item.productType}})"></li>
             </ul>
         </div>
     </div>
@@ -14,6 +15,7 @@
     import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
     export default {
         name:"petagora",
+        computed:mapState(["home"]),
         methods:mapActions(["shopHomeAgora"]),
         mounted(){
             this.shopHomeAgora();
