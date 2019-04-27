@@ -137,7 +137,7 @@
 	}
  
  #footer{
-     height:730px;
+     height:675px;
      width:100%;
     img{
         display: block;

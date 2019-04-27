@@ -68,7 +68,7 @@
         name:"petShow",
         data(){
             return {
-                isShow : true,
+                isShow : false,
                 nowPage : 1
             }
         },
@@ -81,10 +81,10 @@
                 this.$router.push({
                     query:{
                         pageIndex:this.$route.query.pageIndex/1-1,
-                        productType:this.$route.query.productType/1,
-                        boyOrGirl:this.$route.query.boyOrGirl/1,
-                        petAge:this.$route.query.petAge/1,
-                        dogOrCat:this.$route.query.dogOrCat/1
+                        productType:this.$route.query.productType/1 || 1,
+                        boyOrGirl:this.$route.query.boyOrGirl/1 || 1,
+                        petAge:this.$route.query.petAge/1 || 1,
+                        dogOrCat:this.$route.query.dogOrCat/1 || 1
                     }
                 });
                 this.orShow();
@@ -97,10 +97,10 @@
                 this.$router.push({
                     query:{
                         pageIndex:this.$route.query.pageIndex/1+1,
-                        productType:this.$route.query.productType/1,
-                        boyOrGirl:this.$route.query.boyOrGirl/1,
-                        petAge:this.$route.query.petAge/1,
-                        dogOrCat:this.$route.query.dogOrCat/1
+                        productType:this.$route.query.productType/1 || 1,
+                        boyOrGirl:this.$route.query.boyOrGirl/1 || 1,
+                        petAge:this.$route.query.petAge/1 || 1,
+                        dogOrCat:this.$route.query.dogOrCat/1 || 1
                     }
                 });
                 this.orShow();

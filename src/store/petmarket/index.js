@@ -2,7 +2,7 @@ import axios from "axios";
 //petmarket 宠物市场信息
 const state = {
     petShowArr:[],//返回的信息
-    pageSum:1,//总页数
+    pageSum:10,//总页数
     pageIndex:1,//当前页
     petmarketSale:[],//宠物详情页信息三张图片
     filtrateType:[],//筛选器中的宠物品种
