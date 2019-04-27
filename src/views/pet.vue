@@ -1,8 +1,6 @@
 <template>
     <div>
-        <div id="title-img" @click="$router.push('/')">
-			<img src="../assets/pet/img/title.png" alt="" >
-		</div>
+        <commonHeader></commonHeader>
         <div id="nav">
 				<img src="../assets/pet/img/t.png">
 				<ul>
@@ -60,10 +58,12 @@
     </div>
 </template>
 <script>
-
-export default {
-    
-}
+    import commonHeader from "../components/common/commonHeader";
+    export default {
+        components:{
+            commonHeader
+        }
+    }
 </script>
 <style lang="scss" scoped>
 #title-img{
@@ -80,10 +80,12 @@ export default {
     width:100%;
     height:60px;
     background:#f5a64a;
+	position: relative;
 		img{
 			position:absolute;
-			left:600px;
-			top:400px;
+			margin-left: -105px;
+			left:50%;
+			top:-118px;
 		}
     ul{
         list-style:none;
