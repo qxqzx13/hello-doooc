@@ -17,7 +17,7 @@ const actions = {
             commit("CAHNGE_SHOPPING_CAR",data.rows);
             }
         )
-    },/*
+    },
     shopHomeAgora({commit}){
         axios.get("/").then(
             data=>{
@@ -31,7 +31,7 @@ const actions = {
             commit("CAHNGE_SHOP_HOME_COMMODITY",data.rows);
     }
     )
-    },*/
+    },
     shopHomePetfood({commit}){
         axios.get("/buyer/product/xw").then(
             data=>{
