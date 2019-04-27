@@ -1,21 +1,25 @@
 <template>
+    <!--商城市场-->
     <div class="agora-box">
         <div class="petmarketimg"></div>
         <div><img src="../../assets/petshop/img/004_01.png" alt=""></div>
         <div class="agora-list">
             <ul>
-                <li><img src="../../assets/petshop/img/004_02.jpg" alt=""></li>
-                <li><img src="../../assets/petshop/img/004_03.jpg" alt=""></li>
-                <li><img src="../../assets/petshop/img/004_04.jpg" alt=""></li>
-                <li><img src="../../assets/petshop/img/004_05.jpg" alt=""></li>
+                <li v-for="item in home.homeAgora"><img :src="item.productIcon" @click="path({name:'petmarket',query:{productType:item.productType}})"></li>
             </ul>
         </div>
     </div>
 </template>
 
 <script>
-export default {
-    name:"petagora"
+    import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
+    export default {
+        name:"petagora",
+        computed:mapState(["home"]),
+        methods:mapActions(["shopHomeAgora"]),
+        mounted(){
+            this.shopHomeAgora();
+        }
 }
 </script>
 
@@ -34,12 +38,12 @@ export default {
         width: 100%;
         background: url("../../assets/petshop/img/004.png")no-repeat;
     }
-    .agora-box .agora-list ul li {
+    .agora-box .agora-list ul li{
         float: left;
         margin-left: 10px;
     }
 
-    .agora-box .agora-list ul :first-child {
+    .agora-box .agora-list ul li:first-child {
         margin-left: 0
     }
 </style>

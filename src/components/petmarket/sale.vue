@@ -2,15 +2,23 @@
   <div class="particulars">
     <h3>宠物待售</h3>
     <div class="picture">
-      <div class="picture picture1">
-        <div class="small-picture small-picture"></div>
-      </div>
-      <div class="picture picture2">
-        <div class="small-picture small-picture2"></div>
-      </div>
-      <div class="picture picture3">
-        <div class="small-picture small-picture3"></div>
-      </div>
+        <div class="picture picture1" v-for="item in petmarket.petmarketSale">
+            <div class="small-picture"><img :src="item.productIcon" alt=""></div>
+            <p>item.productName</p>
+        </div>
+<!--
+          <div class="picture picture1">
+            <div class="small-picture"><img src="../../assets/petmarket/img/thumb_1_1.jpg" alt=""></div>
+              <p>1111</p>
+          </div>
+        <div class="picture picture1">
+            <div class="small-picture"><img src="../../assets/petmarket/img/thumb_1_2.jpg" alt=""></div>
+            <p>1111</p>
+        </div>
+        <div class="picture picture1">
+            <div class="small-picture"><img src="../../assets/petmarket/img/thumb_1_3.jpg" alt=""></div>
+            <p>1111</p>
+        </div>-->
     </div>
     <div class="process">
       <div class="process-box-background"></div>
@@ -88,9 +96,15 @@
 </template>
 
 <script>
-export default {
-  name: "sale"
-};
+    import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
+    export default {
+        name:"sale",
+        computed :mapState(["petmarket"]),
+        methods:mapActions(["shopHomeSale"]),
+        mounted(){
+            this.shopHomeSale(this.$route.query.productId);
+        }
+    }
 </script>
 
 <style scoped>
@@ -124,9 +138,11 @@ div,ul,li,h1,h2,h3,h4,h6,span,img,i,b,p,h5{
 .particulars .picture .picture .small-picture {
   width: 370px;
   height: 312px;
-  background: #fff;
 }
-
+.small-picture img{
+    width: 100%;
+    height: 100%;
+}
 .particulars .process {
   box-shadow: 0 0 10px #808080;
   height: 412px;
@@ -332,6 +348,9 @@ div,ul,li,h1,h2,h3,h4,h6,span,img,i,b,p,h5{
   position: absolute;
   top: 100px;
   right: 0;
+}
+.picture1 p{
+    line-height: 70px;
 }
 </style>
                                            

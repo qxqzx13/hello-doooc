@@ -1,5 +1,6 @@
 <template>
 <div>
+    <!--商城筛选器-->
     <div class="sizer">
         <div class="sizer1">
             <div class="click-sizer">
@@ -10,27 +11,28 @@
             <transition name='fade'>
             <div class="hide-sizer" v-if = "!isWan">
                 <div class="variety">
-                    <p>喵喵品种</p>
+                    <p>品种</p>
                     <ul>
-                        <li>暹罗猫</li>
-                        <li>布偶猫</li>
-                        <li>波斯猫</li>
-                        <li>虎斑猫</li>
-                        <li>斯芬克斯</li>
+                        <li v-for="item in petmarket.filtrateType">{{item.productName}}</li>
+                        <!--<li>暹罗猫</li>-->
+                        <!--<li>布偶猫</li>-->
+                        <!--<li>波斯猫</li>-->
+                        <!--<li>虎斑猫</li>-->
+                        <!--<li>斯芬克斯</li>-->
                     </ul>
                 </div>
                 <div class="gender">   
-                    <p>喵喵性别</p>
+                    <p>性别</p>
                     <ul>
-                        <li>哥哥</li>
-                        <li>妹妹</li>
+                        <li @click="changeDogOrCat(1)">哥哥</li>
+                        <li @click="changeDogOrCat(2)">妹妹</li>
                     </ul>
                 </div>
                 <div class="age">
-                    <p>喵喵年龄</p>
+                    <p>年龄</p>
                     <ul>
-                        <li>幼年</li>
-                        <li>成年</li>
+                        <li @click="changePetAge(1)">幼年</li>
+                        <li @click="changePetAge(2)">成年</li>
                     </ul>
                     
                 </div>
@@ -49,11 +51,23 @@
     
 </template>
 <script>
+import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
 export default {
     name:"sizer1",
+    computed :mapState(["petmarket"]),
     data(){
         return{isWan:true}
-    }
+    },
+    methods: Object.assign(mapActions(["getPetShow"]),{
+        changeBoyOrGirl(num){
+            this.$store.commit("CHANGE_BOY_OR_GIRL",num);
+            this.getPetShow(this.petmarket.productType,this.petmarket.pageIndex,this.petmarket.boyOrGirl,this.petmarket.petAge,this.petmarket.dogOrCat);
+        },
+        changePetAge(num){
+            this.$store.commit("CHANGE_PET_AGE",num);
+            this.getPetShow(this.petmarket.productType,this.petmarket.pageIndex,this.petmarket.boyOrGirl,this.petmarket.petAge,this.petmarket.dogOrCat);
+        },
+    })
 }
 </script>
 <style scoped>
@@ -127,7 +141,7 @@ export default {
         position: absolute;
         top: 38px;
         left: 0;
-        height: 244px;
+        height: 228px;
         width: 1300px
     }
 
@@ -136,7 +150,8 @@ export default {
         top: -3px;
         left: 0;
         width: 182px;
-        height: 247px;
+        height: 231px;
+        overflow:hidden;
         border-right: 1px solid #fff
     }
 
@@ -161,7 +176,7 @@ export default {
         top: -3px;
         left: 183px;
         width: 258px;
-        height: 247px;
+        height: 231px;
         border-right: 1px solid #fff
     }
 
@@ -182,7 +197,7 @@ export default {
         top: -3px;
         left: 442px;
         width: 340px;
-        height: 247px;
+        height: 231px;
         border-right: 1px solid #fff
     }
 
@@ -202,7 +217,7 @@ export default {
         position: absolute;
         top: -3px;
         right: 0;
-        height: 247px;
+        height: 231px;
         width: 517px
     }
 

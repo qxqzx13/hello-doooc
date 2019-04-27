@@ -11,9 +11,8 @@
             <div class="small-classify">
                 <ul>
                     <li>分类:</li>
-                    <li class="all">全部</li>
-                    <li class="cat">喵喵</li>
-                    <li class="dog">汪汪</li>
+                    <li class="cat" @click="changeProductType(1)">喵喵</li>
+                    <li class="dog" @click="changeProductType(2)">汪汪</li>
                 </ul>
             </div>
         </div>
@@ -21,9 +20,17 @@
 </template>
 
 <script>
-export default {
-    name:"classify"
-}
+    import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
+    export default {
+        name:"classify",
+        computed :mapState(["petmarket"]),
+        methods: Object.assign(mapActions(["getPetShow"]),{
+            changeProductType(num){
+                this.$store.commit("CHANGE_PRODUCT_TYPE",num);
+                this.getPetShow(this.petmarket.productType,this.petmarket.pageIndex,this.petmarket.boyOrGirl,this.petmarket.petAge,this.petmarket.dogOrCat);
+            }
+        })
+    }
 </script>
 
 <style scoped>

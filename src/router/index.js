@@ -6,12 +6,14 @@ import food from "./food";
 import personal from "./personal";
 import shop from "./shop";
 import pet from "./pet";
-
+import ERROR from "../components/error";
 Vue.use(Router)
 
 export default new Router({
     mode: 'history',
     base: process.env.BASE_URL,
-    routes: [
-    ].concat(home,daily,food,personal,shop,pet)
+    routes: [{
+        path: "*",
+        component: ERROR
+    }].concat(home, daily, food, personal, shop, pet)
 })

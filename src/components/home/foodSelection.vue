@@ -2,13 +2,13 @@
     <!-- 食材选取 -->
     <div class="choose">
         <h3>
-            <p @click="$router.path('/food')">
+            <p @click="$router.push('/food')">
                 食物选取
             </p>
             <span></span>
         </h3>
         <ul>
-            <li v-for="item in $store.state.home.homeFood" @click="$router.push({name:'shoppingcar',query:{productId:item.productId}})">
+            <li v-for="item in home.homeFood" @click="$router.push({name:'shoppingcar',query:{productId:item.productId}})">
                 <img :src="item.productIcon" />
                 <p>{{item.productDescription}}</p>
             </li>
@@ -17,14 +17,14 @@
 </template>
 <script>
     import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
-export default {
-    name:"foodSelection",
-    computed :mapState([]),
-    methods:mapActions(["getChoose","toShoppingcCar"]),
-    mounted(){
-        this.getChoose();
+    export default {
+        name:"foodSelection",
+        computed :mapState(["home"]),
+        methods:mapActions(["getChoose","toShoppingcCar"]),
+        mounted(){
+            this.getChoose();
+        }
     }
-}
 </script>
 <style scoped>
     div,ul,li,h3,span,p{

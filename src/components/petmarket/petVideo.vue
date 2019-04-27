@@ -3,17 +3,23 @@
         <div class="pet-video">
             <h3>宠物视频</h3>
             <div class="pet-cat1">
-                <div></div>
+                <video controls="controls">
+                    <source src="../../assets/petmarket/img/one.mp4" type="video/mp4" width="100%" height="100%">
+                </video>
                 <p>布偶猫</p>
                 <h4>品种：布偶猫</h4>
             </div>
             <div class="pet-cat2">
-                <div></div>
+                <video controls="controls">
+                    <source src="../../assets/petmarket/img/two.mp4" type="video/mp4" width="100%" height="100%">
+                </video>
                 <p>布偶猫</p>
                 <h4>品种：布偶猫</h4>
             </div>
             <div class="pet-cat3">
-                <div></div>
+                <video controls="controls">
+                    <source src="../../assets/petmarket/img/three.mp4" type="video/mp4" width="100%" height="100%">
+                </video>
                 <p>布偶猫</p>
                 <h4>品种：布偶猫</h4>
             </div>
@@ -33,7 +39,7 @@ export default {
         padding:0;
     }
     .video .pet-video {
-        min-height: 554px;
+        min-height: 450px;
         width: 1300px;
         margin: 0 auto;
         text-align: center;
@@ -47,7 +53,7 @@ export default {
     }
 
     .video .pet-video div {
-        min-height: 400px;
+        min-height: 310px;
         width: 400px;
         background: #bfbfbf;
         display: inline-table;
@@ -55,9 +61,9 @@ export default {
         font-size: 14px
     }
 
-    .video .pet-video div div {
+    .video .pet-video div video {
         width: 370px;
-        min-height: 312px;
+        min-height: 209px;
         background: #fff;
         margin-top: 16px
     }
