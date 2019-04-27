@@ -19,7 +19,7 @@
               <ul class="navList">
                 <li @click="$router.push('/personal')">我的信息</li>
                 <li @click="$router.push('/personal/personalCenter')">订单中心</li>
-                <li @click="$router.push('/shoppingcar')">我的购物</li>
+                <li @click="$router.push('/')">我的购物</li>
                 <li @click="$router.push('/')">我的晒宠</li>
               </ul>
             </div>

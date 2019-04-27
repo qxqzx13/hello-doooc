@@ -7,7 +7,7 @@
                     <el-button type="primary" icon="el-icon-search"></el-button>
                     <div class="shopping-car">
                         <input type="button">
-                        <p >购物车(<span ref="bb" @click="$router.push('/shoppingcar')">0</span>)</p>
+                        <span @click="$router.push('/shoppingcar')">购物车(0)</span>
                     </div>
                 </div>
                 <div class="header-bottom">
@@ -43,11 +43,7 @@
 </template>
 <script>
 export default {
-    name:"navigation",
-
-    methods:{
-    }
-
+    name:"navigation"
 }
 </script>
 <style>
@@ -118,7 +114,7 @@ export default {
         background: #d4d2d2
     }
 
-    .header .header-box .seek .shopping-car p{
+    .header .header-box .seek .shopping-car span{
         cursor: pointer;
         background: #f5a64a;
         border-radius: 0 4px 4px 0;
