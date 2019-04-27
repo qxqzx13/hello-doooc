@@ -42,7 +42,6 @@
     
 </template>
 <script>
-    import bus from "../../bus/bus.js";
 export default {
     name:"navigation",
 
