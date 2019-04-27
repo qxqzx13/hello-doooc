@@ -2,10 +2,10 @@
     <!--商城日用品-->
 
     <div class="commodity-box">
-        <div class="commodity-img"></div>
+        <div class="commodity-img"  @click="$router.push({name:'daily'})"></div>
         <div class="commodity-list">
             <ul>
-                <li v-for="item in home.homeCommodity"><img :src="item.productIcon" @click="path({name:'daily',query:{productType:item.productType}})"></li>
+                <li v-for="item in home.homeCommodity"><img :src="item.productIcon" @click="$router.push({name:'daily',query:{typeId:item.typeId,productType:item.productType}})"></li>
                 <!--<li><img src="../../assets/petshop/img/003_01.jpg" alt=""></li>
                 <li><img src="../../assets/petshop/img/003_02.jpg" alt=""></li>
                 <li><img src="../../assets/petshop/img/003_03.jpg" alt=""></li>

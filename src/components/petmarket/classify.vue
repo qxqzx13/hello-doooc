@@ -11,8 +11,8 @@
             <div class="small-classify">
                 <ul>
                     <li>分类:</li>
-                    <li class="cat" @click="changeProductType(1)">喵喵</li>
-                    <li class="dog" @click="changeProductType(2)">汪汪</li>
+                    <li class="cat" @click="setBoyOrGirl(1)">喵喵</li>
+                    <li class="dog" @click="setBoyOrGirl(2)">汪汪</li>
                 </ul>
             </div>
         </div>
@@ -24,12 +24,40 @@
     export default {
         name:"classify",
         computed :mapState(["petmarket"]),
-        methods: Object.assign(mapActions(["getPetShow"]),{
-            changeProductType(num){
-                this.$store.commit("CHANGE_PRODUCT_TYPE",num);
-                this.getPetShow(this.petmarket.productType,this.petmarket.pageIndex,this.petmarket.boyOrGirl,this.petmarket.petAge,this.petmarket.dogOrCat);
+        methods: Object.assign(mapActions(["getPetShow"]),mapMutations(["CHANGE_PRODUCT_TYPE"]),{
+            setBoyOrGirl(num){
+                if(!this.$route.query.productType){
+                    this.$route.query.productType=1
+                }
+                if(!this.$route.query.boyOrGirl){
+                    this.$route.query.boyOrGirl=1
+                }
+                if(!this.$route.query.petAge){
+                    this.$route.query.petAge=1
+                }
+                if(!this.$route.query.dogOrCat){
+                    this.$route.query.dogOrCat=1
+                }
+                this.$router.push({
+                    query:{
+                        pageIndex:1,
+                        productType:this.$route.query.productType/1,
+                        boyOrGirl:this.$route.query.boyOrGirl/1,
+                        petAge:this.$route.query.petAge/1,
+                        dogOrCat:num
+                    }
+                });
             }
-        })
+        }),
+        mounted(){
+            this.getPetShow({
+                productType: this.$route.query.productType/1 || 1,
+                pageIndex:this.$route.query.pageIndex/1 || 1,
+                boyOrGirl:this.$route.query.boyOrGirl/1 || 1,
+                petAge:this.$route.query.petAge/1 || 1,
+                dogOrCat:this.$route.query.dogOrCat/1 || 1
+            });
+        }
     }
 </script>
 
