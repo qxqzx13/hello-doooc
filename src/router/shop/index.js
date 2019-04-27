@@ -2,6 +2,8 @@ import shop from "../../views/shop";
 import shoppingcar from "../../views/shoppingcar";
 import petmarket from "../../views/petmarket";
 import petmarkettwo from "../../views/petmarkettwo";
+import detail from "../../components/shop/detail";
+import sss from "../../components/shop/sss";
 import login from "../../views/login";
 export default [
     {
@@ -17,7 +19,18 @@ export default [
             component:shoppingcar,
             meta:{
                 isAuthorization:true
-            }
+            },
+            children:[
+                {
+                    path:"/detail",
+                    name:"detail",
+                    component:detail
+                },{
+                    path:"/sss",
+                    name:"/sss",
+                    component:sss
+                }
+            ]
         },{
         path:"/petmarket",
         name:"petmarket",
