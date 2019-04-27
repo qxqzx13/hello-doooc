@@ -1,10 +1,12 @@
 import axios from "axios";
 const state = {
-    shoppingCar:[],
-    homeAgora:[],
-    homeCommodity:[],
-    shopHomeFood:[],
-    shopPetmarket:[]
+    shoppingCar:[],//商品信息详情页
+    homeAgora:[],//商城首页市场
+    homeCommodity:[],//商城首页用品
+    shopHomeFood:[],//商城首页视频
+    shopPetmarket:[],//商城市场页
+    shopCar:[],//商城购物车，与详细信息是一页
+
 }
 const actions = {
     toShoppingCar({commit},id){
@@ -16,6 +18,17 @@ const actions = {
             data=>{
             commit("CAHNGE_SHOPPING_CAR",data.rows);
             }
+        )
+    },
+    shopCar({commit},userId){
+        axios.get("/",{
+            params:{
+                goodsId:userId
+            }
+        }).then(
+            data=>{
+                commit("CAHNGE_SHOP_CAR",data.rows);
+        }
         )
     },
     shopHomeAgora({commit}){
@@ -56,6 +69,9 @@ const mutations = {
     CAHNGE_SHOP_HOME_PETMARKET(state,arr){
         state.shopPetmarket = arr;
     },
+    CAHNGE_SHOP_CAR(state,arr){
+        state.shopCar = arr;
+    }
 };
 export default{
     state,
