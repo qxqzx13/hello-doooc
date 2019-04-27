@@ -7,8 +7,8 @@
             <div class="petpic"></div>
             <h3>宠物详情</h3>
             <div class="nan">
-                <detail v-show = "  !isShow"></detail>
-                <sss v-show = "isShow"></sss>
+                <detail v-if="$route.query.goodsId"></detail>
+                <trolley v-else></trolley>
             </div>
         </div>
 	</div>
@@ -20,7 +20,7 @@
 import navigation from "../components/shopcommonality/navigation";
 import commonFooter from "../components/common/commonFooter.vue";
 import detail from "../components/shop/detail.vue";
-import sss from "../components/shop/sss.vue";
+import trolley from "../components/shop/trolley.vue";
 
 import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
 
@@ -30,14 +30,18 @@ export default {
         commonFooter,
         navigation,
         detail,
-        sss
+        trolley
     },
-    data(){
-        return {isShow:true}
-    },
-    methods:mapActions(["toShoppingCar"]),
+    methods:Object.assign(mapActions(["toShoppingCar"]),{fn(){
+        console.log(this.$route.query.num);
+    }
+})
+
+        ,
     mounted(){
         this.toShoppingCar(this.$route.query.productId);
+        console.log(this.$route.query.num);
+
     }
 }
 </script>

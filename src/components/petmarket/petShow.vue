@@ -54,7 +54,7 @@
             <p class="prevs" @click="downPage" v-show="$route.query.pageIndex > 1">
                 上一页
             </p>
-            <p>当前第{{nowPage}}页/共{{petmarket.pageSum}}页</p>
+            <p class="curpage">当前第{{nowPage}}页/共{{petmarket.pageSum}}页</p>
             <p class="uanext" @click="upPage" v-show="isShow">
                 下一页
             </p>
@@ -104,6 +104,7 @@
                     }
                 });
                 this.orShow();
+                this.getNowPage();
             },
             orShow(){
                 if(this.$route.query.pageIndex/1 > this.petmarket.pageSum/1-1){
@@ -117,7 +118,8 @@
                 if(this.$route.query.pageIndex < 2){
                     this.nowPage = 1;
                 }else if(this.$route.query.pageIndex/1 >= this.petmarket.pageSum/1){
-                    this.nowPage = this.petmarket.pageSum
+                    this.nowPage = this.petmarket.pageSum;
+                    this.$route.query.pageIndex = this.petmarket.pageSum/1;
                 }else{
                     this.nowPage = this.$route.query.pageIndex/1;
                 }
@@ -222,15 +224,22 @@
     .pet .pet-show .prevs {
         left: 500px
     }
+    .pet .pet-show .curpage{
+        position: absolute;
+        bottom:10px;
+        left:590px;
+        z-index:999;
+    }
 
     .pet .pet-show .prevs,
-    .pet .pet-show .uanext {
+    .pet .pet-show .uanext{
         position: absolute;
         bottom:0px;
         height: 50px;
         width: 132px;
         line-height: 50px;
-        background: #f5a64a
+        background: #f5a64a;
+        margin:0 220px;
     }
 
     .pet .pet-show .uanext {

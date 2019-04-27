@@ -7,33 +7,49 @@
                     <el-button type="primary" icon="el-icon-search"></el-button>
                     <div class="shopping-car">
                         <input type="button">
-                        <p >购物车(<span ref="bb" @click="$router.push('/shoppingcar')">0</span>)</p>
+                        <router-link :to="{path:'/shoppingcar',query:{num:num1}}">
+                            <p >购物车(<span>{{num1}}</span>)</p>
+                        </router-link>
+
                     </div>
                 </div>
                 <div class="header-bottom">
-                    <div class="pet-foot" @click="$router.push('/food')">
+                    <div class="pet-foot petify" @click="$router.push('/food')">
                         <ul>
-                            <li class="ctfoot">
+                            <li class="ctfoot ctlife">
                                 宠物食品
-                            </li>
-                            <li class="classify-foot">
-                                <ul>
-                                    <li>宠物主粮</li>
-                                    <li>宠物零食</li>
-                                    <li>宠物保健</li>
+                                <h3></h3>
+                                <ul class="classify-foot">
+                                    <li>
+                                        <img src="../../assets/petshop/img/grain.png" alt="">
+                                        宠物主粮
+                                    </li>
+                                    <li>
+                                        <img src="../../assets/petshop/img/snacks.png" alt="">
+                                        宠物零食
+                                    </li>
+                                    <li>
+                                        <img src="../../assets/petshop/img/health.png" alt="">
+                                        宠物保健
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
 
-                        <h3></h3>
                     </div>
-                    <div class="pet-daily" @click="$router.push('/daily')">
-                        <div class="ctlife">宠物日常</div>
-                        <h3></h3>
+                    <div class="pet-daily petify" @click="$router.push('/daily')">
+                        <div class="ctlife ctfoot">
+                            宠物日常
+                            <h3></h3>
+                        </div>
+
                     </div>
                     <div class="pet-market" @click="$router.push('/petmarket')">
-                        <div class="ctmarket">宠物市场</div>
-                        <h3></h3>
+                        <div class="ctmarket ctfoot">
+                            宠物市场
+                            <h3></h3>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -44,6 +60,12 @@
 <script>
 export default {
     name:"navigation",
+    data(){
+        return{
+            num1:0,
+
+        }
+    },
 
     methods:{
     }
@@ -154,16 +176,45 @@ export default {
     .ctfoot:hover{
         background:#fcfefd;
     }
+    .ctfoot:hover h3{
+        display: block;
+    }
     .ctfoot:hover .classify-foot{
-
         display: block;
     }
     .pet-foot ul .classify-foot{
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         background:#fcfefd;
         display: none;
     }
+    .classify-foot li:hover{
+        background:#f5a64a;
+    }
+    .classify-foot li{
+        line-height:36px;
+        height: 36px;
+        width: 160px;
+        vertical-align: middle;
+    }
+    .classify-foot li img{
+        height:18px;
+        width:18px;
+        vertical-align: middle;
+    }
     .pet-foot ul .classify-foot ul{
         height:108px;
+    }
+    .ctlife{}
+    .petify h3{
+        width: 0;
+        height: 0;
+        border-width: 8px;
+        border-style: solid;
+        border-color: #9c9c96 transparent transparent transparent;
+        position: absolute;
+        top:16px;
+        right:20px;
+        display: none;
     }
 </style>
 

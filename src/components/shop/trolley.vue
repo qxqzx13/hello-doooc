@@ -13,6 +13,12 @@
         components:{
             cart,
             gempty
+        },
+        methods:{
+            fn(){
+                console.log(this.$route.query.num)
+            }
+
         }
     }
 </script>
