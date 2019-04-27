@@ -2,7 +2,7 @@
     <div class="pet">
         <div class="pet-show">
             <h3>宠物展示</h3>
-            <div class="pet-cat1" v-for="item in petmarket.petShowArr" @click="path({name:'petmarkettwo',query:{productId:item.productId}})">
+            <div class="pet-cat1" v-for="item in petmarket.petShowArr" @click="$router.push({name:'petmarkettwo',query:{productId:item.productId}})">
                 <div class="photo"><img :src="item.productIcon"></div>
                 <h2>{{item.productPrice}}</h2>
                 <p>{{item.productName}}</p>
@@ -51,11 +51,11 @@
                 <h4>品种：布偶猫</h4>
                 <h5><img src="../../assets/petmarket/img/shopcar.svg" alt=""></h5>
             </div>-->
-            <p class="prevs" @click="changePageNum(-1)">
+            <p class="prevs" @click="downPage" v-show="$route.query.pageIndex > 1">
                 上一页
             </p>
-            <p>当前第{{petmarket.pageIndex}}页/共{{petmarket.pageSum}}页</p>
-            <p class="uanext" @click="changePageNum(1)">
+            <p>当前第{{nowPage}}页/共{{petmarket.pageSum}}页</p>
+            <p class="uanext" @click="upPage" v-show="isShow">
                 下一页
             </p>
         </div>
@@ -66,15 +66,73 @@
     import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
     export default {
         name:"petShow",
+        data(){
+            return {
+                isShow : true,
+                nowPage : 1
+            }
+        },
         computed : mapState(["petmarket"]),
         methods: Object.assign(mapActions(["getPetShow"]),{
-            changePageNum(num){
-                this.$store.commit("TO_NEXT",num);
-                this.getPetShow(this.petmarket.productType,this.petmarket.pageIndex,this.petmarket.boyOrGirl,this.petmarket.petAge,this.petmarket.dogOrCat);
+            downPage(){
+                if(this.$route.query.pageIndex == false){
+                    this.$route.query.pageIndex=1
+                }
+                this.$router.push({
+                    query:{
+                        pageIndex:this.$route.query.pageIndex/1-1,
+                        productType:this.$route.query.productType/1,
+                        boyOrGirl:this.$route.query.boyOrGirl/1,
+                        petAge:this.$route.query.petAge/1,
+                        dogOrCat:this.$route.query.dogOrCat/1
+                    }
+                });
+                this.orShow();
+                this.getNowPage();
+            },
+            upPage(){
+                if(!this.$route.query.pageIndex){
+                    this.$route.query.pageIndex=1
+                }
+                this.$router.push({
+                    query:{
+                        pageIndex:this.$route.query.pageIndex/1+1,
+                        productType:this.$route.query.productType/1,
+                        boyOrGirl:this.$route.query.boyOrGirl/1,
+                        petAge:this.$route.query.petAge/1,
+                        dogOrCat:this.$route.query.dogOrCat/1
+                    }
+                });
+                this.orShow();
+            },
+            orShow(){
+                if(this.$route.query.pageIndex/1 > this.petmarket.pageSum/1-1){
+                    this.isShow = false;
+                    this.nowPage = this.petmarket.pageSum/1
+                }else{
+                    this.isShow = true;
+                }
+            },
+            getNowPage(){
+                if(this.$route.query.pageIndex < 2){
+                    this.nowPage = 1;
+                }else if(this.$route.query.pageIndex/1 >= this.petmarket.pageSum/1){
+                    this.nowPage = this.petmarket.pageSum
+                }else{
+                    this.nowPage = this.$route.query.pageIndex/1;
+                }
             }
         }),
         mounted(){
-            this.getPetShow(this.petmarket.productType,this.petmarket.pageIndex,this.petmarket.boyOrGirl,this.petmarket.petAge,this.petmarket.dogOrCat);
+            this.orShow();
+            this.getNowPage();
+            this.getPetShow({
+                productType: this.$route.query.productType/1 || 1,
+                pageIndex:this.$route.query.pageIndex/1 || 1,
+                boyOrGirl:this.$route.query.boyOrGirl/1 || 1,
+                petAge:this.$route.query.petAge/1 || 1,
+                dogOrCat:this.$route.query.dogOrCat/1 || 1
+            });
         }
     }
 </script>

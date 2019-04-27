@@ -1,11 +1,11 @@
 <template>
     <!--商城市场-->
     <div class="agora-box">
-        <div class="petmarketimg"></div>
-        <div><img src="../../assets/petshop/img/004_01.png" alt=""></div>
+        <div class="petmarketimg" @click="$router.push({name:'petmarket'})"></div>
+        <div><img src="../../assets/petshop/img/004_01.png"></div>
         <div class="agora-list">
             <ul>
-                <li v-for="item in home.homeAgora"><img :src="item.productIcon" @click="path({name:'petmarket',query:{productType:item.productType}})"></li>
+                <li v-for="item in home.homeAgora"><img :src="item.productIcon" @click="$router.push({name:'petmarket',query:{productType:item.productType}})"></li>
             </ul>
         </div>
     </div>

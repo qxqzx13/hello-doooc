@@ -13,7 +13,10 @@
                 <div class="variety">
                     <p>品种</p>
                     <ul>
-                        <li v-for="item in petmarket.filtrateType">{{item.productName}}</li>
+                        <li
+                            v-for="item in petmarket.filtrateType"
+                            @click="setType(item.productType)"
+                        >{{item.productName}}</li>
                         <!--<li>暹罗猫</li>-->
                         <!--<li>布偶猫</li>-->
                         <!--<li>波斯猫</li>-->
@@ -24,15 +27,15 @@
                 <div class="gender">   
                     <p>性别</p>
                     <ul>
-                        <li @click="changeDogOrCat(1)">哥哥</li>
-                        <li @click="changeDogOrCat(2)">妹妹</li>
+                        <li @click="setBoyOrGirl(1)">哥哥</li>
+                        <li @click="setBoyOrGirl(2)">妹妹</li>
                     </ul>
                 </div>
                 <div class="age">
                     <p>年龄</p>
                     <ul>
-                        <li @click="changePetAge(1)">幼年</li>
-                        <li @click="changePetAge(2)">成年</li>
+                        <li @click="setAge(1)">幼年</li>
+                        <li @click="setAge(2)">成年</li>
                     </ul>
                     
                 </div>
@@ -59,15 +62,85 @@ export default {
         return{isWan:true}
     },
     methods: Object.assign(mapActions(["getPetShow"]),{
-        changeBoyOrGirl(num){
-            this.$store.commit("CHANGE_BOY_OR_GIRL",num);
-            this.getPetShow(this.petmarket.productType,this.petmarket.pageIndex,this.petmarket.boyOrGirl,this.petmarket.petAge,this.petmarket.dogOrCat);
+        setAge(num){
+            if(!this.$route.query.productType){
+                this.$route.query.productType=1
+            }
+            if(!this.$route.query.boyOrGirl){
+                this.$route.query.boyOrGirl=1
+            }
+            if(!this.$route.query.petAge){
+                this.$route.query.petAge=1
+            }
+            if(!this.$route.query.dogOrCat){
+                this.$route.query.dogOrCat=1
+            }
+            this.$router.push({
+                query:{
+                    pageIndex:1,
+                    productType:this.$route.query.productType/1,
+                    boyOrGirl:this.$route.query.boyOrGirl/1,
+                    petAge:num,
+                    dogOrCat:this.$route.query.dogOrCat/1
+                }
+            });
         },
-        changePetAge(num){
-            this.$store.commit("CHANGE_PET_AGE",num);
-            this.getPetShow(this.petmarket.productType,this.petmarket.pageIndex,this.petmarket.boyOrGirl,this.petmarket.petAge,this.petmarket.dogOrCat);
-        },
-    })
+    setBoyOrGirl(num){
+        if(!this.$route.query.productType){
+            this.$route.query.productType=1
+        }
+        if(!this.$route.query.boyOrGirl){
+            this.$route.query.boyOrGirl=1
+        }
+        if(!this.$route.query.petAge){
+            this.$route.query.petAge=1
+        }
+        if(!this.$route.query.dogOrCat){
+            this.$route.query.dogOrCat=1
+        }
+        this.$router.push({
+            query:{
+                pageIndex:1,
+                productType:this.$route.query.productType/1,
+                boyOrGirl:num,
+                petAge:this.$route.query.petAge/1,
+                dogOrCat:this.$route.query.dogOrCat/1
+            }
+        });
+    },
+    setType(num){
+        if(!this.$route.query.productType){
+            this.$route.query.productType=1
+        }
+        if(!this.$route.query.boyOrGirl){
+            this.$route.query.boyOrGirl=1
+        }
+        if(!this.$route.query.petAge){
+            this.$route.query.petAge=1
+        }
+        if(!this.$route.query.dogOrCat){
+            this.$route.query.dogOrCat=1
+        }
+        this.$router.push({
+            query:{
+                pageIndex:1,
+                productType:num,
+                boyOrGirl:this.$route.query.boyOrGirl/1,
+                petAge:this.$route.query.petAge/1,
+                dogOrCat:this.$route.query.dogOrCat/1
+            }
+        });
+    }
+    }),
+    mounted(){
+        this.getPetShow({
+            productType: this.$route.query.productType/1 || 1,
+            pageIndex:this.$route.query.pageIndex/1 || 1,
+            boyOrGirl:this.$route.query.boyOrGirl/1 || 1,
+            petAge:this.$route.query.petAge/1 || 1,
+            dogOrCat:this.$route.query.dogOrCat/1 || 1
+        });
+    }
 }
 </script>
 <style scoped>

@@ -10,7 +10,7 @@
           <div class="picture picture1">
             <div class="small-picture"><img src="../../assets/petmarket/img/thumb_1_1.jpg" alt=""></div>
               <p>1111</p>
-          </div>
+          </div>.
         <div class="picture picture1">
             <div class="small-picture"><img src="../../assets/petmarket/img/thumb_1_2.jpg" alt=""></div>
             <p>1111</p>
