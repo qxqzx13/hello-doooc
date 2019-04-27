@@ -3,7 +3,6 @@ import shoppingcar from "../../views/shoppingcar";
 import petmarket from "../../views/petmarket";
 import petmarkettwo from "../../views/petmarkettwo";
 import login from "../../views/login";
-import shoppingempty from "../../views/shoppingempty";
 export default [
     {
         path: '/shop',
@@ -37,13 +36,6 @@ export default [
         component:login,
         meta:{
             isAuthorization:false
-        }
-    }, {
-        path: "/shoppingempty",
-        name: "shoppingempty",
-        component: shoppingempty,
-        meta: {
-            isAuthorization: false
         }
     }
 ]

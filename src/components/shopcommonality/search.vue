@@ -7,7 +7,7 @@
                     <el-button type="primary" icon="el-icon-search"></el-button>
                     <div class="shopping-car">
                         <input type="button">
-                        <span @click="$router.push('/shoppingcar')">购物车(0)</span>
+                        <p >购物车(<span ref="bb" @click="$router.push('/shoppingcar')">0</span>)</p>
                     </div>
                 </div>
                 <div class="header-bottom">
@@ -42,8 +42,13 @@
     
 </template>
 <script>
+    import bus from "../../bus/bus.js";
 export default {
-    name:"navigation"
+    name:"navigation",
+
+    methods:{
+    }
+
 }
 </script>
 <style>
@@ -114,7 +119,7 @@ export default {
         background: #d4d2d2
     }
 
-    .header .header-box .seek .shopping-car span{
+    .header .header-box .seek .shopping-car p{
         cursor: pointer;
         background: #f5a64a;
         border-radius: 0 4px 4px 0;

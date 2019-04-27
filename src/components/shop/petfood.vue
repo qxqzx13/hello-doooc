@@ -3,7 +3,7 @@
         <div class="foodimg"></div>
         <div class="food-list">
             <ul>
-                <li><img src="../../assets/petshop/img/002_01.jpg" alt=""></li>
+                <li><img src="../../assets/petshop/img/002_01.jpg" alt="" ></li>
                 <li><img src="../../assets/petshop/img/002_02.jpg" alt=""></li>
                 <li><img src="../../assets/petshop/img/002_03.jpg" alt=""></li>
                 <li><img src="../../assets/petshop/img/002_04.jpg" alt=""></li>
@@ -15,7 +15,12 @@
 
 <script>
 export default {
-    name:"petfood"
+    name:"petfood",
+    methods : {
+        /*xiangqing(){
+            this.$ajax.get("地址",)
+        }*/
+    }
 }
 </script>
 
