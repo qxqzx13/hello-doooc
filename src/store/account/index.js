@@ -1,22 +1,17 @@
 import axios from "axios";
 
+const state = {
+
+}
+const mutations = {
+
+}
+const actions = {
+
+}
 
 export default{
-    state:{
-        province:localStorage.province,
-        city:localStorage.city,
-        district:localStorage.district,
-    },
-    mutations:{
-
-    },
-    getters:{
-
-    },
-    actions:{
-
-    },
-    modults:{
-        
-    }
+    state,
+    mutations,
+    actions,
 }
