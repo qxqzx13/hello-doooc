@@ -15,8 +15,7 @@
                 </div>
                 <div class="header-bottom">
                     <div class="pet-foot petify" @click="$router.push('/food')">
-                        <ul>
-                            <li class="ctfoot ctlife">
+                            <div class="ctfoot ctlife">
                                 宠物食品
                                 <h3></h3>
                                 <ul class="classify-foot">
@@ -33,14 +32,30 @@
                                         宠物保健
                                     </li>
                                 </ul>
-                            </li>
-                        </ul>
-
+                            </div>
                     </div>
                     <div class="pet-daily petify" @click="$router.push('/daily')">
                         <div class="ctlife ctfoot">
                             宠物日常
                             <h3></h3>
+                            <ul class="peteveryday">
+                                <li>
+                                    <img src="../../assets/petshop/img/health.png" alt="">
+                                    宠物服饰
+                                </li>
+                                <li>
+                                    <img src="../../assets/petshop/img/grain.png" alt="">
+                                    宠物餐具
+                                </li>
+                                <li>
+                                    <img src="../../assets/petshop/img/clean.png" alt="">
+                                    宠物清洁
+                                </li>
+                                <li>
+                                    <img src="../../assets/petshop/img/toy.png" alt="">
+                                    宠物玩具
+                                </li>
+                            </ul>
                         </div>
 
                     </div>
@@ -182,7 +197,12 @@ export default {
     .ctfoot:hover .classify-foot{
         display: block;
     }
-    .pet-foot ul .classify-foot{
+    .ctfoot:hover .peteveryday{
+        display: block;
+    }
+    .pet-foot .classify-foot{
+        z-index: 999;
+        position: relative;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         background:#fcfefd;
         display: none;
@@ -191,6 +211,7 @@ export default {
         background:#f5a64a;
     }
     .classify-foot li{
+
         line-height:36px;
         height: 36px;
         width: 160px;
@@ -204,7 +225,26 @@ export default {
     .pet-foot ul .classify-foot ul{
         height:108px;
     }
-    .ctlife{}
+    .ctlife .peteveryday{
+        z-index:999;
+        position: relative;
+        background:#fcfefd;
+        display: none;
+    }
+    .peteveryday li:hover{
+        background:#f5a64a;
+    }
+    .peteveryday li{
+        line-height:36px;
+        height: 36px;
+        width: 160px;
+        vertical-align: middle;
+    }
+    .peteveryday li img{
+        height:18px;
+        width:18px;
+        vertical-align: middle;
+    }
     .petify h3{
         width: 0;
         height: 0;

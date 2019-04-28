@@ -123,44 +123,49 @@
     }
 
     #commonFooter .joinus .mark .idea {
-        width: 368px;
+        width: 500px;
         margin: 76px auto 0;
     }
 
     #commonFooter .joinus .mark .idea a {
         display: block;
         float: left;
-        margin: 0 40px;
+        margin: 0 60px;
     }
-
     #commonFooter .joinus .mark .idea .wechat {
         width: 46px;
-        height: 37px;
-        background: url(../../assets/common/img/wechat1.png) no-repeat center;
+        height: 38px;
+        background: url(../../assets/common/img/wechat.svg) no-repeat center;
     }
 
     #commonFooter .joinus .mark .idea .wechat:hover {
-        background: url(../../assets/common/img/wechat2.png) no-repeat center;
+        width: 46px;
+        height: 38px;
+        background: url(../../assets/common/img/wechat1.svg) no-repeat center;
     }
 
     #commonFooter .joinus .mark .idea .qq {
         width: 32px;
-        height: 37px;
-        background: url(../../assets/common/img/QQ1.png) no-repeat center;
+        height: 38px;
+        background: url(../../assets/common/img/qq.svg) no-repeat center;
     }
 
     #commonFooter .joinus .mark .idea .qq:hover {
-        background: url(../../assets/common/img/QQ2.png) no-repeat center;
+        width: 32px;
+        height: 38px;
+        background: url(../../assets/common/img/qq1.svg) no-repeat center;
     }
 
     #commonFooter .joinus .mark .idea .sina {
-        width: 48px;
-        height: 37px;
-        background: url(../../assets/common/img/sina1.png) no-repeat center;
+        width: 46px;
+        height: 38px;
+        background: url(../../assets/common/img/sinal.svg) no-repeat center;
     }
 
     #commonFooter .joinus .mark .idea .sina:hover {
-        background: url(../../assets/common/img/sina2.png) no-repeat center;
+        width: 46px;
+        height: 38px;
+        background: url(../../assets/common/img/sinal1.svg) no-repeat center;
     }
 
     #commonFooter .copy {
