@@ -1,4 +1,5 @@
 <template>
+    <!--购物车页判断有没有东西-->
     <div class="sss">
         <cart></cart>
         <gempty></gempty>
@@ -9,15 +10,12 @@
     import cart from "./cart.vue";
     import gempty from "./gempty.vue";
     export default {
-        name: "sss",
+        name: "trolley",
         components:{
             cart,
             gempty
         },
         methods:{
-            fn(){
-                console.log(this.$route.query.num)
-            }
 
         }
     }

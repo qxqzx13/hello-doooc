@@ -1,5 +1,5 @@
 <template>
-    <!--购物车有-->
+    <!--购物车页-->
     <div class="details-cart">
         <h1></h1>
         <div class="mattou">
