@@ -37,12 +37,6 @@
                                 <el-radio label="1" border>微信</el-radio>
                                 <el-radio  label="2" border>支付宝</el-radio>
                             </div>
-                            <div style="margin-top: 20px">
-                                <el-radio-group v-model="radio4" size="mini" disabled>
-                                <el-radio label="1" border>备选项1</el-radio>
-                                <el-radio label="2" border>备选项2</el-radio>
-                                </el-radio-group>
-                            </div>
                         </div>
                         <ul class="commit">
                             <li>确认付款</li>
