@@ -5,6 +5,7 @@ import petmarkettwo from "../../views/petmarkettwo";
 import detail from "../../components/shop/detail";
 import sss from "../../components/shop/trolley";
 import login from "../../views/login";
+import account from "../../views/account";
 export default [
     {
         path: '/shop',
@@ -41,5 +42,9 @@ export default [
         meta:{
             isAuthorization:false
         }
+    },{
+        path:"/account",
+        name:"account",
+        component:account,
     }
 ]
