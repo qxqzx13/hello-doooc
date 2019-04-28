@@ -19,14 +19,15 @@
                             </div>    
                             <div class="site">
                                 <span>详细地址</span>
-                                <input type="text" class=".minute">
+                                <!-- <input type="text" class=".minute" v-model="detailedAddress"> -->
+                                <input type="text" class=".minute" v-model="detailedAddress">
                             </div>  
                             <div class="site">
                                 <span>收获姓名</span>
-                                <input type="text" class=".minute">
+                                <input type="text" class=".minute" v-model="detailedName">
                             </div><div class="site">
                                 <span>联系电话</span>
-                                <input type="text" class=".minute">
+                                <input type="text" class=".minute" v-model="contactNumber">
                             </div>            
                         </div>
                         <p>支付方式</p>
@@ -36,11 +37,17 @@
                                 <el-radio label="1" border>微信</el-radio>
                                 <el-radio  label="2" border>支付宝</el-radio>
                             </div>
+                            <div style="margin-top: 20px">
+                                <el-radio-group v-model="radio4" size="mini" disabled>
+                                <el-radio label="1" border>备选项1</el-radio>
+                                <el-radio label="2" border>备选项2</el-radio>
+                                </el-radio-group>
+                            </div>
                         </div>
                         <ul class="commit">
                             <li>确认付款</li>
+                            <li>{{repay}}</li>
                             <li>RMB</li>
-                            <li>5000</li>
                         </ul>
                     </div>
 </template>
@@ -111,18 +118,21 @@ name:"shippingAddress",
                 provs: '',
                 city:"",
                 district:"",
+                detailedAddress:"",
+                detailedName:"",
+                contactNumber:"",
       }
      
     },
     created(){
-　　　　　　　　　　　　//如果没有这句代码，select中初始化会是空白的，默认选中就无法实现
-            this.provs = this.provsList[0].id;
-            this.city = this.cityList[0].id;
-            this.district = this.districtList[0].id;
+　　　　//如果没有这句代码，select中初始化会是空白的，默认选中就无法实现
+        this.provs = this.provsList[0].id;
+        this.city = this.cityList[0].id;
+        this.district = this.districtList[0].id; 
     },
     methods:{
 　　　　　　 getProvs:function(){
-                //获取选中的优惠券
+                
                 console.log(this.provs)
             },
             getCity:function(){
@@ -131,7 +141,29 @@ name:"shippingAddress",
             getDistrict:function(){
                 console.log(this.district)
             },
+            getDistrict:function(){
+                axios.get("1111151",{
+                    params:{
+                        detailedAddress:this.detailedAddress,
+                        detailedName:this.detailedName,
+                        contactNumber:this.contactNumber,
+                    }
+                }
+                ).then(({data})=>{
+                    console.log(data)
+                })
+
+            
+            },
+             
+
+            
+
+    },
+    mounted(){
+
     }
+    
 }
 
 </script>

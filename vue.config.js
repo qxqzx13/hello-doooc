@@ -8,7 +8,7 @@ module.exports={
                 target:"http://10.9.20.246:8080",
                 changeOrigin:true,
                 pathRewrite:{
-                    "^/hello":""
+                    "^/hello":"/"
                 }
             }
         }
