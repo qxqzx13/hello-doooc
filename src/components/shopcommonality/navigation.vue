@@ -11,7 +11,7 @@
             </ul>
           </div>
           <div class="logo">
-            <img src="../../assets/common/img/logoblack.png">
+            <img src="../../assets/common/img/logoblack.svg">
           </div>
           <div class="navRight">
             <div class="login" id="load">
@@ -99,7 +99,10 @@ h5 {
   margin-left: 170px;
   line-height: 96px;
 }
-
+#toptwo .topArea .navBox .logo img{
+  height:36px;
+  width:132px;
+}
 #toptwo .topArea .navBox .navRight {
   float: right;
   width: 56px;
@@ -108,7 +111,6 @@ h5 {
   cursor: pointer;
   position: relative;
 }
-
 #toptwo .topArea .navBox .navRight .my {
   float: left;
   width: 32px;
@@ -140,7 +142,6 @@ h5 {
   background: url(../../assets/common/img/jiantou2.png) no-repeat right;
   background-position: right 43px;
 }
-
 #toptwo .topArea .navBox .navRight:hover .navList {
   display: block;
 }

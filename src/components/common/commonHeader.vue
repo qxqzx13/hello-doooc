@@ -13,7 +13,7 @@
                     </ul>
                 </div>
                 <div class="logo">
-                    <img src="../../assets/common/img/logoblack.png" />
+                    <img src="../../assets/common/img/logoblack.svg" />
                 </div>
                 <div class="navRight">
                     <div class="login" id="load">
@@ -96,7 +96,10 @@ name:'commonHeader',
         margin-left: 170px;
         line-height: 96px;
     }
-
+    #top .topArea .navBox .logo img{
+        height:36px;
+        width:132px;
+    }
     #top .topArea .navBox .navRight {
         float: right;
         width: 56px;
