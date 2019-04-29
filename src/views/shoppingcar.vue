@@ -8,8 +8,7 @@
             <h3 v-if="$route.query.goodsId">商品详情</h3>
             <h3 v-else>我的购物车</h3>
             <div class="nan">
-                <detail v-if="$route.query.goodsId"></detail>
-                <trolley v-else></trolley>
+                <trolley></trolley>
             </div>
         </div>
 	</div>
@@ -20,7 +19,6 @@
 <script>
 import navigation from "../components/shopcommonality/navigation";
 import commonFooter from "../components/common/commonFooter.vue";
-import detail from "../components/shop/detail.vue";
 import trolley from "../components/shop/trolley.vue";
 
 import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
@@ -30,7 +28,6 @@ export default {
     components: {
         commonFooter,
         navigation,
-        detail,
         trolley
     }
 }

@@ -6,6 +6,7 @@ import detail from "../../components/shop/detail";
 import sss from "../../components/shop/trolley";
 import login from "../../views/login";
 import account from "../../views/account";
+import details from "../../views/details";
 export default [
     {
         path: '/shop',
@@ -39,6 +40,13 @@ export default [
         path:"/login",
         name:"login",
         component:login,
+        meta:{
+            isAuthorization:false
+        }
+    },{
+        path:"/details",
+        name:"details",
+        component:details,
         meta:{
             isAuthorization:false
         }

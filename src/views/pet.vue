@@ -4,18 +4,31 @@
         <div id="nav">
 				<img src="../assets/pet/img/t.png">
 				<ul>
-					<li><a href="javascript:;" @click="$router.push('/pet/ailment')">疾病</a></li>
-					<li><a href="javascript:;" @click="$router.push('/pet/conserve')">养护</a></li>
-					<li><a href="javascript:;" @click="$router.push('/pet/drill')">训练</a></li>
+					<li>
+						<img src="../assets/pet/img/claw.svg" alt="">
+						<a href="javascript:;" @click="$router.push('/pet/ailment')">疾病</a>
+					</li>
+					<li>
+						<img src="../assets/pet/img/claw.svg" alt="">
+						<a href="javascript:;" @click="$router.push('/pet/conserve')">养护</a>
+					</li>
+					<li>
+						<img src="../assets/pet/img/claw.svg" alt="">
+						<a href="javascript:;" @click="$router.push('/pet/drill')">训练</a>
+					</li>
 					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li><a href="javascript:;" @click="$router.push('/pet/medical')">医疗</a></li>
-					<li><a href="javascript:;" @click="$router.push('/pet/intellectual')">冷知识</a></li>
-					<li><a href="javascript:;" @click="$router.push('/pet/contact')">联系我们</a></li>
+					<li>
+						<img src="../assets/pet/img/claw.svg" alt="">
+						<a href="javascript:;" @click="$router.push('/pet/medical')">医疗</a>
+					</li>
+					<li>
+						<img src="../assets/pet/img/claw.svg" alt="">
+						<a href="javascript:;" @click="$router.push('/pet/intellectual')">冷知识</a>
+					</li>
+					<li>
+						<img src="../assets/pet/img/claw.svg" alt="">
+						<a href="javascript:;" @click="$router.push('/pet/contact')">联系我们</a>
+					</li>
 					
 				</ul>
 			</div>
@@ -94,14 +107,39 @@
 				margin:0 auto;
         li{
             float:left;
-            margin:0 40px;
+            padding:0 10px;
             padding-top:20px;
+			position: relative;
+			text-align: right;
+			img{
+				height:20px;
+				width:20px;
+				position: absolute;
+				left:114px;
+				top:22px;
+			}
             a{
                 text-decoration: none;
                 color:black;
 				font-size:20px;
             }
         }
+		li:nth-child(1),
+		li:nth-child(2),
+		li:nth-child(3){
+			width:108px;
+			background:#fff;
+			height:40px;
+			margin:0 10px;
+		}
+		li:nth-child(4){
+			width:400px;
+			img{
+				position: absolute;
+				left:0;
+				top:0;
+			}
+		}
     }
     a:hover{
         color:white;
