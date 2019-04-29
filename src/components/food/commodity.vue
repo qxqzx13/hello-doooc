@@ -1,118 +1,22 @@
 <template>
     <div class="main_box">
         <div class="main">   
-            <div class="main_goods">   
+            <div class="main_goods" v-for="(item,index) in $store.state.food.foodInfo.rows" :key="index">   
                 <dl class="goods">
                     <dt><img src="../../assets/daily/img/gouliang.jpg" alt=""></dt>
                     <dd class="goods_one">
-                        <span>满99减20</span>
-                        <span>麦富迪双拼标准颗粒成犬粮10KG</span>
+                        <span>{{item.productDescription}}</span>
+                        <span>{{item.productName}}</span>
                     </dd>
-                    <dd class="goods_two">￥290</dd>
+                    <dd class="goods_two">{{item.productPrice}}</dd>
                     <dd class="goods_three">
-                        <span>￥290</span>
-                        <span>已售8209</span>
-                    </dd>
-                </dl>
-                <dl class="goods">
-                    <dt><img src="../../assets/daily/img/gouliang.jpg" alt=""></dt>
-                    <dd class="goods_one">
-                        <span>满99减20</span>
-                        <span>麦富迪双拼标准颗粒成犬粮10KG</span>
-                    </dd>
-                    <dd class="goods_two">￥290</dd>
-                    <dd class="goods_three">
-                        <span>￥290</span>
-                        <span>已售8209</span>
-                    </dd>
-                </dl>
-                <dl class="goods">
-                    <dt><img src="../../assets/daily/img/gouliang.jpg" alt=""></dt>
-                    <dd class="goods_one">
-                        <span>满99减20</span>
-                        <span>麦富迪双拼标准颗粒成犬粮10KG</span>
-                    </dd>
-                    <dd class="goods_two">￥290</dd>
-                    <dd class="goods_three">
-                        <span>￥290</span>
-                        <span>已售8209</span>
-                    </dd>
-                </dl>
-                <dl class="goods">
-                    <dt><img src="../../assets/daily/img/gouliang.jpg" alt=""></dt>
-                    <dd class="goods_one">
-                        <span>满99减20</span>
-                        <span>麦富迪双拼标准颗粒成犬粮10KG</span>
-                    </dd>
-                    <dd class="goods_two">￥290</dd>
-                    <dd class="goods_three">
-                        <span>￥290</span>
-                        <span>已售8209</span>
-                    </dd>
-                </dl>
-                <dl class="goods">
-                    <dt><img src="../../assets/daily/img/gouliang.jpg" alt=""></dt>
-                    <dd class="goods_one">
-                        <span>满99减20</span>
-                        <span>麦富迪双拼标准颗粒成犬粮10KG</span>
-                    </dd>
-                    <dd class="goods_two">￥290</dd>
-                    <dd class="goods_three">
-                        <span>￥290</span>
-                        <span>已售8209</span>
-                    </dd>
-                </dl>
-                <dl class="goods">
-                    <dt><img src="../../assets/daily/img/gouliang.jpg" alt=""></dt>
-                    <dd class="goods_one">
-                        <span>满99减20</span>
-                        <span>麦富迪双拼标准颗粒成犬粮10KG</span>
-                    </dd>
-                    <dd class="goods_two">￥290</dd>
-                    <dd class="goods_three">
-                        <span>￥290</span>
-                        <span>已售8209</span>
-                    </dd>
-                </dl>
-                <dl class="goods">
-                    <dt><img src="../../assets/daily/img/gouliang.jpg" alt=""></dt>
-                    <dd class="goods_one">
-                        <span>满99减20</span>
-                        <span>麦富迪双拼标准颗粒成犬粮10KG</span>
-                    </dd>
-                    <dd class="goods_two">￥290</dd>
-                    <dd class="goods_three">
-                        <span>￥290</span>
-                        <span>已售8209</span>
-                    </dd>
-                </dl>
-                <dl class="goods">
-                    <dt><img src="../../assets/daily/img/gouliang.jpg" alt=""></dt>
-                    <dd class="goods_one">
-                        <span>满99减20</span>
-                        <span>麦富迪双拼标准颗粒成犬粮10KG</span>
-                    </dd>
-                    <dd class="goods_two">￥290</dd>
-                    <dd class="goods_three">
-                        <span>￥290</span>
-                        <span>已售8209</span>
-                    </dd>
-                </dl>
-                <dl class="goods">
-                    <dt><img src="../../assets/daily/img/gouliang.jpg" alt=""></dt>
-                    <dd class="goods_one">
-                        <span>满99减20</span>
-                        <span>麦富迪双拼标准颗粒成犬粮10KG</span>
-                    </dd>
-                    <dd class="goods_two">￥290</dd>
-                    <dd class="goods_three">
-                        <span>￥290</span>
-                        <span>已售8209</span>
+                        <span>{{item.productPrice}}</span>
+                        <span>{{item.productStock}}</span>
                     </dd>
                 </dl>
             </div>
             <div class="block">
-                <el-pagination layout="prev, pager, next" :total="50">
+                <el-pagination layout="prev, pager, next" :total="6">
                 </el-pagination>
             </div>
         </div>

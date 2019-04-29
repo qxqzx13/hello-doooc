@@ -23,10 +23,18 @@ export default{
         }
     },
     actions: {
-        getUserInfo({commit}){
-            bus.$ajax.get("/userInfo")
+        getUserInfo({commit},ob){
+            bus.$ajax.get("/userInfo",{
+                obj
+            })
             .then(({data})=>{
-                userInfo:data.userInfo
+                console.log(data);
+                if(data.code === 1){
+                    commit("SET_USER_INFO",data)
+                }else{
+                    console.log("获取失败")
+                }
+                
             })
                 
         }
