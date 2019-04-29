@@ -45,8 +45,14 @@
 </template>
 
 <script>
+    import {mapState, mapMutations, mapGetters, mapActions} from "vuex";
     export default {
-        name: "detail"
+        name: "detail",
+        methods:mapActions(["toShoppingCar"]),
+        mounted(){
+            console.log(111111)
+            this.toShoppingCar(this.$route.query.goodsId);
+        }
     }
 </script>
 

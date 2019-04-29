@@ -15,12 +15,11 @@
                     <ul>
                         <li
                             v-for="item in petmarket.filtrateType"
-                            @click="setType(item.productType)"
-                        >{{item.productName}}</li>
+                            @click="setType(item.productType)">{{item.productName}}</li>
                         <!--<li>暹罗猫</li>-->
                         <!--<li>布偶猫</li>-->
-                        <!--<li>波斯猫</li>-->
                         <!--<li>虎斑猫</li>-->
+                        <!--<li>波斯猫</li>-->
                         <!--<li>斯芬克斯</li>-->
                     </ul>
                 </div>
@@ -59,7 +58,9 @@ export default {
     name:"sizer1",
     computed :mapState(["petmarket"]),
     data(){
-        return{isWan:true}
+        return{
+            isWan:true
+        }
     },
     methods: Object.assign(mapActions(["getPetShow"]),{
         setAge(num){

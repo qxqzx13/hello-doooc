@@ -1,6 +1,6 @@
 <template>
     <!--商城食品-->
-    <div class="food-box">{{shop.shopHomeFood}}
+    <div class="food-box">
         <div class="foodimg" @click="$router.push({name:'food'})"></div>
         <div class="food-list">
             <ul>

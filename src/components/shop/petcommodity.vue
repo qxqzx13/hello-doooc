@@ -1,11 +1,10 @@
 <template>
     <!--商城日用品-->
-
     <div class="commodity-box">
         <div class="commodity-img"  @click="$router.push({name:'daily'})"></div>
         <div class="commodity-list">
             <ul>
-                <li v-for="item in home.homeCommodity"><img :src="item.productIcon" @click="$router.push({name:'daily',query:{typeId:item.typeId,productType:item.productType}})"></li>
+                <li v-for="item in shop.shopHomeCommodity"><img :src="item.productIcon" @click="$router.push({name:'daily',query:{typeId:item.typeId,productType:item.productType}})"></li>
                 <!--<li><img src="../../assets/petshop/img/003_01.jpg" alt=""></li>
                 <li><img src="../../assets/petshop/img/003_02.jpg" alt=""></li>
                 <li><img src="../../assets/petshop/img/003_03.jpg" alt=""></li>
@@ -19,7 +18,7 @@
 import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
 export default {
     name:"petcommodity",
-    computed:mapState(["home"]),
+    computed:mapState(["shop"]),
     methods:mapActions(["shopHomeCommodity"]),
     mounted(){
         this.shopHomeCommodity();

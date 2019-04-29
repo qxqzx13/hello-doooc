@@ -14,7 +14,7 @@ export default {
 		
 	}
 }
-
+/*
 window.onload = function(){
 				let oUls = document.querySelectorAll('#box ul');
 				let clientHeight = document.documentElement.clientHeight; //可视高度
@@ -51,7 +51,7 @@ window.onload = function(){
 					}
 					return index;
 				}
-			}
+			}*/
 </script>
 
 <style scoped>
