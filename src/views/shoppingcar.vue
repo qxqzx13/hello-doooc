@@ -5,7 +5,8 @@
 	<div id="middle">
         <div id="car">
             <div class="petpic"></div>
-            <h3>宠物详情</h3>
+            <h3 v-if="$route.query.goodsId">商品详情</h3>
+            <h3 v-else>我的购物车</h3>
             <div class="nan">
                 <detail v-if="$route.query.goodsId"></detail>
                 <trolley v-else></trolley>
@@ -31,17 +32,6 @@ export default {
         navigation,
         detail,
         trolley
-    },
-    methods:Object.assign(mapActions(["toShoppingCar"]),{fn(){
-        console.log(this.$route.query.num);
-    }
-})
-
-        ,
-    mounted(){
-        this.toShoppingCar(this.$route.query.productId);
-        console.log(this.$route.query.num);
-
     }
 }
 </script>
@@ -75,7 +65,6 @@ export default {
     }
     #middle #car h3{
         height:22px;
-        width:60px;
         text-align:center;
         position:absolute;
         left:160px;

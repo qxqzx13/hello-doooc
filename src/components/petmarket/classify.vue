@@ -11,8 +11,9 @@
             <div class="small-classify">
                 <ul>
                     <li>分类:</li>
-                    <li class="cat" @click="setBoyOrGirl(1)">喵喵</li>
-                    <li class="dog" @click="setBoyOrGirl(2)">汪汪</li>
+                    <li class="cat" @click="setBoyOrGirl(1)">全部</li>
+                    <li class="cat" @click="setBoyOrGirl(2)">喵喵</li>
+                    <li class="dog" @click="setBoyOrGirl(3)">汪汪</li>
                 </ul>
             </div>
         </div>

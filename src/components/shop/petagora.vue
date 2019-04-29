@@ -5,7 +5,7 @@
         <div><img src="../../assets/petshop/img/004_01.png"></div>
         <div class="agora-list">
             <ul>
-                <li v-for="item in home.homeAgora"><img :src="item.productIcon" @click="$router.push({name:'petmarket',query:{productType:item.productType}})"></li>
+                <li v-for="item in shop.shopHomeAgora"><img :src="item.productIcon" @click="$router.push({name:'petmarket',query:{productType:item.productType}})"></li>
             </ul>
         </div>
     </div>
@@ -15,7 +15,7 @@
     import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
     export default {
         name:"petagora",
-        computed:mapState(["home"]),
+        computed:mapState(["shop"]),
         methods:mapActions(["shopHomeAgora"]),
         mounted(){
             this.shopHomeAgora();

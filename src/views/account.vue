@@ -4,7 +4,7 @@
         <div class="middle">
             <div id="car">
                 <div class="petpic"></div>
-                <h3>商品详情</h3>
+                <h3>确认购买</h3>
                 <div class="sss">
                     <h1></h1>
                     <shipping-address></shipping-address>

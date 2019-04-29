@@ -35,7 +35,7 @@
             </li>
         </ul>
         <el-row>
-            <el-button round>加入购物车</el-button>
+            <el-button round @click="$router.push({path:'/shoppingcar'})">加入购物车</el-button>
         </el-row>
         <p class="price">单价<span>￥500</span></p>
         <p class="total">总计：<span>￥5000</span></p>
@@ -45,8 +45,14 @@
 </template>
 
 <script>
+    import {mapState, mapMutations, mapGetters, mapActions} from "vuex";
     export default {
-        name: "detail"
+        name: "detail",
+        methods:mapActions(["toShoppingCar"]),
+        mounted(){
+            console.log(111111)
+            this.toShoppingCar(this.$route.query.goodsId);
+        }
     }
 </script>
 

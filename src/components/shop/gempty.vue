@@ -4,7 +4,7 @@
         <img src="../../assets/petshop/img/petcar.png" alt="">
         <p>这里空空如也哦～消灭"0"购物,赶紧去选购商品把～</p>
         <el-row>
-            <el-button type="primary">立即去选购</el-button>
+            <el-button type="primary" @click="$router.push({path:'/shop',qeury:{userId:$route.query.userId}})">立即去选购</el-button>
         </el-row>
     </div>
 </template>

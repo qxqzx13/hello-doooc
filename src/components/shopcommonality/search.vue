@@ -3,12 +3,12 @@
         <div class="header">
             <div class="header-box">
                 <div class="seek">
-                    <input class="wen" type="text" placeholder="搜索商品">
-                    <el-button type="primary" icon="el-icon-search"></el-button>
+                    <input class="wen" type="text" placeholder="搜索商品" v-model="search">
+                    <el-button type="primary" icon="el-icon-search" @click="getPet"></el-button>
                     <div class="shopping-car">
                         <input type="button">
-                        <router-link :to="{path:'/shoppingcar',query:{num:num1}}">
-                            <p >购物车(<span>{{num1}}</span>)</p>
+                        <router-link :to="{path:'/shoppingcar'}">
+                            <p>购物车({{shop.shopFoodSum}})</p>
                         </router-link>
 
                     </div>
@@ -57,14 +57,12 @@
                                 </li>
                             </ul>
                         </div>
-
                     </div>
                     <div class="pet-market" @click="$router.push('/petmarket')">
                         <div class="ctmarket ctfoot">
                             宠物市场
                             <h3></h3>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -73,17 +71,20 @@
     
 </template>
 <script>
-export default {
-    name:"navigation",
+    import {mapState, mapMutations, mapGetters, mapActions} from "vuex";
+    export default {
     data(){
-        return{
-            num1:0,
-
+        return {
+            search:""
         }
     },
-
-    methods:{
-    }
+    name:"navigation",
+    computed: mapState(["shop"]),
+    methods:Object.assign(mapActions(["getSearch"]),{
+        getPet(){
+            this.getSearch(this.search);
+        }
+    })
 
 }
 </script>

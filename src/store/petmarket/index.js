@@ -2,14 +2,13 @@ import axios from "axios";
 //petmarket 宠物市场信息
 const state = {
     petShowArr:[],//返回的信息
-    pageSum:10,//总页数
-    pageIndex:1,//当前页
+    pageSum:1,//总页数
     petmarketSale:[],//宠物详情页信息三张图片
     filtrateType:[],//筛选器中的宠物品种
 }
 const actions = {
     getPetShow({commit},obj){//获取后台信息
-        axios.get("/",{
+        axios.get("/buyer/product/animal",{
             params:obj
         }).then(
             data=>{
@@ -20,7 +19,7 @@ const actions = {
     shopHomeSale({commit},id){//根据id获取宠物详情页(待售)信息
         axios.get("/",{
             params:{
-                productId:id
+                productDescription:id
             }
         }).then(
             data=>{

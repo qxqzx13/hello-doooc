@@ -1,5 +1,5 @@
 <template>
-  <!-- 宠物市场 -->
+  <!-- 宠物市场详情 -->
   <div class="app">
     <div id="bigBackground"></div>
     <top></top>

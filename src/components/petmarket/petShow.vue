@@ -2,12 +2,12 @@
     <div class="pet">
         <div class="pet-show">
             <h3>宠物展示</h3>
-            <div class="pet-cat1" v-for="item in petmarket.petShowArr" @click="$router.push({name:'petmarkettwo',query:{productId:item.productId}})">
+            <div class="pet-cat1" v-for="item in petmarket.petShowArr" @click="$router.push({name:'petmarkettwo',query:{productDescription:item.productDescription}})">
                 <div class="photo"><img :src="item.productIcon"></div>
                 <h2>{{item.productPrice}}</h2>
                 <p>{{item.productName}}</p>
                 <h4>品种：{{item.productType}}</h4>
-                <h5><img src="../../assets/petmarket/img/shopcar.svg" alt=""></h5>
+                <h5><img src="../../assets/petmarket/img/shopcar.svg"></h5>
             </div>
             <!--<div class="pet-cat1" @click="$router.push('/petmarkettwo')">
                 <div class="photoone"></div>
@@ -68,7 +68,6 @@
         name:"petShow",
         data(){
             return {
-                isShow : false,
                 nowPage : 1
             }
         },
@@ -110,6 +109,8 @@
                 if(this.$route.query.pageIndex/1 > this.petmarket.pageSum/1-1){
                     this.isShow = false;
                     this.nowPage = this.petmarket.pageSum/1
+                }else if(this.petmarket.pageSum/1 === 1){
+                    this.isShow = false;
                 }else{
                     this.isShow = true;
                 }
@@ -121,7 +122,7 @@
                     this.nowPage = this.petmarket.pageSum;
                     this.$route.query.pageIndex = this.petmarket.pageSum/1;
                 }else{
-                    this.nowPage = this.$route.query.pageIndex/1;
+                    this.nowPage = this.$route.query.pageIndex/1 || 1;
                 }
             }
         }),
