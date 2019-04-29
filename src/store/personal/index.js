@@ -7,7 +7,7 @@ export default{
 
         userId:1234,
         userName:18510856521,
-        iphone:18510856521,
+        mobile:18510856521,
         sex:"男",
         email:"1412485266@qq.com",
         qq:1421485266,
