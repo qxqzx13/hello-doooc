@@ -5,6 +5,8 @@ import personal from './personal';
 import shop from './shop';
 import petmarket from './petmarket';
 import petmarkettwo from './petmarkettwo';
+import food from './food';
+import daily from './daily';
 
 Vue.use(Vuex);
 
@@ -14,6 +16,8 @@ export default new Vuex.Store({
         personal,
         shop,
         petmarket,
-        petmarkettwo
+        petmarkettwo,
+        food,
+        daily
     }
 })

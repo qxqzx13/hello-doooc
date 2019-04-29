@@ -3,11 +3,11 @@
     <div class="base">
         <div class="username">
             <h4></h4>
-            <p>用户名：{{$store.state.personal.userName}}</p>
+            <p @click="fn({mobile:'5'})">用户名：{{$store.state.personal.mobile}}</p>
             
         </div>
         <ul class="details">
-            <li>手机号：{{$store.state.personal.iphone}}</li>
+            <li>手机号：{{$store.state.personal.mobile}}</li>
             <li>性别：{{$store.state.personal.sex}}</li>
             <li>邮箱：{{$store.state.personal.email}}</li>
             <li>QQ：{{$store.state.personal.qq}}</li>
@@ -16,12 +16,23 @@
     </div>
 </template>
 <script>
-export default {
+import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
+export default{
     name:"userinfo",
-    
+    methods: Object.assign(mapActions(["getUserInfo"]),{
+        fn(obj){
+            if(obj.mobile){
+                this.$route.query.mobile =obj.mobile
+            }
+            this.$router.push({query:{
+                    typeId: this.$route.query.typeId
+            }})
+            this.getUserInfo(this.$route.query)
+        }
+    }),
     mounted () {
-        console.log(this.$store.state.personal.userName);
-    }
+        this.getUserInfo();
+    },
 }
 </script>
 <style scoped>

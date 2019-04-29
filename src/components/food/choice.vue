@@ -4,46 +4,47 @@
             
             <div class="petMall">
                 <ul>
-                    <li>宠物商城</li>
+                    <router-link to="/petmarket"><li>宠物商城</li></router-link>
                     <li>></li>
                     <li>宠物食品</li>
                     <li>></li>
-                    <li>宠物主粮</li>
-                </ul>
+                    <li v-if="num===1">宠物主粮</li>
+                    <li v-if="num===2">宠物零食</li>
+                    <li v-if="num===3">宠物保健</li>
+                </ul>`
             </div>
             <div class="classify">
                 <ul>
                     <li>分类：</li>
-                    <li>主粮</li>
-                    <li>零食</li>
-                    <li>保健</li>
-                    
+                    <li @click="fn({productType:'5',num:1})">主粮</li>
+                    <li @click="fn({productType:'6',num:2})">零食</li>
+                    <li @click="fn({productType:'7',num:3})">保健</li>
                 </ul>
             </div>
             <div class="kind">
                 <ul>
                     <li>品种:</li>
-                    <li>喵喵</li>
-                    <li>汪汪</li>
+                    <li @click="fn({typeId:'3'})">喵喵</li>
+                    <li @click="fn({typeId:'2'})">汪汪</li>
                 </ul>
 
             </div>
             <div class="price">
                 <ul>
                     <li>价格：</li>
-                    <li>全部</li>
-                    <li>￥0-50</li>
-                    <li>￥51-100</li>
-                    <li>￥101-200</li>
-                    <li>￥201-500</li>
+                    <li @click="fn({priceRange:'9'})">全部</li>
+                    <li @click="fn({priceRange:'1'})">￥0-50</li>
+                    <li @click="fn({priceRange:'2'})">￥51-100</li>
+                    <li @click="fn({priceRange:'3'})">￥101-200</li>
+                    <li @click="fn({priceRange:'4'})">￥201-500</li>
                 </ul>
             </div>
             <div class="sort">
                 <ul class="sort_one">
                     <li>排序:</li>
-                    <li>默认↓</li>
-                    <li>价格↓</li>
-                    <li>销量↓</li>
+                    <li @click="fn({order:'2'})">默认↓</li>
+                    <li @click="fn({order:'3'})">价格↓</li>
+                    <li @click="fn({order:'4'})">销量↓</li>
                 </ul>
             </div>
         </div>
@@ -52,8 +53,43 @@
 </template>
 
 <script>
+import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
 export default {
-name:"choice"
+    name:"choice",
+    methods: Object.assign(mapActions(["getFoodInfo"]),{
+        fn(obj){
+
+            if(obj.productType){
+                this.$route.query.productType =obj.productType
+            }
+            if(obj.typeId){
+                this.$route.query.typeId =obj.typeId
+            }
+            if(obj.priceRange){
+                this.$route.query.priceRange =obj.priceRange
+            }
+            if(obj.order){
+                this.$route.query.order =obj.order
+            }
+            this.num = obj.num;
+            this.$router.push({query:{
+                    typeId: this.$route.query.typeId,
+                    productType: this.$route.query.productType ,
+                    priceRange: this.$route.query.priceRange ,
+                    order: this.$route.query.order ,
+
+            }})
+            this.getFoodInfo(this.$route.query)
+        }
+    }),
+    mounted () {
+        this.getFoodInfo();
+    },
+    data () {
+        return {
+            num:1
+        }
+    }
 }
 </script>
 

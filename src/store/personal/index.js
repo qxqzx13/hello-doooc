@@ -7,7 +7,7 @@ export default{
 
         userId:1234,
         userName:18510856521,
-        iphone:18510856521,
+        mobile:18510856521,
         sex:"男",
         email:"1412485266@qq.com",
         qq:1421485266,
@@ -23,10 +23,18 @@ export default{
         }
     },
     actions: {
-        getUserInfo({commit}){
-            bus.$ajax.get("/userInfo")
+        getUserInfo({commit},ob){
+            bus.$ajax.get("/userInfo",{
+                obj
+            })
             .then(({data})=>{
-                userInfo:data.userInfo
+                console.log(data);
+                if(data.code === 1){
+                    commit("SET_USER_INFO",data)
+                }else{
+                    console.log("获取失败")
+                }
+                
             })
                 
         }
