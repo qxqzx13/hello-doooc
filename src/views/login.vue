@@ -176,18 +176,17 @@
         width: 554px;
         border-radius: 10px;
         position: absolute;
-        top: 50%;
-        right: 8%;
-        margin-top: -298px;
-        box-shadow: 0px 20px 40px #000;
-        background: rgba(160, 160, 160, .4);
+        top:50%;
+        right:8%;
+        margin-top:-298px;
+        box-shadow:0px 20px 40px #000;
+        background:rgba(160,160,160,.4);
     }
-
-    .debark h2 {
-        color: #fff;
-        font-size: 24px;
-        padding-top: 54px;
-        padding-left: 70px;
+    .debark h2{
+        color:#fff;
+        font-size:24px;
+        padding-top:54px;
+        padding-left:70px;
         font-weight: normal;
     }
 

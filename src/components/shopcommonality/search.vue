@@ -10,7 +10,6 @@
                         <router-link :to="{path:'/shoppingcar'}">
                             <p>购物车({{shop.shopFoodSum}})</p>
                         </router-link>
-
                     </div>
                 </div>
                 <div class="header-bottom">

@@ -72,6 +72,7 @@
 				li{
 					float:left;
 					img{
+						cursor: pointer;
 						height:285px;
 						width:295px;
 						
@@ -115,7 +116,9 @@
 				float:left;
 				margin-top:120px;
 				margin-left:30px;
+				cursor: pointer;
 				img{
+
 					width:120px;
 					height:100px;
 					margin-top:30px;

@@ -78,6 +78,7 @@
 			ul{
 				list-style:none;
 				li{
+					cursor: pointer;
 					float:left;
 					margin:0 70px;
 					margin-top:100px;
@@ -105,6 +106,7 @@
 				float:left;
 				margin:0 40px;
 				img{
+					cursor: pointer;
 					height:600px;
 					width:300px;
 					margin-left:40px;
@@ -132,6 +134,7 @@
 				float:left;
 				margin:0 40px;
 				img{
+					cursor: pointer;
 					height:300px;
 					width:300px;
 					
@@ -154,6 +157,7 @@
 				height:260px;
 				width:1300px;
 				img{
+					cursor: pointer;
 					height:150px;
 					width:220px;
 					margin-top:40px;
