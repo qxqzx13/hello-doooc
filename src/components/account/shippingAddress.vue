@@ -8,7 +8,7 @@
                                 
                                
 
-                                <select  class="regionSelection"   @change = "getProvince($event)"> 
+                                <!-- <select  class="regionSelection"   @change = "getProvince($event)"> 
                                     <option >请选择</option>
                                     <option  v-for="(value,index) in province">
                                         {{value}}
@@ -23,7 +23,7 @@
                                 <select class="regionSelection" @change = "getDistrict($event)">
                                     <option value="">请选择</option>
                                     <option value="0" v-for="(value.index) in district"></option>
-                                </select>
+                                </select> -->
                             </div>    
                             <div class="site">
                                 <span>详细地址</span>
@@ -91,32 +91,32 @@ name:"shippingAddress",
             //         console.log(data)
             //     })
             // },
-            getProvince:function(e){
-                //获取当前选中项的下标
-                this.index=e.target.selectedIndex;
-                axios.get("/",{
-                    params:{
-                      index:this.index
-                    }
-                }).then(({data})=>{
-                    console.log(data)
-                    this.city.push(data.city)
-                })
-            },
-            getCity:function(e){
-                this.index=e.target.selectedIndex;
-                axios.get("/",{
-                    params:{
-                        index:this.index
-                    }
-                }).then(({data})=>{
-                    this.district.push(data.district)
-                })
-            },
-            getDistrict:function(e){
-                this.index=e.target.selectedIndex;
-                axios
-            } 
+            // getProvince:function(e){
+            //     //获取当前选中项的下标
+            //     this.index=e.target.selectedIndex;
+            //     axios.get("/",{
+            //         params:{
+            //           index:this.index
+            //         }
+            //     }).then(({data})=>{
+            //         console.log(data)
+            //         this.city.push(data.city)
+            //     })
+            // },
+            // getCity:function(e){
+            //     this.index=e.target.selectedIndex;
+            //     axios.get("/",{
+            //         params:{
+            //             index:this.index
+            //         }
+            //     }).then(({data})=>{
+            //         this.district.push(data.district)
+            //     })
+            // },
+            // getDistrict:function(e){
+            //     this.index=e.target.selectedIndex;
+            //     axios
+            // } 
 
     },
     computed: {
