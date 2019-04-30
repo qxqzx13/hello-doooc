@@ -18,6 +18,6 @@ export default new Vuex.Store({
         petmarket,
         petmarkettwo,
         food,
-        daily
+        daily,
     }
 })

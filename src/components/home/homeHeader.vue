@@ -18,8 +18,8 @@
                         <ul class="navList">
                             <router-link to="/personal"><li>我的信息</li></router-link>
                             <router-link to="/personal/personalCenter"><li>订单中心</li></router-link>
-                            <router-link to="/"><li>我的购物</li></router-link>
-                            <router-link to="/"><li>我的晒宠</li></router-link>
+                            <router-link to="/shoppingcar"><li>我的购物</li></router-link>
+                            <router-link to="/asaspet"><li>我的晒宠</li></router-link>
                         </ul>
                     </div>
                 </div>

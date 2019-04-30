@@ -5,8 +5,7 @@
 	<div id="middle">
         <div id="car">
             <div class="petpic"></div>
-            <h3 v-if="$route.query.goodsId">商品详情</h3>
-            <h3 v-else>我的购物车</h3>
+            <h3>我的购物车</h3>
             <div class="nan">
                 <trolley></trolley>
             </div>
@@ -21,7 +20,6 @@ import navigation from "../components/shopcommonality/navigation";
 import commonFooter from "../components/common/commonFooter.vue";
 import trolley from "../components/shop/trolley.vue";
 
-import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
 
 export default {
     name: 'shoppingcar',

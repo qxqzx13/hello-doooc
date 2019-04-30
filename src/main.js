@@ -6,11 +6,11 @@ import axios from "axios"
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
-Vue.prototype.$ajax = axios;
+Vue.prototype.$axios = axios;
 /****************判断是否登录了************************/
 /*router.beforeEach((to,from,next)=>{
     if(to.meta.isAuthorization){
-        if(localStorage.token){
+        if(sessionStorage.token){
             next();
         }else{
             store.commit("OUT_LOGIN");
