@@ -71,6 +71,7 @@
         width:1000px;
         margin:0 auto;
 				img{
+					cursor: pointer;
 					width:668px;
 					height:460px;
 				}
@@ -121,6 +122,7 @@
         margin:0 auto;
         border:1px solid #FFFFFF;
         img{
+			cursor: pointer;
             float:right;
             width:668px;
             height:460px;
@@ -181,7 +183,7 @@
             margin-left:60px;
             font-size:30px;
             text-align:center;
-            padding-top:20px;
+            padding-top:16px;
         }
     }
     .question{
@@ -190,16 +192,18 @@
         margin-top:90px;
         list-style:none;
         li{
+			cursor: pointer;
             font-size:24px;
             line-height:2;
         }
-				li:hover{
-					font-size:26px;
-					color:#8A2BE2;
-				}
+		li:hover{
+			font-size:26px;
+			color:#8A2BE2;
+		}
     }
 		
     img{
+		cursor: pointer;
         float:right;
         width:395px;
         height:570px;

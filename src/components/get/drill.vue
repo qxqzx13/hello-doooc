@@ -62,6 +62,7 @@
     width:100%;
     margin:0 auto;
 		img{
+			cursor: pointer;
 			 width:100%;
 			width:100%;
 		}
@@ -76,7 +77,8 @@
         width:1300px;
         margin:0 auto;
         img{
-        margin-top:100px;
+        	margin-top:100px;
+			cursor: pointer;
         }
 				img:hover{
 					opacity:0.7;
@@ -102,8 +104,9 @@
            line-height:2;
        }
        img{
-         margin-top:-280px;
-         float:right;
+		   cursor: pointer;
+		   margin-top:-280px;
+		   float:right;
        }
 			 img:hover{
 				 opacity:0.7;
@@ -112,9 +115,11 @@
 }
 
 #pic-4-2{
-    height:620px;
+    height:770px;
     width:1300px;
     margin:0 auto;
+	background:#faf6f5;
+	margin-bottom:30px;
 		#nav1{
 				height:64px;
 				width:1300px;
@@ -136,19 +141,21 @@
 				margin-top:90px;
 				list-style:none;
 				li{
-						font-size:24px;
-						line-height:2;
+					font-size:24px;
+					line-height:2;
+					cursor: pointer;
 				}
 				li:hover{
 					color:#FB8192;
 				}
 		}
 		img{
-				float:right;
-				width:395px;
-				height:560px;
-				margin-top:-500px;
-				margin-right:100px;
+			cursor: pointer;
+			float:right;
+			width:510px;
+			height:510px;
+			margin-top:-570px;
+			margin-right:100px;
 		}
 		img:hover{
 			opacity:0.7;

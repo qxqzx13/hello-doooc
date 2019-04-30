@@ -4,7 +4,7 @@
             
             <div class="petMall">
                 <ul>
-                    <router-link to="/petmarket"><li>宠物商城</li></router-link>
+                    <router-link to="/shop"><li>宠物商城</li></router-link>
                     <li>></li>
                     <li>宠物食品</li>
                     <li>></li>
@@ -122,6 +122,7 @@ div,ul,li{
     height:56px;
     font-size:12px;
     padding:20px 0 0 16px;
+    cursor: pointer;
 }
 
 .classify{
@@ -141,6 +142,7 @@ div,ul,li{
 }
 .classify ul li:not(:first-child):hover{
     color:#ffffff;
+    cursor: pointer;
 }
 
 .kind{
@@ -160,6 +162,7 @@ div,ul,li{
 }
 .kind ul li:not(:first-child):hover{
     color:#ffffff;
+    cursor: pointer;
 }
 
 .price{
@@ -179,6 +182,7 @@ div,ul,li{
 }
 .price ul li:not(:first-child):hover{
     color:#ffffff;
+    cursor: pointer;
 }
 .sort{
     height:57px;
@@ -196,6 +200,7 @@ div,ul,li{
 }
 .sort_one li:not(:first-child):hover{
     color:#ffffff;
+    cursor: pointer;
 }
 
 </style>

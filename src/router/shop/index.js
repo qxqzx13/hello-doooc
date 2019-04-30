@@ -2,8 +2,7 @@ import shop from "../../views/shop";
 import shoppingcar from "../../views/shoppingcar";
 import petmarket from "../../views/petmarket";
 import petmarkettwo from "../../views/petmarkettwo";
-import detail from "../../components/shop/detail";
-import sss from "../../components/shop/trolley";
+import trolley from "../../components/shop/trolley";
 import login from "../../views/login";
 import account from "../../views/account";
 import details from "../../views/details";
@@ -47,6 +46,13 @@ export default [
         path:"/details",
         name:"details",
         component:details,
+        meta:{
+            isAuthorization:false
+        }
+    },{
+        path:"/trolley",
+        name:"trolley",
+        component:trolley,
         meta:{
             isAuthorization:false
         }

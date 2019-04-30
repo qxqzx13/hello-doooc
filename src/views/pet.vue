@@ -33,45 +33,12 @@
 				</ul>
 			</div>
             <router-view/>
-            <div id="footer">
-			<img src="../assets/pet/img/bottom.png">
-			<div id="last-footer">
-				<p>友情连接: 
-        			<span>宠物用品商城</span>
-        			<b>|</b>
-        			<span>兽药营销策划</span>
-        			<b>|</b>
-        			<span>兽药动保咨询</span>
-        		</p>
-        		<p>
-        			<span>关于我们</span>
-        			<b>|</b>
-        			<span>联系我们</span>
-        			<b>|</b>
-        			<span>商家入驻</span>
-					<b>|</b>
-        			<span>友情链接</span>
-					<b>|</b>
-        			<span>站点地图</span>
-					<b>|</b>
-        			<span>手机商城</span>
-					<b>|</b>
-        			<span>销售联盟</span>
-        			<b>|</b>
-        			<span>商城社区</span>
-        			<b>|</b>
-        			<span>企业文化</span>
-        			<b>|</b>
-        			<span>帮助中心</span>
-        			<span class="num">ICP备案证书号:粤ICP备17156774号-2</span>
-        		</p>
-        		<p>&copy;2015-2019 道奇宠物商城 版权所有,并保留所有权利。中国广东省深圳市</p>
-			</div>
-		</div>
-    </div>
+		<commonFooter></commonFooter>
+	</div>
 </template>
 <script>
     import commonHeader from "../components/common/commonHeader";
+    import commonFooter from "../components/common/commonFooter";
     export default {
         data(){
             return{
@@ -85,7 +52,8 @@
 			}
 		},
         components:{
-            commonHeader
+            commonHeader,
+            commonFooter
         }
     }
 </script>
@@ -169,42 +137,6 @@
 		color:white;
 	}
 }
-#footer{
-     height:675px;
-     width:100%;
-    img{
-        display: block;
-        width: 100%;
-        min-width: 1300px;
-        height: 550px;
-    }
-    #last-footer{
-        height:125px;
-        width:100%;
-        background:black;
-        p{
-           text-align: center;
-           line-height: 34px;
-           font-size: 14px;
-           color: #fff;
-           span{
-               color: #fff;
-			   cursor: pointer;
-           }
-			b{
-				font-weight:400;
-			}
-           span:hover{
-               color: #F0A34B;
-               text-decoration: underline;
-           }
-           .num{
-               display: inline-block;
-               margin-left: 12px;
-           }
-       }
-    } 
- }
 
 </style>
 

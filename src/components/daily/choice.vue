@@ -3,7 +3,7 @@
         <div class="head">
             <div class="petMall">
                 <ul>
-                    <li>宠物商城</li>
+                    <li @click="$router.push('/shop')">宠物商城</li>
                     <li>></li>
                     <li>宠物日用</li>
                     <li>></li>
@@ -117,6 +117,7 @@ div,ul,li{
 
 }
 .petMall ul li{
+    cursor: pointer;
     float: left;
     height:30px;
     font-size:12px;
@@ -137,9 +138,11 @@ div,ul,li{
     float:left;
     padding:14px 0 0 16px;
     font-size:12px;
+
 }
 .classify ul li:not(:first-child):hover{
     color:#ffffff;
+    cursor: pointer;
 }
 
 .kind{
@@ -153,12 +156,14 @@ div,ul,li{
     background:#ffcc99;
 }
 .kind ul li{
+
     float:left;
     padding:14px 0 0 16px;
     font-size:12px;
 }
 .kind ul li:not(:first-child):hover{
     color:#ffffff;
+    cursor: pointer;
 }
 
 .price{
@@ -172,12 +177,14 @@ div,ul,li{
     background:#ff9900;
 }
 .price ul li{
+
     float:left;
     padding:14px 0 0 16px;
     font-size:12px;
 }
 .price ul li:not(:first-child):hover{
     color:#ffffff;
+    cursor: pointer;
 }
 .sort{
     height:57px;
@@ -189,12 +196,14 @@ div,ul,li{
     float: left;
 }
 .sort_one li{
+
     float: left;
     padding:20px 0 0 16px;
     font-size:14px;
 }
 .sort_one li:not(:first-child):hover{
     color:#ffffff;
+    cursor: pointer;
 }
 
 </style>

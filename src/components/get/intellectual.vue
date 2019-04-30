@@ -65,6 +65,7 @@
 					list-style: none;
 					float:left;
 					img{
+						cursor: pointer;
 						heigth:570px;
 						width:300px;
 					}
@@ -87,6 +88,7 @@
 	  margin-top:30px;
 
 			img{
+				cursor: pointer;
 				height:300px;
 				width:320px;
 			}
