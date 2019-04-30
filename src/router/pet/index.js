@@ -5,6 +5,7 @@ import contact from '../../components/get/contact'
 import drill from '../../components/get/drill'
 import intellectual from '../../components/get/intellectual'
 import medical from '../../components/get/medical'
+import news from '../../components/get/news'
 
 export default [
     {
@@ -34,9 +35,10 @@ export default [
             },{
                 path:'contact',
                 component:contact,
+            },{
+                path:'news',
+                component:news,
             }
-
-
         ]
     }
 ]

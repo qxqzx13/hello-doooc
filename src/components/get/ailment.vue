@@ -8,24 +8,24 @@
 		    <div id="pic-2">
 		    	<div id="pic-2-left">
 		    		<ul>
-		    			<li>注射狂犬疫苗需要注意什么</li>
-		    			<li>得了狂犬疫苗的人有什么症状</li>
-		    			<li>狗狗感冒了怎么办？</li>
-		    			<li>狗狗感冒的症状及治疗方法</li>
-		    			<li>狗狗发烧的症状及治疗方法</li>
+		    			<li @click="$router.push('news')">注射狂犬疫苗需要注意什么</li @click="$router.push('news')">
+		    			<li @click="$router.push('news')">得了狂犬疫苗的人有什么症状</li>
+		    			<li @click="$router.push('news')">狗狗感冒了怎么办？</li>
+		    			<li @click="$router.push('news')">狗狗感冒的症状及治疗方法</li>
+		    			<li @click="$router.push('news')">狗狗发烧的症状及治疗方法</li>
 		    		</ul>
 		    	</div>
-		    	<div id="pic-2-right"><img src="../../assets/pet/img/z.png"></div>
+		    	<div id="pic-2-right" @click="$router.push('news')"><img src="../../assets/pet/img/z.png"></div>
 		    </div>
 		       <div id="pic-3">
-		       	<div id="pic-3-left"><img src="../../assets/pet/img/y.png"></div>
+		       	<div id="pic-3-left" @click="$router.push('news')"><img src="../../assets/pet/img/y.png"></div>
 		    	<div id="pic-3-right">
 		    		<ul>
-		    			<li>注射狂犬疫苗需要注意什么</li>
-		    			<li>得了狂犬疫苗的人有什么症状</li>
-		    			<li>狗狗感冒了怎么办？</li>
-		    			<li>狗狗感冒的症状及治疗方法</li>
-		    			<li>狗狗发烧的症状及治疗方法</li>
+		    			<li @click="$router.push('news')">注射狂犬疫苗需要注意什么</li>
+		    			<li @click="$router.push('news')">得了狂犬疫苗的人有什么症状</li>
+		    			<li @click="$router.push('news')">狗狗感冒了怎么办？</li>
+		    			<li @click="$router.push('news')">狗狗感冒的症状及治疗方法</li>
+		    			<li @click="$router.push('news')">狗狗发烧的症状及治疗方法</li>
 		    		</ul>
 		    	</div>
 		       </div>

@@ -10,6 +10,10 @@
               <li @click="$router.push('/pet')">知宠</li>
             </ul>
           </div>
+          <div class="loginOut">
+            <el-button type="text" v-if="loginName === null">登陆</el-button>
+            <el-button type="text" v-if="loginName !== null">退出</el-button>
+          </div>
           <div class="logo">
             <img src="../../assets/common/img/logoblack.svg">
           </div>
@@ -32,7 +36,12 @@
 
 <script>
 export default {
-  name: "navigation"
+  name: "navigation",
+    data(){
+      return{
+          loginName:null,
+      }
+    }
 };
 </script>
 
@@ -80,7 +89,17 @@ h5 {
   float: left;
   padding-top: 38px;
 }
-
+#toptwo .topArea .navBox .loginOut{
+  position:absolute;
+  top:22px;
+  right:364px;
+}
+#toptwo .topArea .navBox .loginOut .el-button{
+  height:30px;
+  width:60px;
+  font-size:20px;
+  color:#272727;
+}
 #toptwo .topArea .navBox .navLeft li {
   float: left;
   margin-right: 100px;
