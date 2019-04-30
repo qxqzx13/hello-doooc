@@ -6,28 +6,36 @@
                             <div  class="region">
                                 <span>所在地区</span>
                                 
-                                <select name="public-choice" class="regionSelection" v-model="provs" @change="getProvs" placeholder="请选择"> 
-                                    <option :value="item.id" v-for="item in provsList" >{{item.name}}</option> 
+                               
+
+                                <!-- <select  class="regionSelection"   @change = "getProvince($event)"> 
+                                    <option >请选择</option>
+                                    <option  v-for="(value,index) in province">
+                                        {{value}}
+                                    </option>
                                 </select>
-                                <select name="public-choice" class="regionSelection"
-                                v-model="city" @change="getCity" placeholder="请选择"> 
-                                    <option :value="item.id" v-for="item in cityList" >{{item.name}}</option> 
+
+                                <select  class="regionSelection" @change = "getCity($event)">
+                                    <option>请选择</option>
+                                    <option value="0" v-for="(value,index) in city">请选择</option>
+                                    
                                 </select>
-                                <select name="public-choice" class="regionSelection" v-model="district" @change="getDistrict" placeholder="请选择"> 
-                                    <option :value="item.id" v-for="item in districtList" >{{item.name}}</option> 
-                                </select>
+                                <select class="regionSelection" @change = "getDistrict($event)">
+                                    <option value="">请选择</option>
+                                    <option value="0" v-for="(value.index) in district"></option>
+                                </select> -->
                             </div>    
                             <div class="site">
                                 <span>详细地址</span>
-                                <!-- <input type="text" class=".minute" v-model="detailedAddress"> -->
-                                <input type="text" class=".minute" v-model="detailedAddress">
+                                <input onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))" v-model="detailedAddress">
                             </div>  
                             <div class="site">
-                                <span>收获姓名</span>
-                                <input type="text" class=".minute" v-model="detailedName">
+                                <span>收货姓名</span>                            
+                                <input onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))" v-model=" detailedName">
                             </div><div class="site">
                                 <span>联系电话</span>
-                                <input type="text" class=".minute" v-model="contactNumber">
+                                <!-- <input type="text" class=".minute" v-model="contactNumber"> -->
+                                <input onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" v-model="contactNumber">
                             </div>            
                         </div>
                         <p>支付方式</p>
@@ -47,119 +55,80 @@
 </template>
 
 <script>
+
 export default {
 name:"shippingAddress",
  data () {
       return {
-        radio1: '1',
-        radio2: '1',
-        radio3: '1',
-        radio4: '1',
-        provsList:[
-                    {
-                        id:"0",
-                        name:"请选择"
-                    },
-                    {
-                        id: '1',
-                        name: '山西省'
-                    },
-                    {
-                        id: '2',
-                        name: '陕西省'
-                    },
-                    {
-                        id: '3',
-                        name: '河南省'
-                    }
-                ],
-        cityList:[
-            {
-                        id:"0",
-                        name:"请选择"
-                    },
-                    {
-                        id: '1',
-                        name: '太原市'
-                    },
-                    {
-                        id: '2',
-                        name: "临汾市"
-                    },
-                    {
-                        id: '3',
-                        name: '忻州市'
-                    }
-        ],
-        districtList:[
-            {
-                        id:"0",
-                        name:"请选择"
-                    },
-                    {
-                        id: '1',
-                        name: '小店区'
-                    },
-                    {
-                        id: '2',
-                        name: "迎泽区"
-                    },
-                    {
-                        id: '3',
-                        name: '杏花岭区'
-                    }
-        ],
-                provs: '',
-                city:"",
-                district:"",
-                detailedAddress:"",
-                detailedName:"",
-                contactNumber:"",
+        myVal:"",
+        index:"",
+        repay:"0",
+        xueanze:"xuanze",
+        detailedAddress:"",
+        detailedName:"",
+        contactNumber:"",
+        province:["北京市","天津市","上海市","重庆市","河北省","山西省","辽宁省","吉林省","黑龙江省","江苏省","浙江省","安徽省","福建省","江西省","山东省","河南省","湖北省","湖南省","广东省","海南省","四川省","贵州省","云南省","陕西省","甘肃省","青海省","台湾省","内蒙古自治区","广西壮族自治区","西藏自治区","宁夏回族自治区","新疆维吾尔自治区","香港特别行政区","澳门特别行政区"],
+        city:[],
+        district: [],
+        
+    
+
       }
      
     },
-    created(){
-　　　　//如果没有这句代码，select中初始化会是空白的，默认选中就无法实现
-        this.provs = this.provsList[0].id;
-        this.city = this.cityList[0].id;
-        this.district = this.districtList[0].id; 
-    },
+
     methods:{
-　　　　　　 getProvs:function(){
-                
-                console.log(this.provs)
-            },
-            getCity:function(){
-                console.log(this.city)
-            },
-            getDistrict:function(){
-                console.log(this.district)
-            },
-            getDistrict:function(){
-                axios.get("1111151",{
-                    params:{
-                        detailedAddress:this.detailedAddress,
-                        detailedName:this.detailedName,
-                        contactNumber:this.contactNumber,
-                    }
-                }
-                ).then(({data})=>{
-                    console.log(data)
-                })
-
             
-            },
-             
+            // getDistrict:function(){
+            //     axios.get("1111151",{
+            //         params:{
+            //             detailedAddress:this.detailedAddress,
+            //             detailedName:this.detailedName,
+            //             contactNumber:this.contactNumber,
+            //         }
+            //     }
+            //     ).then(({data})=>{
+            //         console.log(data)
+            //     })
+            // },
+            // getProvince:function(e){
+            //     //获取当前选中项的下标
+            //     this.index=e.target.selectedIndex;
+            //     axios.get("/",{
+            //         params:{
+            //           index:this.index
+            //         }
+            //     }).then(({data})=>{
+            //         console.log(data)
+            //         this.city.push(data.city)
+            //     })
+            // },
+            // getCity:function(e){
+            //     this.index=e.target.selectedIndex;
+            //     axios.get("/",{
+            //         params:{
+            //             index:this.index
+            //         }
+            //     }).then(({data})=>{
+            //         this.district.push(data.district)
+            //     })
+            // },
+            // getDistrict:function(e){
+            //     this.index=e.target.selectedIndex;
+            //     axios
+            // } 
 
-            
-
+    },
+    computed: {
+       
     },
     mounted(){
-
+       
     }
+
+
     
 }
-
 </script>
 
 <style scopsd>
@@ -217,7 +186,7 @@ div,ul,li,h1,h2,h3,h4,h6,span,img,i,b,p,h5,input{
   }
   
 .regionSelection{
-    width:66px;
+    width:70px;
     height:18px;
     font-size:12px;
     background:#f5a64a;
