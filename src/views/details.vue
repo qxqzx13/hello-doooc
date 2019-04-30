@@ -9,7 +9,7 @@
                     <h3 v-else>商品详情</h3>
                     <div class="nan">
                         <div class="details-detail">
-                            <h1></h1>
+                            <h1 @click="$router.go(-1)"></h1>
                             <h2></h2>
                             <div class="commodity">
                                 <p>商品详细</p>

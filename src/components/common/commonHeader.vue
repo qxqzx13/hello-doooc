@@ -12,6 +12,10 @@
                         <li @click="$router.push('/pet')">知宠</li>
                     </ul>
                 </div>
+                <div class="loginOut">
+                    <el-button type="text" v-if="loginName === null">登陆</el-button>
+                    <el-button type="text" v-if="loginName !== null">退出</el-button>
+                </div>
                 <div class="logo">
                     <img src="../../assets/common/img/logoblack.svg" />
                 </div>
@@ -33,7 +37,12 @@
 
 <script>
 export default {
-name:'commonHeader',
+    name:'commonHeader',
+    data(){
+        return{
+            loginName:null,
+        }
+    }
 }
 </script>
 
@@ -63,6 +72,7 @@ name:'commonHeader',
         top: 0;
         left: 0;
         z-index: 1000;
+        background: rgba(167, 167, 167, 0.4);
     }
 
     #top .topArea .navBox {
@@ -75,7 +85,17 @@ name:'commonHeader',
         float: left;
         padding-top: 38px;
     }
-
+    #top .topArea .navBox .loginOut{
+        position:absolute;
+        top:22px;
+        right:364px;
+    }
+    #top .topArea .navBox .loginOut .el-button{
+        height:30px;
+        width:60px;
+        font-size:20px;
+        color:#fff;
+    }
     #top .topArea .navBox .navLeft li{
         float: left;
         cursor:pointer;

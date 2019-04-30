@@ -9,6 +9,10 @@
                         <li><router-link to="/pet">知宠</router-link></li>
                     </ul>
                 </div>
+                <div class="loginOut">
+                    <el-button type="text" v-if="loginName === null">登陆</el-button>
+                    <el-button type="text" v-if="loginName !== null">退出</el-button>
+                </div>
                 <div class="logo">
                     <img src="../../assets/home/img/logoblack.svg" />
                 </div>
@@ -37,6 +41,7 @@
         data(){
             return {
                 topHeight :{},
+                loginName:null,
             }
         },
         components:{
@@ -82,7 +87,17 @@
         float: left;
         padding-top: 38px;
     }
-
+    #top .topArea .navBox .loginOut{
+        position:absolute;
+        top:22px;
+        right:364px;
+    }
+    #top .topArea .navBox .loginOut .el-button{
+        height:30px;
+        width:60px;
+        font-size:20px;
+        color:#fff;
+    }
     #top .topArea .navBox .navLeft li {
         float: left;
         margin-right: 100px;
