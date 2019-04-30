@@ -3,7 +3,7 @@
     <div class="base">
         <div class="username">
             <h4></h4>
-            <p @click="fn({mobile:'5'})">用户名：{{$store.state.personal.mobile}}</p>
+            <p @click="fn({mobile:'5'})">{{$store.state.personal.mobile}}</p>
             
         </div>
         <ul class="details">
@@ -11,7 +11,6 @@
             <li>性别：{{$store.state.personal.sex}}</li>
             <li>邮箱：{{$store.state.personal.email}}</li>
             <li>QQ：{{$store.state.personal.qq}}</li>
-            <li>收货地址：{{$store.state.personal.address}}</li>
         </ul>
     </div>
 </template>
@@ -51,7 +50,7 @@ export default{
         text-align: center;
     }
     .username h4{
-        margin: 0;
+        margin-left: 56px;
         height:86px;
         width:86px;
         border-radius:50%;
