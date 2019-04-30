@@ -1,5 +1,5 @@
 <template>
-  <!-- 购物车详情 -->
+  <!-- 购物车 -->
   <div class="cpp">
     <navigation></navigation>
 	<div id="middle">
