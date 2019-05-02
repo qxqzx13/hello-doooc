@@ -1,33 +1,34 @@
  <template>
         <!-- 购物车详情 -->
         <div class="cpp">
+            {{shoppingCar}}}
             <navigation></navigation>
             <div id="middle">
                 <div id="car">
                     <div class="petpic"></div>
-                    <h3 v-if="$route.query.goodsId">商品详情</h3>
-                    <h3 v-else>商品详情</h3>
+                    <h3>商品详情</h3>
                     <div class="nan">
                         <div class="details-detail">
                             <h1></h1>
                             <h2></h2>
                             <div class="commodity">
-                                <p>商品详细</p>
-                                <p>麦富迪 双拼标准颗粒成犬粮10KG</p>
-                                <P>4:1牛肉粒配比，适口性更好！营养更丰富,
-                                    全犬种成犬可用
-                                </P>
+                                <P>{{shop.shoppingCar.productName}}</P>
                             </div>
                             <ul>
                                 <li>
                                     <p>适用阶段</p>
-                                    <span>幼犬</span>
+                                    <span>{{shop.shoppingCar.productAge}}</span>
                                 </li>
                                 <li>
                                     <p class="taste">口味</p>
-                                    <select name="" id="">
-                                        <option value="1">xl</option>
-                                    </select>
+                                    <el-select v-model="value" placeholder="请选择">
+                                        <el-option
+                                                v-for="item in $store.state.shop.shoppingCar.productDescription"
+                                                :key="item.value"
+                                                :label="item.label"
+                                                :value="item.value">
+                                        </el-option>
+                                    </el-select>
                                 </li>
                                 <li>
                                     <p>生产地址</p>
@@ -35,20 +36,21 @@
                                 </li>
                                 <li>
                                     <p class="taste">重量</p>
-                                    <span>2000g</span>
+                                    <span>{{shop.shoppingCar.productSize}}</span>
                                 </li>
                                 <li>
                                     <p class="taste1">保质期<i></i></p>
-                                    <span>18个月</span>
+                                    <span>{{shop.shoppingCar.productPastDare}}</span>
                                 </li>
                             </ul>
                             <el-row>
-                                <el-button round @click="$router.push({path:'/shoppingcar'})">加入购物车</el-button>
+                                <el-button round @click="goShopCar">加入购物车</el-button>
+                                <el-button round @click="goBuy">立即购买</el-button>
                             </el-row>
-                            <p class="price">单价<span>￥500</span></p>
-                            <p class="total">总计：<span>￥5000</span></p>
-                            <p class="quantity">数量<span>x1</span><img src="../assets/petshop/img/plus.svg" alt=""><img src="../assets/petshop/img/minus.svg"
-                                                                                                                       alt=""></p>
+                            <p class="price">单价<span>{{shop.shoppingCar.productPrice}}</span></p>
+                            <p class="total">总计：<span>{{priceSum}}</span></p>
+                            <p class="quantity">数量<span>{{goodsNum}}</span><img src="../assets/petshop/img/plus.svg" @click="changeGoodsNum(1)"><img src="../assets/petshop/img/minus.svg"
+                                                                                                                        @click="changeGoodsNum(-1)"></p>
                         </div>
                     </div>
                 </div>
@@ -63,10 +65,47 @@
     import {mapState, mapMutations, mapGetters, mapActions} from "vuex";
     export default {
         name: "detail",
-        methods:mapActions(["toShoppingCar"]),
+        data(){
+            return {
+                goodsNum : 1,
+                priceSum : 0,
+                value:1
+            }
+        },
+        computed:mapState(["shop"]),
+        methods:Object.assign(mapActions(["toShoppingCar","addGoodsToCar"]),{
+            changeGoodsNum(num){
+                this.goodsNum += num;
+                if(this.goodsNum <= 1){
+                    this.goodsNum = 1
+                }
+                this.getPriceSum();
+            },
+            getPriceSum(){
+                this.priceSum = this.goodsNum * this.shop.shoppingCar.productPrice/1;
+            },
+            goBuy(){
+                this.addGoodsToCar({
+                    goodsId:this.shop.shoppingCar.goodsId,
+                    productDescription:this.value,
+                    productPriceSum:this.priceSum,
+                    productNum:this.goodsNum
+                });
+                this.$router.push({path:'/shoppingcar'});
+
+            },
+            goShopCar(){
+                this.addGoodsToCar({
+                    goodsId:this.shop.shoppingCar.goodsId,
+                    productDescription:this.value,
+                    productPriceSum:this.priceSum,
+                    productNum:this.goodsNum
+                });
+            }
+        }),
         mounted(){
-            console.log(111111)
-            this.toShoppingCar(this.$route.query.goodsId);
+            this.getPriceSum();
+            //this.toShoppingCar(this.$route.query.goodsId);
         },
         components:{
             navigation,

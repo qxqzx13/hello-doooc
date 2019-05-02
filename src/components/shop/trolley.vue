@@ -12,16 +12,12 @@
                         <li>RMB</li>
                         <li>{{item.price}}</li>
                         <li>
-                            <select>
-                                <option v-for="v in item.goodsType" :value="v.num">{{v.name}}</option>
-                            </select>
+                            <botton @click="goodsDown(item.goodsId)">-</botton>
+                            {{item.productNum}}
+                            <botton @click="goodsUp(item.goodsId)">+</botton>
                         </li>
                         <li>口味</li>
-                        <li>
-                            <select>
-                                <option v-for="i in item.goodsTaste" :value="i.num">{{i.name}}</option>
-                            </select>
-                        </li>
+                        <li>{{item.productDescription}}</li>
                         <li @click="deleteCar(item.goodsId)">删除</li>
                     </ul>
                 </div>
@@ -36,7 +32,7 @@
                 <li>RMB{{shop.priceSum}}</li>
                 <li>
                     <el-row>
-                        <el-button round @click="$router.push({path:'/account',query:{userId:userId}})">结算</el-button>
+                        <el-button round @click="$router.push({path:'/account'})">结算</el-button>
                     </el-row>
                 </li>
                 <li>
@@ -61,83 +57,99 @@
         data(){
             return {
                 isShow:true,
-                nowPage : 1
+                nowPage : 1,
+                value:''
             }
         },
-        computed:mapState(["shop"]),
-        methods:Object.assign(mapActions(["getShoppingCar","deleteCarFood"]),{
-                deleteCar(id){
-                    this.deleteCarFood({
-                        goodsId:id,
-                        userId:this.userId
-                    });
-                    this.$router.push({
-                        query:{
-                            userId:this.userId,
-                            pageIndex:this.$route.query.pageIndex/1-1 || 1,
-                        }
-                    });
-                    this.orShow();
-                    this.getNowPage();
-                },
-                downPage(){
-                    if(this.$route.query.pageIndex == false){
-                        this.$route.query.pageIndex=1
+        computed:mapState(["shop","goodsMsg"]),
+        methods:Object.assign(mapActions(["getShoppingCar","deleteCarFood","shoppingCarGoodsNum","setGoodsTaste"]),{
+            deleteCar(id){//删除物品
+                this.deleteCarFood(id);
+                this.$router.push({
+                    query:{
+                        pageIndex:this.$route.query.pageIndex/1 || 1,
                     }
-                    this.$router.push({
-                        query:{
-                            userId: this.userId,
-                            pageIndex:this.$route.query.pageIndex/1-1 || 1,
-                        }
-                    });
-                    this.orShow();
-                    this.getNowPage();
-                },
-                upPage(){
-                    if(!this.$route.query.pageIndex){
-                        this.$route.query.pageIndex=1
+                });
+                this.orShow();
+                this.getNowPage();
+            },
+            downPage(){//上一页
+                if(this.$route.query.pageIndex == false){
+                    this.$route.query.pageIndex=1
+                }
+                this.$router.push({
+                    query:{
+                        pageIndex:this.$route.query.pageIndex/1-1 || 1,
                     }
-                    this.$router.push({
-                        query:{
-                            userId: this.userId,
-                            pageIndex:this.$route.query.pageIndex/1+1 || 1,
-                        }
-                    });
-                    this.orShow();
-                    this.getNowPage();
-                },
-                orShow(){
-                    if(this.$route.query.pageIndex/1 > this.shop.pageSum/1-1){
-                        this.isShow = false;
-                        this.nowPage = this.shop.pageSum/1
-                    }else if(this.shop.pageSum/1 === 1){
-                        this.isShow = false;
-                    }else{
-                        this.isShow = true;
+                });
+                this.orShow();
+                this.getNowPage();
+            },
+            upPage(){//下一页
+                if(!this.$route.query.pageIndex){
+                    this.$route.query.pageIndex=1
+                }
+                this.$router.push({
+                    query:{
+                        pageIndex:this.$route.query.pageIndex/1+1 || 1,
                     }
-                },
-                getNowPage(){
-                    if(this.$route.query.pageIndex < 2){
-                        this.nowPage = 1;
-                    }else if(this.$route.query.pageIndex/1 >= this.shop.pageSum/1){
-                        this.nowPage = this.shop.pageSum;
-                        this.$route.query.pageIndex = this.shop.pageSum/1;
-                    }else{
-                        this.nowPage = this.$route.query.pageIndex/1 || 1;
+                });
+                this.orShow();
+                this.getNowPage();
+            },
+            orShow(){//按钮显示或隐藏
+                if(this.$route.query.pageIndex/1 > this.shop.pageSum/1-1){
+                    this.isShow = false;
+                    this.nowPage = this.shop.pageSum/1
+                }else if(this.shop.pageSum/1 === 1){
+                    this.isShow = false;
+                }else{
+                    this.isShow = true;
+                }
+            },
+            getNowPage(){//获取现在页数
+                if(this.$route.query.pageIndex < 2){
+                    this.nowPage = 1;
+                }else if(this.$route.query.pageIndex/1 >= this.shop.pageSum/1){
+                    this.nowPage = this.shop.pageSum;
+                    this.$route.query.pageIndex = this.shop.pageSum/1;
+                }else{
+                    this.nowPage = this.$route.query.pageIndex/1 || 1;
+                }
+            },
+            goodsDown(id){//减少商品数量
+                this.shoppingCarGoodsNum({
+                    goodsId:id,
+                    goodsNum:0
+                })
+                this.$router.push({
+                    query:{
+                        pageIndex:this.$route.query.pageIndex/1 || 1,
                     }
-                },
+                });
+            },
+            goodsUp(id){//增加商品数量
+                this.shoppingCarGoodsNum({
+                    goodsId:id,
+                    goodsNum:1
+                });
+                this.$router.push({
+                    query:{
+                        pageIndex:this.$route.query.pageIndex/1 || 1,
+                    }
+                });
             }
-        ),
-        mounted(){
-            this.userId = sessionStorage.userId;
-            this.orShow();
-            this.getNowPage();
-            this.getShoppingCar({
-                userId: this.userId,
-                pageIndex:this.$route.query.pageIndex/1 || 1,
-            });
         }
+    ),
+    mounted(){
+        this.userId = sessionStorage.userId;
+        this.orShow();
+        this.getNowPage();
+        this.getShoppingCar({
+            pageIndex:this.$route.query.pageIndex/1 || 1,
+        });
     }
+}
 </script>
 
 <style scoped>
