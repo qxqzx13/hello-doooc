@@ -6,6 +6,8 @@
             <p>{{designation.litie}}</p>
             <p>{{designation.litie}}</p>
             <p>{{designation.litie}}</p>
+            <p>{{designation.litie}}</p>
+            <p>{{designation.litie}}</p>
         </div>
 
     </div>
@@ -45,7 +47,7 @@
         margin:0 auto;
         font-size:24px;
         text-indent:48px;
-        padding-bottom:298px;
+        margin-bottom:298px;
     }
     .news .designation p{
         padding-bottom:66px;
