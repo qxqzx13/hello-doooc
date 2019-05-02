@@ -60,6 +60,7 @@
         },
         data(){
             return {
+                isShow:true,
                 nowPage : 1
             }
         },
@@ -110,7 +111,7 @@
                         this.isShow = false;
                         this.nowPage = this.shop.pageSum/1
                     }else if(this.shop.pageSum/1 === 1){
-                        this.isShow = true;
+                        this.isShow = false;
                     }else{
                         this.isShow = true;
                     }

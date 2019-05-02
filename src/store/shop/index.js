@@ -5,7 +5,7 @@ const state = {
     shopHomeCommodity: [], //商城首页用品
     shopHomeFood: [], //商城首页食品
     shopCar: [], //商城购物车，与详细信息是一页
-    pageSum:10,//总页数
+    pageSum:3,//总页数
     shopFoodSum:0
 }
 const actions = {
@@ -21,7 +21,7 @@ const actions = {
         )
     },
     getShoppingCar({commit}, obj) {//购物车
-        axios.get("/", {
+        axios.get("/buyer/order/gwc", {
             params:obj
         }).then(
             data => {
