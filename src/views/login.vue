@@ -1,35 +1,44 @@
 <template>
-    <div class="loginback">
+    <div class="debark">
+        <div class="loginback">
+            <el-form :model="adminForm" class="container" ref="ruleForm" :rules="rules">
+                <el-row>
+                    <el-col :span="24"><h2>账号登录</h2></el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="24">
+                        <el-form-item prop="adminName">
+                            <img src="../assets/petshop/img/ChatHead.png" alt="">
+                            <el-input placeholder="请输入手机号" v-model="adminForm.adminName" type="text"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
 
-        <el-form :model="adminForm" class="container" ref="ruleForm" :rules="rules">
-            <el-row>
-                <el-col :span="24"><h2>账号登录</h2></el-col>
-            </el-row>
-            <el-row>
-                <el-col :span="24">
-                    <el-form-item prop="adminName">
-                        <el-input placeholder="请输入手机号" v-model="adminForm.adminName" type="text"></el-input>
-                    </el-form-item>
-                </el-col>
-            </el-row>
-            <el-row>
-
-                <el-col :span="18">
-                    <el-form-item prop="passWord">
-                        <el-input placeholder="请输入验证码" v-model="adminForm.passWord" type="password"></el-input>
-                    </el-form-item>
-                </el-col>
-                <el-col :span="6">
-                    <el-button type="text" @click="getVerify" v-if="isShow">文字按钮</el-button>
-                    <el-button type="text" disabled v-else>{{num}}s重新发送</el-button>
-                </el-col>
-            </el-row>
-            <el-form-item>
-                <el-button type="primary" :loading="loading" @click="submitForm">登陆</el-button>
-            </el-form-item>
-        </el-form>
+                    <el-col :span="18">
+                        <el-form-item prop="passWord">
+                            <img src="../assets/petshop/img/save.png" alt="">
+                            <el-input placeholder="请输入验证码" v-model="adminForm.passWord" type="password"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <span></span>
+                    <el-col :span="6">
+                        <el-button type="text" @click="getVerify" v-if="isShow">获取验证码</el-button>
+                        <el-button type="text" disabled v-else>{{num}}s重新发送</el-button>
+                    </el-col>
+                </el-row>
+                <el-form-item>
+                    <el-button type="primary" :loading="loading" @click="submitForm">登陆</el-button>
+                </el-form-item>
+            </el-form>
+            <p>--------------------------<span>OR</span>--------------------------</p>
+            <ul class="ico">
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
     </div>
-
 </template>
 
 <script>
@@ -119,14 +128,13 @@
                 this.$message(msg);
             },
         },
-        mounted(){
-            let inp = document.querySelectorAll(".el-input__inner");
-            for(let i = 0,len=inp.length;i<len;i++){
-                inp[i].style.background = "transparent";
-                inp[i].style.border = "none";
-            }
-
-        }
+        // mounted(){
+        //     let inp = document.querySelectorAll(".el-input__inner");
+        //     for(let i = 0,len=inp.length;i<len;i++){
+        //         inp[i].style.background = "transparent";
+        //         inp[i].style.border = "none";
+        //     }
+        // }
     }
 </script>
 
@@ -140,88 +148,80 @@
         position: absolute;
         z-index: 111;
     }
-
-    .security {
+    .debark{
+        background:url("../assets/petshop/img/background.jpeg")no-repeat;
+        height:100%;
+        width:100%;
         position: absolute;
-        top: -38px;
-        right: 0;
+        display: block;
     }
-
-    .auth-code span {
-        color: #a0a0a0;
-        font-size: 26px;
-        height: 37px;
-        float: right;
-        padding-right: 114px;
+    .el-col h2{
+        padding-left:70px;
+        padding-top:54px;
+        font-weight:normal;
+        color:#fff;
     }
+    .el-form-item:nth-child(1){
+        width:414px;
+        margin-top:52px;
+        border-bottom:1px solid #fff;
+        margin-left:70px;
+    }
+    .el-form-item__content img{
 
-    .ashore {
-        position: absolute;
-        top: 210px;
-        left: 60px;
+
+    }
+    .el-button--primary{
+        width:414px;
+        height:60px;
+        font-size:24px;
         border: none;
+        margin-top:52px;
+        margin-left:70px;
+        background: rgba(181,181,181,0.6);
     }
-
-    .imgBack {
+    .el-button--text{
         position: absolute;
-        z-index: -100;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
+        left:394px;
+        top:54px;
+
     }
-
-    .debark {
-        height: 596px;
-        width: 554px;
-        border-radius: 10px;
+    .el-row>span{
+        height:34px;
+        border-left:1px solid #9e9e9e;
         position: absolute;
-        top:50%;
-        right:8%;
-        margin-top:-298px;
+        left:368px;
+        top: 56px;
+
+    }
+    .el-input{
+        width:60%;
+    }
+    .el-input__inner{
+    }
+    .el-button span{
+        font-size:18px;
+    }
+    .loginback{
+        height:596px;
+        width:554px;
         box-shadow:0px 20px 40px #000;
         background:rgba(160,160,160,.4);
+        position: absolute;
+        bottom:20%;
+        right:14%;
+        border-radius:10px;
     }
-    .debark h2{
-        color:#fff;
-        font-size:24px;
-        padding-top:54px;
+    .loginback>p{
+        padding-top:70px;
         padding-left:70px;
-        font-weight: normal;
+        color:#666666;
     }
-
-    .debark .plone-number {
-        height: 37px;
-        width: 414px;
-        border-bottom: 1px solid #fff;
-        position: absolute;
-        top: 126px;
-        left: 70px;
-        vertical-align: middle;
-        line-height: 30px;
+    .loginback>p>span{
+        padding:0 16px;
+        font-size:20px;
+        color:#ccc;
     }
-
-    .debark .auth-code {
-        height: 37px;
-        width: 414px;
-        border-bottom: 1px solid #fff;
-        position: absolute;
-        top: 212px;
-        left: 70px;
-        line-height: 30px;
-    }
-
-    .debark p {
-        position: absolute;
-        top: 428px;
-        left: 60px;
-    }
-
-    .debark p span {
-        font-size: 20px;
-        color: #ccc;
-    }
-
     .ico {
         position: absolute;
         bottom: 60px;
