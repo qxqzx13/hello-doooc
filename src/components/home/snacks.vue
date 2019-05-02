@@ -5,24 +5,24 @@
             <img src="../../assets/home/img/snacks.jpg" />
         </div>
         <ul>
-            <li v-for="item in home.homeSnacks" @click="$router.push({path:item.productType})">
-                <img :src="item.productIcon" />
+            <!--<li v-for="item in home.homeSnacks" @click="$router.push({path:item.productType})">-->
+                <!--<img :src="item.productIcon" />-->
+            <!--</li>-->
+            <li>
+                <img src="../../assets/home/img/one.jpg" />
             </li>
-            <!--<li>-->
-                <!--<img src="../../assets/home/img/one.jpg" />-->
-            <!--</li>-->
-            <!--<li>-->
-                <!--<img src="../../assets/home/img/two.jpg" />-->
-            <!--</li>-->
-            <!--<li>-->
-                <!--<img src="../../assets/home/img/three.jpg" />-->
-            <!--</li>-->
-            <!--<li>-->
-                <!--<img src="../../assets/home/img/fure.jpg" />-->
-            <!--</li>-->
-            <!--<li>-->
-                <!--<img src="../../assets/home/img/five.jpg" />-->
-            <!--</li>-->
+            <li>
+                <img src="../../assets/home/img/two.jpg" />
+            </li>
+            <li>
+                <img src="../../assets/home/img/three.jpg" />
+            </li>
+            <li>
+                <img src="../../assets/home/img/fure.jpg" />
+            </li>
+            <li>
+                <img src="../../assets/home/img/five.jpg" />
+            </li>
         </ul>
     </div>
 </template>
@@ -33,7 +33,7 @@
         computed :mapState(["home"]),
         methods:mapActions(["getSnacks"]),
         mounted(){
-            this.getSnacks();
+            // this.getSnacks();
         }
     }
 </script>

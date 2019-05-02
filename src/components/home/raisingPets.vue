@@ -4,34 +4,34 @@
         <div class="over">
 
             <div class="details">
-                <div v-for="item in home.homeTeach" @click="$router.push({path:item.productType})">
-                    <h4>{{item.productName}}</h4>
-                    <img :src="item.productIcon" />
+                <!--<div v-for="item in home.homeTeach" @click="$router.push({path:item.productType})">-->
+                    <!--<h4>{{item.productName}}</h4>-->
+                    <!--<img :src="item.productIcon" />-->
+                <!--</div>-->
+                <div @click="">
+                    <h4>美容沙龙</h4>
+                    <img src="../../assets/home/img/001.jpg" />
                 </div>
-                <!--<div @click="">-->
-                    <!--<h4>美容沙龙</h4>-->
-                    <!--<img src="../../assets/home/img/001.jpg" />-->
-                <!--</div>-->
-                <!--<div>-->
-                    <!--<h4>洗护清洁</h4>-->
-                    <!--<img src="../../assets/home/img/002.jpg" />-->
-                <!--</div>-->
-                <!--<div>-->
-                    <!--<h4>爱宠训练</h4>-->
-                    <!--<img src="../../assets/home/img/003.jpg" />-->
-                <!--</div>-->
-                <!--<div>-->
-                    <!--<h4>兽医护理</h4>-->
-                    <!--<img src="../../assets/home/img/004.jpg" />-->
-                <!--</div>-->
-                <!--<div>-->
-                    <!--<h4>爱宠寄养</h4>-->
-                    <!--<img src="../../assets/home/img/005.jpg" />-->
-                <!--</div>-->
-                <!--<div>-->
-                    <!--<h4>领养中心</h4>-->
-                    <!--<img src="../../assets/home/img/006.jpg" />-->
-                <!--</div>-->
+                <div>
+                    <h4>洗护清洁</h4>
+                    <img src="../../assets/home/img/002.jpg" />
+                </div>
+                <div>
+                    <h4>爱宠训练</h4>
+                    <img src="../../assets/home/img/003.jpg" />
+                </div>
+                <div>
+                    <h4>兽医护理</h4>
+                    <img src="../../assets/home/img/004.jpg" />
+                </div>
+                <div>
+                    <h4>爱宠寄养</h4>
+                    <img src="../../assets/home/img/005.jpg" />
+                </div>
+                <div>
+                    <h4>领养中心</h4>
+                    <img src="../../assets/home/img/006.jpg" />
+                </div>
             </div>
         </div>
     </div>
