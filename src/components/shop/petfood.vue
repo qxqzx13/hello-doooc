@@ -4,12 +4,12 @@
         <div class="foodimg" @click="$router.push({name:'food'})"></div>
         <div class="food-list">
             <ul>
-                <li v-for="item in shop.shopHomeFood"><img :src="item.productIcon" @click="$router.push({name:'food',query:{productType:item.productType,typeId:item.typeId}})"></li>
-                <!--<li><img src="../../assets/petshop/img/002_01.jpg" alt=""></li>
+                <!--<li v-for="item in shop.shopHomeFood"><img :src="item.productIcon" @click="$router.push({name:'food',query:{productType:item.productType,typeId:item.typeId}})"></li>-->
+                <li><img src="../../assets/petshop/img/002_01.jpg" alt=""></li>
                 <li><img src="../../assets/petshop/img/002_02.jpg" alt=""></li>
                 <li><img src="../../assets/petshop/img/002_03.jpg" alt=""></li>
                 <li><img src="../../assets/petshop/img/002_04.jpg" alt=""></li>
-                <li><img src="../../assets/petshop/img/002_05.jpg" alt=""></li>-->
+                <li><img src="../../assets/petshop/img/002_05.jpg" alt=""></li>
             </ul>
         </div>
     </div>

@@ -4,11 +4,11 @@
         <div class="commodity-img"  @click="$router.push({name:'daily'})"></div>
         <div class="commodity-list">
             <ul>
-                <li v-for="item in shop.shopHomeCommodity"><img :src="item.productIcon" @click="$router.push({name:'daily',query:{typeId:item.typeId,productType:item.productType}})"></li>
-                <!--<li><img src="../../assets/petshop/img/003_01.jpg" alt=""></li>
+                <!--<li v-for="item in shop.shopHomeCommodity"><img :src="item.productIcon" @click="$router.push({name:'daily',query:{typeId:item.typeId,productType:item.productType}})"></li>-->
+                <li><img src="../../assets/petshop/img/003_01.jpg" alt=""></li>
                 <li><img src="../../assets/petshop/img/003_02.jpg" alt=""></li>
                 <li><img src="../../assets/petshop/img/003_03.jpg" alt=""></li>
-                <li><img src="../../assets/petshop/img/003_04.jpg" alt=""></li>-->
+                <li><img src="../../assets/petshop/img/003_04.jpg" alt=""></li>
             </ul>
         </div>
     </div>

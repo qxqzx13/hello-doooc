@@ -1,6 +1,8 @@
 <template>
     <div class="debark">
+        <img src="../assets/petshop/img/background.jpeg" class="imgBack">
         <div class="loginback">
+
             <el-form :model="adminForm" class="container" ref="ruleForm" :rules="rules">
                 <el-row>
                     <el-col :span="24"><h2>账号登录</h2></el-col>
@@ -128,13 +130,13 @@
                 this.$message(msg);
             },
         },
-        // mounted(){
-        //     let inp = document.querySelectorAll(".el-input__inner");
-        //     for(let i = 0,len=inp.length;i<len;i++){
-        //         inp[i].style.background = "transparent";
-        //         inp[i].style.border = "none";
-        //     }
-        // }
+        mounted(){
+            let inp = document.querySelectorAll(".el-input__inner");
+            for(let i = 0,len=inp.length;i<len;i++){
+                inp[i].style.background = "transparent";
+                inp[i].style.border = "none";
+            }
+        }
     }
 </script>
 
@@ -148,12 +150,13 @@
         position: absolute;
         z-index: 111;
     }
-    .debark{
-        background:url("../assets/petshop/img/background.jpeg")no-repeat;
-        height:100%;
-        width:100%;
+    .imgBack{
         position: absolute;
-        display: block;
+        z-index: -100;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
     }
     .el-col h2{
         padding-left:70px;

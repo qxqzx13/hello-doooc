@@ -5,7 +5,12 @@
         <div><img src="../../assets/petshop/img/004_01.png"></div>
         <div class="agora-list">
             <ul>
-                <li v-for="item in shop.shopHomeAgora"><img :src="item.productIcon" @click="$router.push({name:'petmarket',query:{productType:item.productType}})"></li>
+                <!--<li v-for="item in shop.shopHomeAgora"><img :src="item.productIcon" @click="$router.push({name:'petmarket',query:{productType:item.productType}})"></li>-->
+
+                <li><img src="../../assets/petshop/img/004_02.jpg" alt=""></li>
+                <li><img src="../../assets/petshop/img/004_03.jpg" alt=""></li>
+                <li><img src="../../assets/petshop/img/004_04.jpg" alt=""></li>
+                <li><img src="../../assets/petshop/img/004_05.jpg" alt=""></li>
             </ul>
         </div>
     </div>
