@@ -22,9 +22,9 @@ Vue.prototype.$axios = axios;
 /**************请求拦截添加请求头*******************************/
 axios.interceptors.request.use(config=>{
     config.url = "/hello"+config.url;
-    // config.headers={
-    //     "authorization":localStorage.token
-    // }
+    config.headers={
+        "authorization":localStorage.token
+    }
     return config;
 })
 

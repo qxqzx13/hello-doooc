@@ -1,12 +1,29 @@
 import axios from "axios";
 const state = {
-    shoppingCar: [], //商品信息详情页
+    shoppingCar:{
+        productName: "吴系挂",
+        goodsId: 2 ,
+        productAge: "幼宠",
+            productDescription:[
+                {
+                    value:1,
+                    label:"口味1"
+                },
+                {
+                    value:2,
+                    label:"口味2"
+                }
+            ],
+    productSize:"500g",
+    productPrice:500,
+    productPastDare:"18个月"
+}, //商品信息详情页
     shopHomeAgora: [], //商城首页市场
     shopHomeCommodity: [], //商城首页用品
     shopHomeFood: [], //商城首页食品
     shopCar: [], //商城购物车，与详细信息是一页
-    pageSum:10,//总页数
-    shopFoodSum:0
+    pageSum:3,//总页数
+    shopFoodSum:0,
 }
 const actions = {
     toShoppingCar({commit}, id) {//商品详情
@@ -16,16 +33,7 @@ const actions = {
             }
         }).then(
             data => {
-                commit("CAHNGE_SHOPPING_CAR", data.rows);
-            }
-        )
-    },
-    getShoppingCar({commit}, obj) {//购物车
-        axios.get("/", {
-            params:obj
-        }).then(
-            data => {
-                commit("CAHNGE_SHOP_CAR", data.rows);
+                commit("CAHNGE_SHOPPING_CAR",data.rows);
             }
         )
     },
@@ -33,7 +41,7 @@ const actions = {
         axios.get("/buyer/product/dlcw").then(
             data => {
                 console.log("市场",data);
-                commit("CAHNGE_SHOP_HOME_AGORA", data.rows);
+                commit("CAHNGE_SHOP_HOME_AGORA",data.rows);
             }
         )
     },
@@ -41,7 +49,7 @@ const actions = {
         axios.get("/buyer/product/dlry").then(
             data => {
                 console.log("用品",data);
-                commit("CAHNGE_SHOP_HOME_COMMODITY", data.rows);
+                commit("CAHNGE_SHOP_HOME_COMMODITY",data.rows);
             }
         )
     },
@@ -50,7 +58,7 @@ const actions = {
             ({ data }) => {
                 data = { data }.data;
                 console.log("主食",data);
-                commit("CAHNGE_SHOP_HOME_PETFOOD", data.rows);
+                commit("CAHNGE_SHOP_HOME_PETFOOD",data.rows);
             }
         )
     },
@@ -62,18 +70,54 @@ const actions = {
         }).then(
             data => {
             console.log("search",data)//未测试
-        commit("CAHNGE_SHOP_HOME_PETMARKET", data.rows);
+        commit("CAHNGE_SHOP_HOME_PETMARKET",data.rows);
     })
     },
-    deleteCarFood({commit},obj){//删除购物车信息
-        axios.get("/",{
+    deleteCarFood({commit},goodsId){//删除购物车信息
+        axios.delete("/buyer/order/gwcdelete",{
+            params:{
+                goodsId
+            }
+        }).then(
+            data => {
+                if(data.ok !== 1)
+                    alert(data.msg)
+                }
+        )},
+    getShoppingCar({commit}, obj) {//购物车
+        axios.get("/buyer/order/gwc", {
             params:obj
         }).then(
-            ({ data }) => {
-            data = { data }.data
-            commit("CAHNGE_SHOP_HOME_PETMARKET", data.rows);
-        })
+            data => {
+                commit("CAHNGE_SHOP_CAR",data);
+            }
+        )
+    },
+    shoppingCarGoodsNum({commit},obj){//修改购物车内商品数量
+        axios.get("/buyer/order/gwcGoodsNum", {
+            params:obj
+        }).then(
+            data=> {
+            if(data.ok !== 1
+)
+    {
+        alert(data.msg)
     }
+})
+    },
+    addGoodsToCar({commit},obj){
+        axios.get("/buyer/order/gwcGoodsNum", {
+            params:obj
+        }).then(
+            data=> {
+            if(data.ok !== 1
+    )
+        {
+            alert(data.msg)
+        }
+
+    })
+}
 }
 const mutations = {
     CAHNGE_SHOPPING_CAR(state, arr) {//商品详情
