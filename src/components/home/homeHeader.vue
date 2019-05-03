@@ -10,7 +10,7 @@
                     </ul>
                 </div>
                 <div class="loginOut">
-                    <el-button type="text" v-if="loginName === null">登陆</el-button>
+                    <el-button type="text" v-if="loginName === null" @click="$router.push('/login')">登陆</el-button>
                     <el-button type="text" v-if="loginName !== null">退出</el-button>
                 </div>
                 <div class="logo">

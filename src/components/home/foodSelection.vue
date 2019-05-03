@@ -12,7 +12,7 @@
                 <!--<img :src="item.productIcon" />-->
                 <!--<p>{{item.productDescription}}</p>-->
             <!--</li>-->
-            <li>
+            <li @click="$router.push({name:'shoppingcar',query:{productId:item.productId}})">
                 <img src="../../assets/home/img/a.jpg" alt="">
                 <p>
                     深海鱼油含有非常丰富的多元不饱和脂肪酸促进毛囊脂腺和表皮分泌,让毛发更加靓丽,还可以健脑益智,使宠物更加活泼聪明

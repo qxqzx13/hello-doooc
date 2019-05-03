@@ -5,7 +5,7 @@
         <div class="food-list">
             <ul>
                 <!--<li v-for="item in shop.shopHomeFood"><img :src="item.productIcon" @click="$router.push({name:'food',query:{productType:item.productType,typeId:item.typeId}})"></li>-->
-                <li><img src="../../assets/petshop/img/002_01.jpg" alt=""></li>
+                <li @click="$router.push('/food')"><img src="../../assets/petshop/img/002_01.jpg" alt=""></li>
                 <li><img src="../../assets/petshop/img/002_02.jpg" alt=""></li>
                 <li><img src="../../assets/petshop/img/002_03.jpg" alt=""></li>
                 <li><img src="../../assets/petshop/img/002_04.jpg" alt=""></li>
