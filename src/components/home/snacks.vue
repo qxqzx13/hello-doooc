@@ -9,7 +9,7 @@
                 <!--<img :src="item.productIcon" />-->
             <!--</li>-->
             <li>
-                <img src="../../assets/home/img/one.jpg" />
+                <img src="../../assets/home/img/one.jpg" @click="$router.push('')"/>
             </li>
             <li>
                 <img src="../../assets/home/img/two.jpg" />
