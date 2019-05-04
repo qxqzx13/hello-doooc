@@ -5,8 +5,8 @@
             <div class="pet-cat1" v-for="item in petmarket.petShowArr" @click="$router.push({name:'petmarkettwo',query:{productDescription:item.productDescription}})">
                 <div class="photo"><img :src="item.productIcon"></div>
                 <h2>{{item.productPrice}}</h2>
-                <p>{{item.productName}}</p>
-                <h4>品种：{{item.productType}}</h4>
+                <p>{{item.typeName}}</p>
+                <h4>品种：{{item.typeId}}</h4>
                 <h5><img src="../../assets/petmarket/img/shopcar.svg"></h5>
             </div>
             <!--<div class="pet-cat1" @click="$router.push('/petmarkettwo')">
@@ -80,7 +80,7 @@
                 this.$router.push({
                     query:{
                         pageIndex:this.$route.query.pageIndex/1-1,
-                        productType:this.$route.query.productType/1 || 1,
+                        typeId:this.$route.query.typeId/1 || 1,
                         boyOrGirl:this.$route.query.boyOrGirl/1 || 1,
                         petAge:this.$route.query.petAge/1 || 1,
                         dogOrCat:this.$route.query.dogOrCat/1 || 1
@@ -96,7 +96,7 @@
                 this.$router.push({
                     query:{
                         pageIndex:this.$route.query.pageIndex/1+1,
-                        productType:this.$route.query.productType/1 || 1,
+                        typeId:this.$route.query.typeId/1 || 1,
                         boyOrGirl:this.$route.query.boyOrGirl/1 || 1,
                         petAge:this.$route.query.petAge/1 || 1,
                         dogOrCat:this.$route.query.dogOrCat/1 || 1
@@ -130,7 +130,7 @@
             this.orShow();
             this.getNowPage();
             this.getPetShow({
-                productType: this.$route.query.productType/1 || 1,
+                typeId: this.$route.query.typeId/1 || 1,
                 pageIndex:this.$route.query.pageIndex/1 || 1,
                 boyOrGirl:this.$route.query.boyOrGirl/1 || 1,
                 petAge:this.$route.query.petAge/1 || 1,

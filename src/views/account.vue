@@ -6,7 +6,7 @@
                 <div class="petpic"></div>
                 <h3>确认购买</h3>
                 <div class="sss">
-                    <h1></h1>
+                    <h1 @click="$router.push('/shoppingcar')"></h1>
                     <shipping-address></shipping-address>
                 </div>
             </div>
@@ -71,6 +71,8 @@ export default {
         margin-left:370px;
         position: relative;
     }
-        
+    .middle #car .sss h1{
+        cursor: pointer;
+    }
   
 </style>

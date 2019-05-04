@@ -128,7 +128,9 @@
         font-size: 12px;
         padding-left: 4px
     }
-
+    .shopping-car p{
+        color:#000;
+    }
     .header .header-box .seek .sou {
         margin-top: 32px;
         width: 50px;

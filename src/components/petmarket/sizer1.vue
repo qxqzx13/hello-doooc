@@ -15,7 +15,7 @@
                     <ul>
                         <li
                             v-for="item in petmarket.filtrateType"
-                            @click="setType(item.productType)">{{item.productName}}</li>
+                            @click="setType(item.typeId)">{{item.typeName}}</li>
                         <!--<li>暹罗猫</li>-->
                         <!--<li>布偶猫</li>-->
                         <!--<li>虎斑猫</li>-->
@@ -55,7 +55,7 @@
 <script>
 import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
 export default {
-    name:"sizer1",
+      name:"sizer1",
     computed :mapState(["petmarket"]),
     data(){
         return{
@@ -64,8 +64,8 @@ export default {
     },
     methods: Object.assign(mapActions(["getPetShow"]),{
         setAge(num){
-            if(!this.$route.query.productType){
-                this.$route.query.productType=1
+            if(!this.$route.query.typeId){
+                this.$route.query.typeId=1
             }
             if(!this.$route.query.boyOrGirl){
                 this.$route.query.boyOrGirl=1
@@ -79,7 +79,7 @@ export default {
             this.$router.push({
                 query:{
                     pageIndex:1,
-                    productType:this.$route.query.productType/1,
+                    typeId:this.$route.query.typeId/1,
                     boyOrGirl:this.$route.query.boyOrGirl/1,
                     petAge:num,
                     dogOrCat:this.$route.query.dogOrCat/1
@@ -87,8 +87,8 @@ export default {
             });
         },
     setBoyOrGirl(num){
-        if(!this.$route.query.productType){
-            this.$route.query.productType=1
+        if(!this.$route.query.typeId){
+            this.$route.query.typeId=1
         }
         if(!this.$route.query.boyOrGirl){
             this.$route.query.boyOrGirl=1
@@ -102,7 +102,7 @@ export default {
         this.$router.push({
             query:{
                 pageIndex:1,
-                productType:this.$route.query.productType/1,
+                typeId:this.$route.query.typeId/1,
                 boyOrGirl:num,
                 petAge:this.$route.query.petAge/1,
                 dogOrCat:this.$route.query.dogOrCat/1
@@ -110,8 +110,8 @@ export default {
         });
     },
     setType(num){
-        if(!this.$route.query.productType){
-            this.$route.query.productType=1
+        if(!this.$route.query.typeId){
+            this.$route.query.typeId=1
         }
         if(!this.$route.query.boyOrGirl){
             this.$route.query.boyOrGirl=1
@@ -125,7 +125,7 @@ export default {
         this.$router.push({
             query:{
                 pageIndex:1,
-                productType:num,
+                typeId:num,
                 boyOrGirl:this.$route.query.boyOrGirl/1,
                 petAge:this.$route.query.petAge/1,
                 dogOrCat:this.$route.query.dogOrCat/1
@@ -135,7 +135,7 @@ export default {
     }),
     mounted(){
         this.getPetShow({
-            productType: this.$route.query.productType/1 || 1,
+            typeId: this.$route.query.typeId/1 || 1,
             pageIndex:this.$route.query.pageIndex/1 || 1,
             boyOrGirl:this.$route.query.boyOrGirl/1 || 1,
             petAge:this.$route.query.petAge/1 || 1,

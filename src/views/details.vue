@@ -1,7 +1,7 @@
  <template>
         <!-- 购物车详情 -->
         <div class="cpp">
-            {{shoppingCar}}}
+
             <navigation></navigation>
             <div id="middle">
                 <div id="car">
@@ -21,7 +21,7 @@
                                 </li>
                                 <li>
                                     <p class="taste">口味</p>
-                                    <el-select v-model="value" placeholder="请选择">
+                                    <el-select v-model="value" placeholder="请选择" style="height:16px;">
                                         <el-option
                                                 v-for="item in $store.state.shop.shoppingCar.productDescription"
                                                 :key="item.value"
@@ -60,6 +60,13 @@
     </template>
 
 <script>
+    var inner = document.querySelectorAll(".el-option");
+    console.log(inner)
+    for(let i = 0,len = inner.length;i<len;i++){
+        inner.style.background = "transparent";
+        inner.style.border = "none";
+    }
+    // inner.style.background = "transparent";
     import navigation from "../components/shopcommonality/navigation";
     import commonFooter from "../components/common/commonFooter.vue";
     import {mapState, mapMutations, mapGetters, mapActions} from "vuex";
@@ -112,6 +119,7 @@
             commonFooter
         }
     }
+
 </script>
 
 <style scoped>
@@ -257,6 +265,10 @@
         line-height:30px;
         height:30px;
     }
+    .details-detail ul li:nth-child(2){
+        height:40px;
+        line-height:40px;
+    }
     .taste{
         text-align: justify;
 
@@ -269,5 +281,15 @@
     .taste1{
         text-align: justify;
         text-align-last: justify;
+    }
+    .el-select{
+        position: absolute;
+        top:16px;
+        left:94px;
+        height:16px;
+        width:98px;
+    }
+    .el-input--suffix .el-input__inner{
+        background: transparent;
     }
 </style>

@@ -11,9 +11,8 @@
             <div class="small-classify">
                 <ul>
                     <li>分类:</li>
-                    <li class="cat" @click="setBoyOrGirl(1)">全部</li>
-                    <li class="cat" @click="setBoyOrGirl(2)">喵喵</li>
-                    <li class="dog" @click="setBoyOrGirl(3)">汪汪</li>
+                    <li class="cat" @click="setBoyOrGirl(1)">喵喵</li>
+                    <li class="dog" @click="setBoyOrGirl(2)">汪汪</li>
                 </ul>
             </div>
         </div>
@@ -27,8 +26,8 @@
         computed :mapState(["petmarket"]),
         methods: Object.assign(mapActions(["getPetShow"]),mapMutations(["CHANGE_PRODUCT_TYPE"]),{
             setBoyOrGirl(num){
-                if(!this.$route.query.productType){
-                    this.$route.query.productType=1
+                if(!this.$route.query.typeId){
+                    this.$route.query.typeId=1
                 }
                 if(!this.$route.query.boyOrGirl){
                     this.$route.query.boyOrGirl=1
@@ -42,7 +41,7 @@
                 this.$router.push({
                     query:{
                         pageIndex:1,
-                        productType:this.$route.query.productType/1,
+                        typeId:this.$route.query.typeId/1,
                         boyOrGirl:this.$route.query.boyOrGirl/1,
                         petAge:this.$route.query.petAge/1,
                         dogOrCat:num
@@ -52,7 +51,7 @@
         }),
         mounted(){
             this.getPetShow({
-                productType: this.$route.query.productType/1 || 1,
+                typeId: this.$route.query.typeId/1 || 1,
                 pageIndex:this.$route.query.pageIndex/1 || 1,
                 boyOrGirl:this.$route.query.boyOrGirl/1 || 1,
                 petAge:this.$route.query.petAge/1 || 1,

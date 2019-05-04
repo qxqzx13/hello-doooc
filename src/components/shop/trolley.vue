@@ -25,7 +25,7 @@
             <ul class="close">
                 <li>
                     <el-row>
-                        <el-button @click="downPage" v-show="$route.query.pageIndex > 1">上一页</el-button>
+                        <el-button @click="downPage">上一页</el-button>
                     </el-row>
                 </li>
                 <li>合计:</li>
@@ -36,11 +36,12 @@
                     </el-row>
                 </li>
                 <li>
-                    <p class="curpage">当前第{{nowPage}}页/共{{shop.pageSum}}页</p>
                     <el-row>
                         <el-button @click="upPage" v-show="isShow">下一页</el-button>
                     </el-row>
                 </li>
+                <li class="curpage">当前第{{nowPage}}页/共{{shop.pageSum}}页</li>
+
             </ul>
         </div>
     </div>
@@ -170,6 +171,7 @@
         position: absolute;
         top: 234px;
         left: -48px;
+        cursor: pointer;
     }
 
     .mattou {
@@ -259,7 +261,7 @@
     }
 
     .close li:nth-child(2) {
-        margin-left: 100px;
+        margin-left: 136px;
     }
 
     .close li:nth-child(3) {
@@ -271,10 +273,11 @@
     }
 
     .close li:nth-child(5) {
-        margin-left: 50px;
+        margin-left:138px;
     }
 
     .close li:nth-child(6) {
-        margin-left: 110px;
+        margin-left: 282px;
+        margin-top:10px;
     }
 </style>

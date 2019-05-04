@@ -4,7 +4,7 @@
     <div class="picture">
         <div class="picture picture1" v-for="item in petmarket.petmarketSale">
             <div class="small-picture"><img :src="item.productIcon" alt=""></div>
-            <p>item.productName</p>
+            <p>item.typeName</p>
         </div>
 <!--
           <div class="picture picture1">
@@ -20,6 +20,23 @@
             <p>1111</p>
         </div>-->
     </div>
+      <div class="petdetails">
+          <div class="process-box-background"></div>
+          <h3>宠物详细</h3>
+          <h2>出售纯种健康宠物猫布偶猫支持上门挑选送货上门{{petIntroduce}}</h2>
+          <h5>价格<span>{{getPrice}}</span>元/只</h5>
+          <ul>
+              <li>在售只数<p>{{petNum}}</p></li>
+              <li>年龄<p>{{petAge}}</p></li>
+              <li>品种<p>{{dogOrCat}}</p></li>
+              <li>性别<p>{{boyOrGirl}}</p></li>
+              <li>驱虫情况<p>已驱虫</p></li>
+          </ul>
+          <el-row @click="$router.push('/shoppingcar')" native-type="submit">
+              <el-button round>加入购物车</el-button>
+          </el-row>
+      </div>
+
     <div class="process">
       <div class="process-box-background"></div>
       <div class="process-box">
@@ -149,6 +166,47 @@ div,ul,li,h1,h2,h3,h4,h6,span,img,i,b,p,h5{
   width: 750px;
   margin: 0 auto;
   position: relative;
+}
+.particulars .petdetails{
+    box-shadow: 0 0 10px #808080;
+    height: 476px;
+    width: 750px;
+    margin: 0 auto;
+    position: relative;
+    margin-bottom:92px;
+}
+.particulars .petdetails h3{
+
+}
+.particulars .petdetails h2{
+    height:52px;
+    width:288px;
+    text-align: left;
+    line-height:30px;
+    font-size:24px;
+    font-weight:400;
+    color:black;
+}
+.particulars .petdetails h5{
+
+}
+.particulars .petdetails ul{
+
+}
+.particulars .petdetails ul li{
+
+}
+.particulars .petdetails ul li p{
+    display: inline-table;
+}
+.el-button{
+    position: absolute;
+    bottom:-204px;
+    right:32px;
+    background: #f5a64a;
+}
+.el-button:focus{
+    background:#f5a64a;
 }
 .process-box{
     z-index: 3;
