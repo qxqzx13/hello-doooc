@@ -21,22 +21,23 @@
         </div>-->
     </div>
       <div class="petdetails">
-          <div class="process-box-background"></div>
-          <h3>宠物详细</h3>
-          <h2>出售纯种健康宠物猫布偶猫支持上门挑选送货上门{{petIntroduce}}</h2>
-          <h5>价格<span>{{getPrice}}</span>元/只</h5>
-          <ul>
-              <li>在售只数<p>{{petNum}}</p></li>
-              <li>年龄<p>{{petAge}}</p></li>
-              <li>品种<p>{{dogOrCat}}</p></li>
-              <li>性别<p>{{boyOrGirl}}</p></li>
-              <li>驱虫情况<p>已驱虫</p></li>
-          </ul>
-          <el-row @click="$router.push('/shoppingcar')" native-type="submit">
-              <el-button round>加入购物车</el-button>
+          <div class="petdetails-box-background"></div>
+          <div class="center">
+              <h3>宠物详细</h3>
+              <h2>出售纯种健康宠物猫布偶猫支持上门挑选送货上门{{petIntroduce}}</h2>
+              <h5>价格<span>{{getPrice}}3000</span>元/只</h5>
+              <ul>
+                  <li><p>在售只数</p><span>{{petNum}}</span></li>
+                  <li><p class="tastecenter">年龄</p><span>{{petAge}}</span></li>
+                  <li><p class="tastecenter">品种</p><span>{{dogOrCat}}</span></li>
+                  <li><p class="tastecenter">性别</p><span>{{boyOrGirl}}</span></li>
+                  <li><p>驱虫情况</p><span>已驱虫</span></li>
+              </ul>
+          </div>
+          <el-row>
+              <el-button round @click="$router.push('/shoppingcar')">加入购物车</el-button>
           </el-row>
       </div>
-
     <div class="process">
       <div class="process-box-background"></div>
       <div class="process-box">
@@ -175,10 +176,31 @@ div,ul,li,h1,h2,h3,h4,h6,span,img,i,b,p,h5{
     position: relative;
     margin-bottom:92px;
 }
-.particulars .petdetails h3{
+.petdetails .petdetails-box-background{
+    position:absolute;
+    height: 476px;
+    width: 750px;
+    background-image:url(../../assets/petmarket/img/bg.png);
+    background-size:100% 100%;
+    opacity:0.7;
+    bottom:0;
+    left:0;
+}
+.particulars .petdetails .center{
+    width:404px;
+    height:100%;
+    margin:0 auto;
+    position: relative;
+    text-align: left;
 
 }
-.particulars .petdetails h2{
+.particulars .petdetails .center h3{
+    padding-top:20px;
+    text-align: left;
+    font-size:30px;
+    padding-left:10px;
+}
+.particulars .petdetails .center h2{
     height:52px;
     width:288px;
     text-align: left;
@@ -186,22 +208,52 @@ div,ul,li,h1,h2,h3,h4,h6,span,img,i,b,p,h5{
     font-size:24px;
     font-weight:400;
     color:black;
+    padding-top:46px;
+    padding-left:10px;
 }
-.particulars .petdetails h5{
+.particulars .petdetails .center h5{
+    font-weight:400;
+    padding-top:40px;
+    font-size:24px;
+    padding-left:10px;
+}
+.particulars .petdetails .center h5 span{
+    color:#ff3366;
+    padding:0 10px;
+}
+.particulars .petdetails .center ul{
+    padding-top:46px;
+}
+.particulars .petdetails .center ul li{
 
 }
-.particulars .petdetails ul{
-
+.particulars .petdetails .center ul li:nth-child(even){
+    height:58px;
+    line-height:58px;
 }
-.particulars .petdetails ul li{
-
+.particulars .petdetails .center ul li:nth-child(odd){
+    background:#e5cbad;
+    height:22px;
 }
-.particulars .petdetails ul li p{
+.particulars .petdetails .center ul li p{
     display: inline-table;
+
+}
+.particulars .petdetails .center ul li span{
+    padding-left:30px;
+}
+.tastecenter{
+    text-align: justify;
+    width:64px;
+}
+.tastecenter:after {
+    display: inline-block;
+    width: 100%;
+    content: '';
 }
 .el-button{
     position: absolute;
-    bottom:-204px;
+    bottom:20px;
     right:32px;
     background: #f5a64a;
 }
@@ -309,6 +361,7 @@ div,ul,li,h1,h2,h3,h4,h6,span,img,i,b,p,h5{
     bottom:0;
     left:0;
 }
+
 .particulars .care .character .rotate {
   margin-top: 28px;
   float: left;
