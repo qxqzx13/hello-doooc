@@ -6,7 +6,7 @@
                 <div class="petpic"></div>
                 <h3>确认购买</h3>
                 <div class="sss">
-                    <h1 @click="$router.push('/shoppingcar')"></h1>
+                    <h1 @click="$router.go(-1)"></h1>
                     <shipping-address></shipping-address>
                 </div>
             </div>
@@ -31,7 +31,7 @@ export default {
 }
 </script>
 
-<style  >
+<style scoped>
     div,ul,li,h1,h2,h3,h4,h6,span,img,i,b,p,h5,input{
         margin:0;
         padding:0;

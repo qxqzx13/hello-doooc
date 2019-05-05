@@ -3,7 +3,7 @@
     <div class="sss">
         <gempty v-if="!shop.shopCar"></gempty><!--空车-->
         <div v-else class="details-cart">
-            <h1></h1>
+            <h1 @click="$router.go(-1)"></h1>
             <div class="mattou">
                 <div class="matter" v-for="item in shop.shopCar">
                     <ul>
