@@ -1,26 +1,19 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const formidable = require("formidable");
 const db = require("./module/db2");
+const fs = require("fs");
 const jwt = require("./module/jwt");
 const {upPic} = require("./module/upPic")
 const app = express();
 app.use(bodyParser.json());
 app.all("*",function (req,res,next) {
-    // res.header("Access-Control-Allow-Origin","*");
-    // res.header("Access-Control-Allow-Headers","content-type,authorization");
-    // res.header("Access-Control-Allow-Methods","DELETE,PUT,GET,POST,OPTIONS");
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Headers","content-type,authorization");
+    res.header("Access-Control-Allow-Methods","DELETE,PUT,GET,POST,OPTIONS");
     next();
 })
 
-//个人中心里的用户信息的中间层
-app.get("/userInfo",function (req,res) {  
-    let url = "https://XXXXXXXXXX";
-    request(url,function (err,responesText,body) {  
-        if(!err && responesText.statusCode === 200) {
-            res.json({})
-        }
-    })
-})
 //tl 登录
 app.post("/login",function (req,res) {
     db.findOne("adminList",{//查找账号密码
@@ -33,38 +26,50 @@ app.post("/login",function (req,res) {
                 addTime:Date.now()
             },function () {
                 // 成功
-                res.json({//返回token
-                    ok:1,
-                    adminName:info.adminName,
-                    adminId:info._id,
-                    token:jwt.getToken(info._id,info.adminName)
+                res.json({
+                    data:{//返回token
+                        ok:1,
+                        adminName:info.adminName,
+                        adminId:info._id,
+                        token:jwt.getToken(info._id,info.adminName)
+                    }
                 })
             })
         }else{
             // 失败
             res.json({
-                ok:-1,
-                msg:"登陆失败"
+                data:{
+                    ok:-1,
+                    msg:"登陆失败"
+                }
             })
         }
     })
 });
 //tl 添加user
-app.post("addUser",function(req,res){
+app.get("/addUser",function(req,res){
     db.insertOne('adminList',{
-        adminName:req.body.userName,
-
+        adminName:req.query.userName,
+        passWord:req.query.passWord
     },function(err){
         if(!err){
-            res.json({
-                ok:1,
-                msg:"添加成功"
-            })
+            res.json(
+                {
+                    data:{
+                        ok:1,
+                        msg:"添加成功"
+                    }
+                }
+            )
         }else{
-            res.json({
-                ok:-1,
-                msg:"添加失败"
-            })
+            res.json(
+                {
+                    data:{
+                        ok:-1,
+                        msg:"添加失败"
+                    }
+                }
+            )
         }
     })
 })
@@ -106,24 +111,28 @@ app.get("getPet",function(req,res){
                 }
             },function (err,adminLog) {
                 res.json(
-                {
-                    ok:1,
-                    data:adminLog,
-                    pageIndex,
-                    pageSum
-                }
+                    {
+                        data:{
+                            ok:1,
+                            data:adminLog,
+                            pageIndex,
+                            pageSum
+                        }
+                    }
                 )
             })
         }else{
             res.json({
-                ok:-1,
-                msg:"查询失败"
+                data:{
+                    ok:-1,
+                    msg:"查询失败"
+                }
             })
         }
     })
 })
 //tl 添加宠物
-app.post("petList",function(req,res){
+app.post("/addPetList",function(req,res){
     var form = new formidable.IncomingForm();
     form.encoding = "utf-8";
     form.keepExtensions = true;// 是否保留扩展名
@@ -147,48 +156,56 @@ app.post("petList",function(req,res){
             var extName = path.extname(fileInfo.path).toLowerCase();// 获得文件的扩展名
             if(extList.includes(extName)){// 格式正确
                 var newPicName = Date.now()+extName;
-                fs.rename(fileInfo.path,upPicUrl+"/"+newPicName,function (err) {
+                fs.rename(fileInfo.path,__dirname + "../src/assets/pet/img"+newPicName,function (err) {
                     params.newPicName = newPicName;
                     db.insertOne("petList",{
                         typeId:req.query.typeId,//品种id
                         typeName:req.query.typeName,//品种名
                         boyOrGirl:req.query.boyOrGirl,//公母
                         petPic:req.query.petPic,//图片
-                        petAge:req.query.petAge,
-                        dogOrCat:req.query.dogOrCat,
-                        petPrice:req.query.petPrice,
-                        petIntroduce:req.query.Introduce,
-                        petNum:req.query.petNum,
-                        addTime:Date.now()
+                        petAge:req.query.petAge,//成幼
+                        dogOrCat:req.query.dogOrCat,//猫狗
+                        petPrice:req.query.petPrice,//价格
+                        petIntroduce:req.query.Introduce,//简介
+                        petNum:req.query.petNum,//在售数量
+                        addTime:Date.now()//添加时间
                     },function(err){
                         if(err){
                             res.json({
-                                ok:-1,
-                                msg:"添加失败"
+                                data:{
+                                    ok:-1,
+                                    msg:"添加失败"
+                                }
                             })
                         }else{
                             res.json({
+                            data:{
                                 ok:1,
-                                msg:"添加成功"
-                            })
+                                    msg:"添加成功"
+                            }
+                        })
                         }
                     })
                 })
             }else{
                 fs.unlink(fileInfo.path,function (err) {
-                    cb({
+                    res.json({
+                    data:{
                         state:-2,
-                        msg:"请选择.gif,.png,.jpg格式的图片"
+                            msg:"请选择.gif,.png,.jpg格式的图片"
+                    }
                     })
                 })
             }
         }else{
             // 未上传
             fs.unlink(fileInfo.path,function () {
-                cb({
-                    state:-1,
-                    params,
-                    msg:"请选择上传的图片"
+                res.json({
+                    data:{
+                        state:-1,
+                        params,
+                        msg:"请选择上传的图片"
+                    }
                 })
             })
         }
@@ -196,6 +213,6 @@ app.post("petList",function(req,res){
 })
 
 
-app.listen(80,function(){
+app.listen(8088,function(){
     console.log("成功");
 })
