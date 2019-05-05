@@ -1,4 +1,4 @@
-<template>
+        <template>
     <div class="pet">
         <div class="pet-show">
             <h3>宠物展示</h3>
