@@ -5,7 +5,7 @@ module.exports={
         host:"127.0.0.1",
         proxy:{
             "/hello":{
-                target:"http://127.0.0.1:8088",
+                target:"http://154.8.136.2:8088",
                 changeOrigin:true,
                 pathRewrite:{
                     "^/hello":"/"

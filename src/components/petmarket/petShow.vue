@@ -2,9 +2,9 @@
     <div class="pet">
         <div class="pet-show">
             <h3>宠物展示</h3>
-            <div class="pet-cat1" v-for="item in petmarket.petShowArr" @click="$router.push({name:'petmarkettwo',query:{productDescription:item.productDescription}})">
-                <div class="photo"><img :src="item.productIcon"></div>
-                <h2>{{item.productPrice}}</h2>
+            <div class="pet-cat" v-for="item in petmarket.petShowArr.pet" @click="$router.push({name:'petmarkettwo',query:{productDescription:item.productDescription}})">
+                <div class="photo"><img :src="item.icon"></div>
+                <h2>{{item.price | currency("￥")}}</h2>
                 <p>{{item.typeName}}</p>
                 <h4>品种：{{item.typeId}}</h4>
                 <h5><img src="../../assets/petmarket/img/shopcar.svg"></h5>
@@ -51,11 +51,11 @@
                 <h4>品种：布偶猫</h4>
                 <h5><img src="../../assets/petmarket/img/shopcar.svg" alt=""></h5>
             </div>-->
-            <p class="prevs" @click="downPage" v-show="$route.query.pageIndex > 1">
+            <p class="prevs" @click="downPage" >
                 上一页
             </p>
             <p class="curpage">当前第{{nowPage}}页/共{{petmarket.pageSum}}页</p>
-            <p class="uanext" @click="upPage" v-show="isShow">
+            <p class="uanext" @click="upPage" >
                 下一页
             </p>
         </div>
@@ -68,7 +68,8 @@
         name:"petShow",
         data(){
             return {
-                nowPage : 1
+                nowPage : 1,
+                data:"",
             }
         },
         computed : mapState(["petmarket"]),
@@ -160,24 +161,15 @@
         text-align: center;
         position: relative
     }
-    .pet .pet-show .pet-cat1 h5,
-    .pet .pet-show .pet-cat2 h5,
-    .pet .pet-show .pet-cat3 h5,
-    .pet .pet-show .pet-cat4 h5,
-    .pet .pet-show .pet-cat5 h5,
-    .pet .pet-show .pet-cat6 h5{
+    .pet .pet-show .pet-cat h5{
         position:absolute;
-        bottom:12px;
-        right:26px;
+        bottom:20px;
+        right:20px;
+        cursor:pointer;
     }
-    .pet .pet-show .pet-cat1 h5 img,
-    .pet .pet-show .pet-cat2 h5 img,
-    .pet .pet-show .pet-cat3 h5 img,
-    .pet .pet-show .pet-cat4 h5 img,
-    .pet .pet-show .pet-cat5 h5 img,
-    .pet .pet-show .pet-cat6 h5 img{
-        height:40px;
-        width:40px;
+    .pet .pet-show .pet-cat h5 img{
+        height:30px;
+        width:30px;
     }
     .pet .pet-show h3 {
         padding-top:40px;
@@ -219,11 +211,12 @@
         bottom: 20px;
         left: 16px;
         font-weight: 350;
-        font-size: 18px
+        font-size: 18px;
+        color:#ff3366;
     }
 
     .pet .pet-show .prevs {
-        left: 500px
+        right: 500px
     }
     .pet .pet-show .curpage{
         position: absolute;
@@ -244,7 +237,7 @@
     }
 
     .pet .pet-show .uanext {
-        right: 500px
+        left:500px;
     }
 
     .pet .pet-show div:nth-child(4),
@@ -254,6 +247,8 @@
 
     .pet .pet-show div:nth-child(6) {
         margin-top: 74px;
-        margin: 0 45px
+    }
+    .pet .pet-show div{
+        margin:0 15px;
     }
 </style>

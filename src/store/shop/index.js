@@ -22,8 +22,9 @@ const state = {
     shopHomeCommodity: [], //商城首页用品
     shopHomeFood: [], //商城首页食品
     shopCar: [], //商城购物车，与详细信息是一页
-    pageSum:3,//总页数
+    pageSum:1,//总页数
     shopFoodSum:0,
+    sumPrice:0
 }
 const actions = {
     toShoppingCar({commit}, id) {//商品详情
@@ -85,7 +86,7 @@ const actions = {
                 }
         )},
     getShoppingCar({commit}, obj) {//购物车
-        axios.get("/buyer/order/gwc", {
+        axios.get("/gwc", {
             params:obj
         }).then(
             data => {
@@ -135,7 +136,10 @@ const mutations = {
     CAHNGE_SHOP_CAR(state, arr) {//购物车
         state.shopCar = arr;
         state.pageSum = arr.pageSum;
-    }
+    },
+    CAHNGE_SHOP_SUM_PRICE(state, num) {//主页食物
+        state.sumPrice = num;
+    },
 };
 export default {
     state,

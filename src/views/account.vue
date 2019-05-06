@@ -3,7 +3,9 @@
         <navigation></navigation>
         <div class="middle">
             <div id="car">
-                <div class="petpic"></div>
+                <div class="petpic">
+                    <img src="../assets/petshop/img/touxiang.jpg" alt="">
+                </div>
                 <h3>确认购买</h3>
                 <div class="sss">
                     <h1 @click="$router.go(-1)"></h1>

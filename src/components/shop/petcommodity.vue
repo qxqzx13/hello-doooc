@@ -47,7 +47,7 @@ export default {
     computed:mapState(["shop"]),
     methods:mapActions(["shopHomeCommodity"]),
     mounted(){
-        this.shopHomeCommodity();
+        // this.shopHomeCommodity();
     }
 }
 </script>

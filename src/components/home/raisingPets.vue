@@ -43,7 +43,7 @@
         computed :mapState(["home"]),
         methods:mapActions(["getTeach"]),
         mounted(){
-            this.getTeach();
+            // this.getTeach();
         }
     }
 </script>

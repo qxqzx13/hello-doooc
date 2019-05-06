@@ -22,7 +22,7 @@ export default {
     computed:mapState(["shop"]),
     methods:mapActions(["shopHomePetfood"]),
     mounted(){
-        this.shopHomePetfood();
+        // this.shopHomePetfood();
     }
 }
 </script>

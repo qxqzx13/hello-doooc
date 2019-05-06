@@ -5,5 +5,8 @@ export default [
         path:"/asapet",
         name:"asapet",
         component:asapet,
+        meta:{
+            isAuthorization:false
+        }
     }
 ]

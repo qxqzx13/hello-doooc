@@ -1,9 +1,15 @@
 <template>
     <div class="main_box">
-        <!--<div class="main">   -->
-            <!--<div class="main_goods" v-for="(item,index) in $store.state.food.foodInfo.rows" :key="index">   -->
-                <!--<dl class="goods">-->
-                    <!--<dt><img src="../../assets/daily/img/gouliang.jpg" alt=""></dt>-->
+        <div class="main">
+                <ul class="goods" >
+                    <li v-for="(item,index) in $store.state.food.foodInfo" :key="index">
+                        <p><img :src="item.pic" alt=""></p>
+                        <span>满99减20</span>
+                        <b>{{item.goodsName}}</b>
+                        <h1>{{item.price[0]}}</h1>
+                        <h2>{{item.price[1]}}</h2>
+                        <h3>已售{{item.stock}}</h3>
+                    </li>
                     <!--<dd class="goods_one">-->
                         <!--<span>{{item.productDescription}}</span>-->
                         <!--<span>{{item.productName}}</span>-->
@@ -13,89 +19,88 @@
                         <!--<span>{{item.productPrice}}</span>-->
                         <!--<span>{{item.productStock}}</span>-->
                     <!--</dd>-->
-                <!--</dl>-->
-            <!--</div>-->
+                </ul>
+        </div>
+        <!--<div class="main">-->
+            <!--<ul class="goods">-->
+                <!--<li>-->
+                    <!--<img src="../../assets/petshop/img/food1.jpg" alt="">-->
+                    <!--<span>满99减20</span>-->
+                    <!--<b>伯纳天纯simple系列 火鸡&马铃薯配方全猫粮10kg</b>-->
+                    <!--<h1>￥290</h1>-->
+                    <!--<h2>￥299</h2>-->
+                    <!--<h3>已售8888</h3>-->
+                <!--</li>-->
+
+                <!--<li>-->
+                    <!--<img src="" alt="">-->
+                    <!--<span>满99减20</span>-->
+                    <!--<b>伯纳天纯simple系列 火鸡&马铃薯配方全猫粮10kg</b>-->
+                    <!--<h1>￥290</h1>-->
+                    <!--<h2>￥299</h2>-->
+                    <!--<h3>已售8888</h3>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<img src="" alt="">-->
+                    <!--<span>满99减20</span>-->
+                    <!--<b>伯纳天纯simple系列 火鸡&马铃薯配方全猫粮10kg</b>-->
+                    <!--<h1>￥290</h1>-->
+                    <!--<h2>￥299</h2>-->
+                    <!--<h3>已售8888</h3>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<img src="" alt="">-->
+                    <!--<span>满99减20</span>-->
+                    <!--<b>伯纳天纯simple系列 火鸡&马铃薯配方全猫粮10kg</b>-->
+                    <!--<h1>￥290</h1>-->
+                    <!--<h2>￥299</h2>-->
+                    <!--<h3>已售8888</h3>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<img src="" alt="">-->
+                    <!--<span>满99减20</span>-->
+                    <!--<b>伯纳天纯simple系列 火鸡&马铃薯配方全猫粮10kg</b>-->
+                    <!--<h1>￥290</h1>-->
+                    <!--<h2>￥299</h2>-->
+                    <!--<h3>已售8888</h3>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<img src="" alt="">-->
+                    <!--<span>满99减20</span>-->
+                    <!--<b>伯纳天纯simple系列 火鸡&马铃薯配方全猫粮10kg</b>-->
+                    <!--<h1>￥290</h1>-->
+                    <!--<h2>￥299</h2>-->
+                    <!--<h3>已售8888</h3>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<img src="" alt="">-->
+                    <!--<span>满99减20</span>-->
+                    <!--<b>伯纳天纯simple系列 火鸡&马铃薯配方全猫粮10kg</b>-->
+                    <!--<h1>￥290</h1>-->
+                    <!--<h2>￥299</h2>-->
+                    <!--<h3>已售8888</h3>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<img src="" alt="">-->
+                    <!--<span>满99减20</span>-->
+                    <!--<b>伯纳天纯simple系列 火鸡&马铃薯配方全猫粮10kg</b>-->
+                    <!--<h1>￥290</h1>-->
+                    <!--<h2>￥299</h2>-->
+                    <!--<h3>已售8888</h3>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<img src="" alt="">-->
+                    <!--<span>满99减20</span>-->
+                    <!--<b>伯纳天纯simple系列 火鸡&马铃薯配方全猫粮10kg</b>-->
+                    <!--<h1>￥290</h1>-->
+                    <!--<h2>￥299</h2>-->
+                    <!--<h3>已售8888</h3>-->
+                <!--</li>-->
+
+            <!--</ul>-->
 
         <!--</div>-->
-        <div class="main">
-            <ul class="goods">
-                <li>
-                    <img src="../../assets/petshop/img/two.jpg" alt="">
-                    <span>满99减20</span>
-                    <b>伯纳天纯simple系列 火鸡&马铃薯配方全猫粮10kg</b>
-                    <h1>￥290</h1>
-                    <h2>￥299</h2>
-                    <h3>已售8888</h3>
-                </li>
-
-                <li>
-                    <img src="../../assets/petshop/img/two.jpg" alt="">
-                    <span>满99减20</span>
-                    <b>伯纳天纯simple系列 火鸡&马铃薯配方全猫粮10kg</b>
-                    <h1>￥290</h1>
-                    <h2>￥299</h2>
-                    <h3>已售8888</h3>
-                </li>
-                <li>
-                    <img src="../../assets/petshop/img/two.jpg" alt="">
-                    <span>满99减20</span>
-                    <b>伯纳天纯simple系列 火鸡&马铃薯配方全猫粮10kg</b>
-                    <h1>￥290</h1>
-                    <h2>￥299</h2>
-                    <h3>已售8888</h3>
-                </li>
-                <li>
-                    <img src="../../assets/petshop/img/two.jpg" alt="">
-                    <span>满99减20</span>
-                    <b>伯纳天纯simple系列 火鸡&马铃薯配方全猫粮10kg</b>
-                    <h1>￥290</h1>
-                    <h2>￥299</h2>
-                    <h3>已售8888</h3>
-                </li>
-                <li>
-                    <img src="../../assets/petshop/img/two.jpg" alt="">
-                    <span>满99减20</span>
-                    <b>伯纳天纯simple系列 火鸡&马铃薯配方全猫粮10kg</b>
-                    <h1>￥290</h1>
-                    <h2>￥299</h2>
-                    <h3>已售8888</h3>
-                </li>
-                <li>
-                    <img src="../../assets/petshop/img/two.jpg" alt="">
-                    <span>满99减20</span>
-                    <b>伯纳天纯simple系列 火鸡&马铃薯配方全猫粮10kg</b>
-                    <h1>￥290</h1>
-                    <h2>￥299</h2>
-                    <h3>已售8888</h3>
-                </li>
-                <li>
-                    <img src="../../assets/petshop/img/two.jpg" alt="">
-                    <span>满99减20</span>
-                    <b>伯纳天纯simple系列 火鸡&马铃薯配方全猫粮10kg</b>
-                    <h1>￥290</h1>
-                    <h2>￥299</h2>
-                    <h3>已售8888</h3>
-                </li>
-                <li>
-                    <img src="../../assets/petshop/img/two.jpg" alt="">
-                    <span>满99减20</span>
-                    <b>伯纳天纯simple系列 火鸡&马铃薯配方全猫粮10kg</b>
-                    <h1>￥290</h1>
-                    <h2>￥299</h2>
-                    <h3>已售8888</h3>
-                </li>
-                <li>
-                    <img src="../../assets/petshop/img/two.jpg" alt="">
-                    <span>满99减20</span>
-                    <b>伯纳天纯simple系列 火鸡&马铃薯配方全猫粮10kg</b>
-                    <h1>￥290</h1>
-                    <h2>￥299</h2>
-                    <h3>已售8888</h3>
-                </li>
-
-            </ul>
-
-        </div><div class="block">
+        <div class="block">
         <el-pagination layout="prev, pager, next" :total="6" class="right">
         </el-pagination>
     </div>
@@ -103,8 +108,13 @@
 </template>
 
 <script>
-export default {
-name:"commodity"
+    import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
+    export default {
+name:"commodity",
+        methods:mapActions(["getFoodInfo"]),
+        mounted(){
+            this.getFoodInfo()
+        }
 }
 </script>
 
@@ -131,9 +141,9 @@ name:"commodity"
     margin:0 41px 30px 0;
     background:#eeeeee;
 }
-.goods img{
-    width:162px;
-    height:152px;
+.goods li img {
+    width: 162px;
+    height: 152px;
     padding: 36px 33px;
 }
 .goods li span{
@@ -173,7 +183,6 @@ name:"commodity"
 .goods li h3{
     font-weight:400;
     font-size:10px;
-    text-decoration:line-through;
     color: #b6b6b6;
     float:right;
     width:60px;

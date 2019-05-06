@@ -4,6 +4,9 @@ export default [
     {
         path: '/daily',
         name:"daily",
-        component: daily
+        component: daily,
+        meta:{
+            isAuthorization:false
+        }
     }
 ]

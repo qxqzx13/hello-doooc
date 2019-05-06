@@ -13,19 +13,12 @@ export default{
         }
     },
     actions: {
-        getDailyInfo({commit},obj){
-            console.log(111,obj);
-            axios.get("/buyer/product/daily",{
-                params:obj
-            })
+        getDailyInfo({commit}){
+            axios.get("/goods")
             .then(data=>{
                 console.log(data)
-                if(data.code === 1){
-                    console.log(data);
-                    commit("SET_DAILYD_INFO",data.data)
-                }else{
-                    console.log("获取失败");
-                }
+                    commit("SET_DAILY_INFO",data.data)
+
             })   
         }
     }

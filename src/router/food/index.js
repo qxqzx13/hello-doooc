@@ -3,6 +3,9 @@ export default [
     {
         path:"/food",
         name:"food",
-        component:food
+        component:food,
+        meta:{
+            isAuthorization:false
+        }
     }
 ]

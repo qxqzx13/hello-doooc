@@ -7,10 +7,17 @@ import petmarket from './petmarket';
 import petmarkettwo from './petmarkettwo';
 import food from './food';
 import daily from './daily';
+import login from './login';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+    mutations:{
+        OUT_LOGIN(state){
+            sessionStorage.userName = null;
+            sessionStorage.userId = null;
+        }
+    },
     modules:{
         home,
         personal,
@@ -19,5 +26,6 @@ export default new Vuex.Store({
         petmarkettwo,
         food,
         daily,
+        login
     }
 })

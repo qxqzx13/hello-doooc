@@ -1,10 +1,9 @@
 <template>
     <div class="matter">
-                        <p>收货地址</p>
+                        <p>收货地址<span></span></p>
                         <span class="matter_span">ADDRESS</span>
                         <div class="shippingaddress">
                             <div  class="region">
-                                <span>所在地区</span>
                                 
                                
 
@@ -48,15 +47,17 @@
                         </div>
                         <ul class="commit">
                             <li>确认付款</li>
-                            <li>{{repay}}</li>
+                            <li>{{shop.sumPrice}}</li>
                             <li>RMB</li>
                         </ul>
                     </div>
 </template>
 
 <script>
+    import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
 
 export default {
+
 name:"shippingAddress",
  data () {
       return {
@@ -67,66 +68,24 @@ name:"shippingAddress",
         detailedAddress:"",
         detailedName:"",
         contactNumber:"",
-        province:["北京市","天津市","上海市","重庆市","河北省","山西省","辽宁省","吉林省","黑龙江省","江苏省","浙江省","安徽省","福建省","江西省","山东省","河南省","湖北省","湖南省","广东省","海南省","四川省","贵州省","云南省","陕西省","甘肃省","青海省","台湾省","内蒙古自治区","广西壮族自治区","西藏自治区","宁夏回族自治区","新疆维吾尔自治区","香港特别行政区","澳门特别行政区"],
-        city:[],
-        district: [],
-        
-    
-
       }
-     
     },
-
+    computed:mapState(["shop"]),
     methods:{
-            
-            // getDistrict:function(){
-            //     axios.get("1111151",{
-            //         params:{
-            //             detailedAddress:this.detailedAddress,
-            //             detailedName:this.detailedName,
-            //             contactNumber:this.contactNumber,
-            //         }
-            //     }
-            //     ).then(({data})=>{
-            //         console.log(data)
-            //     })
-            // },
-            // getProvince:function(e){
-            //     //获取当前选中项的下标
-            //     this.index=e.target.selectedIndex;
-            //     axios.get("/",{
-            //         params:{
-            //           index:this.index
-            //         }
-            //     }).then(({data})=>{
-            //         console.log(data)
-            //         this.city.push(data.city)
-            //     })
-            // },
-            // getCity:function(e){
-            //     this.index=e.target.selectedIndex;
-            //     axios.get("/",{
-            //         params:{
-            //             index:this.index
-            //         }
-            //     }).then(({data})=>{
-            //         this.district.push(data.district)
-            //     })
-            // },
-            // getDistrict:function(e){
-            //     this.index=e.target.selectedIndex;
-            //     axios
-            // } 
-
-    },
-    computed: {
-       
+        getUserInfo(){
+            this.$axios.post("/account",{
+                userName:localStorage.userName,
+                userId:localStorage.userId
+            }).then(data=>{
+                this.detailedAddress=data.detailedAddress;
+                this.detailedName = data.detailedName;
+                this.contactNumber = data.contactNumber;
+            })
+        }
     },
     mounted(){
-       
+        this.getUserInfo();
     }
-
-
     
 }
 </script>
@@ -245,6 +204,7 @@ div,ul,li,h1,h2,h3,h4,h6,span,img,i,b,p,h5,input{
     height:38px;
     margin-left:60px;
     border-radius: 20px;
+    cursor:pointer;
 }
 .commit li{
     float:left;

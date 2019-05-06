@@ -1,11 +1,18 @@
 <template>
   <div class="particulars">
     <h3>宠物待售</h3>
-    <div class="picture">
-        <div class="picture picture1" v-for="item in petmarket.petmarketSale">
-            <div class="small-picture"><img :src="item.productIcon" alt=""></div>
-            <p>item.typeName</p>
-        </div>
+        <!--<div class="picture picture1">-->
+            <!--<div class="small-picture"><img :src="petmarket.petmarketSale.icon[0]" alt=""></div>-->
+            <!--<p>petmarket.petmarketSale.typeName</p>-->
+        <!--</div>-->
+        <!--<div class="picture picture1">-->
+            <!--<div class="small-picture"><img :src="petmarket.petmarketSale.icon[1]" alt=""></div>-->
+            <!--<p>petmarket.petmarketSale.typeName</p>-->
+        <!--</div>-->
+        <!--<div class="picture picture1">-->
+            <!--<div class="small-picture"><img :src="petmarket.petmarketSale.icon[2]" alt=""></div>-->
+            <!--<p>petmarket.petmarketSale.typeName</p>-->
+        <!--</div>-->
 <!--
           <div class="picture picture1">
             <div class="small-picture"><img src="../../assets/petmarket/img/thumb_1_1.jpg" alt=""></div>
@@ -19,18 +26,32 @@
             <div class="small-picture"><img src="../../assets/petmarket/img/thumb_1_3.jpg" alt=""></div>
             <p>1111</p>
         </div>-->
-    </div>
+        <div class="picture">
+            <div class="picture1">
+                <div class="small-picture"><img :src="petmarket.petmarketSale.icon[0]" alt="" ></div>
+            </div>
+        </div>
+      <div class="picture">
+          <div class="picture1">
+              <div class="small-picture"><img :src="petmarket.petmarketSale.icon[1]" alt="" ></div>
+          </div>
+      </div>
+      <div class="picture">
+          <div class="picture1">
+              <div class="small-picture"><img :src="petmarket.petmarketSale.icon[2]" alt="" ></div>
+          </div>
+      </div>
       <div class="petdetails">
           <div class="petdetails-box-background"></div>
           <div class="center">
               <h3>宠物详细</h3>
-              <h2>出售纯种健康宠物猫布偶猫支持上门挑选送货上门{{petIntroduce}}</h2>
-              <h5>价格<span>{{getPrice}}3000</span>元/只</h5>
+              <h2>{{petmarket.petmarketSale.petIntroduce}}</h2>
+              <h5>价格<span>{{petmarket.petmarketSale.getPrice}}</span>元/只</h5>
               <ul>
-                  <li><p>在售只数</p><span>{{petNum}}</span></li>
-                  <li><p class="tastecenter">年龄</p><span>{{petAge}}</span></li>
-                  <li><p class="tastecenter">品种</p><span>{{dogOrCat}}</span></li>
-                  <li><p class="tastecenter">性别</p><span>{{boyOrGirl}}</span></li>
+                  <li><p>在售只数</p><span>{{petmarket.petmarketSale.petNum}}</span></li>
+                  <li><p class="tastecenter">年龄</p><span>{{petmarket.petmarketSale.petAge}}</span></li>
+                  <li><p class="tastecenter">品种</p><span>{{petmarket.petmarketSale.dogOrCat}}</span></li>
+                  <li><p class="tastecenter">性别</p><span>{{petmarket.petmarketSale.boyOrGirl}}</span></li>
                   <li><p>驱虫情况</p><span>已驱虫</span></li>
               </ul>
           </div>
@@ -120,7 +141,8 @@
         computed :mapState(["petmarket"]),
         methods:mapActions(["shopHomeSale"]),
         mounted(){
-            this.shopHomeSale(this.$route.query.productId);
+            this.shopHomeSale();
+            // this.shopHomeSale(this.$route.query.productId);
         }
     }
 </script>
@@ -142,10 +164,10 @@ div,ul,li,h1,h2,h3,h4,h6,span,img,i,b,p,h5{
 }
 
 .particulars .picture {
-  margin-bottom: 60px;
+  padding-bottom: 60px;
 }
 
-.particulars .picture .picture {
+.particulars .picture .picture1 {
   padding: 16px;
   margin: 74px auto 0;
   height: 368px;
@@ -153,7 +175,7 @@ div,ul,li,h1,h2,h3,h4,h6,span,img,i,b,p,h5{
   background: #bfbfbf;
 }
 
-.particulars .picture .picture .small-picture {
+.particulars .picture .picture1 .small-picture {
   width: 370px;
   height: 312px;
 }

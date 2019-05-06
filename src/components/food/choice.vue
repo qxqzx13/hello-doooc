@@ -83,7 +83,7 @@ export default {
         }
     }),
     mounted () {
-        this.getFoodInfo();
+        // this.getFoodInfo();
     },
     data () {
         return {

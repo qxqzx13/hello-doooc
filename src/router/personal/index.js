@@ -8,19 +8,31 @@ export default [
         path: '/personal',
         name: 'personal',
         component: personal,
+        meta:{
+            isAuthorization:true
+        },
         children:[
             {
                 path:"/",
                 alias:"userinfo",
-                component:userinfo
+                component:userinfo,
+                meta:{
+                    isAuthorization:true
+                }
             },
             {
                 path:"sunpet",
-                component:sunpet
+                component:sunpet,
+                meta:{
+                    isAuthorization:true
+                }
             },
             {
                 path:"personalCenter",
-                component:personalCenter
+                component:personalCenter,
+                meta:{
+                    isAuthorization:true
+                }
             }
         ]
     }

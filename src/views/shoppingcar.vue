@@ -4,7 +4,9 @@
     <navigation></navigation>
 	<div id="middle">
         <div id="car">
-            <div class="petpic"></div>
+            <div class="petpic">
+                <img src="../assets/petshop/img/touxiang.jpg" alt="">
+            </div>
             <h3>我的购物车</h3>
             <div class="nan">
                 <trolley></trolley>

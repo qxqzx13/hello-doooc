@@ -47,18 +47,21 @@ export default [
         name:"details",
         component:details,
         meta:{
-            isAuthorization:false
+            isAuthorization:true
         }
     },{
         path:"/trolley",
         name:"trolley",
         component:trolley,
         meta:{
-            isAuthorization:false
+            isAuthorization:true
         }
     },{
         path:"/account",
         name:"account",
         component:account,
+        meta:{
+            isAuthorization:false
+        }
     }
 ]

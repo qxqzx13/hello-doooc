@@ -44,6 +44,7 @@
 </template>
 
 <script>
+    import {mapState,mapMutations,mapGetters,mapActions} from "vuex";
     export default {
         name: "login",
         data() {
@@ -69,6 +70,7 @@
                 }
             }
         },
+        computed : mapState(["petmarket"]),
         methods: {
             getVerify() {
                 this.$axios.post("/buyer/order/verify", {
@@ -100,17 +102,18 @@
                 this.$refs.ruleForm.validate(valid=>{
                     if(valid) {
                         this.loading = false;
-                        this.$axios.post("/buyer/order/login", this.adminForm).then(
+                        this.$axios.post("/login", this.adminForm).then(
                             data => {
                             this.loading = false;
-                            if(data.ok === 1
-                    )
-                        {
+                            if(data.ok === 1){
                             //成功记录userId,token
-                            sessionStorage.token = data.token;
-                            sessionStorage.userId = data.userId;
-                            sessionStorage.userName = data.userName;
+                            localStorage.userId = data.userId;
+                            localStorage.userName = data.userName;
                             this.open(data.msg);
+                            if(this.$route.query.redirect)
+                                this.$router.push(this.$route.query.redirect)
+                            else
+                                this.$router.push("/")
                         }
                     else
                         {
@@ -131,6 +134,7 @@
             },
         },
         mounted(){
+            console.log(this.$route.query.redirect);
             let inp = document.querySelectorAll(".el-input__inner");
             for(let i = 0,len=inp.length;i<len;i++){
                 inp[i].style.background = "transparent";

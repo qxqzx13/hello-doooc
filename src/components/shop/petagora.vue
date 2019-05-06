@@ -23,7 +23,7 @@
         computed:mapState(["shop"]),
         methods:mapActions(["shopHomeAgora"]),
         mounted(){
-            this.shopHomeAgora();
+            // this.shopHomeAgora();
         }
 }
 </script>

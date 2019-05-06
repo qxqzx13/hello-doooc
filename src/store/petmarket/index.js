@@ -8,22 +8,23 @@ const state = {
 }
 const actions = {
     getPetShow({commit},obj){//获取后台信息
-        axios.get("/buyer/product/animal",{
+        axios.get("/animal",{
             params:obj
         }).then(
             data=>{
-            commit("CAHNGE_PETMARKET_ARR",data.rows);
+                console.log(data)
+            commit("CAHNGE_PETMARKET_ARR",data.data);
     }
     )
     },
     shopHomeSale({commit},id){//根据id获取宠物详情页(待售)信息
-        axios.get("/",{
+        axios.get("/xq",{
             params:{
                 productDescription:id
             }
         }).then(
             data=>{
-            commit("CAHNGE_PETMARKET_SALE",data.rows);
+            commit("CAHNGE_PETMARKET_SALE",data.data);
              }
          )
     }

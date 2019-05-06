@@ -13,14 +13,14 @@
                 <div class="variety">
                     <p>品种</p>
                     <ul>
-                        <li
-                            v-for="item in petmarket.filtrateType"
-                            @click="setType(item.typeId)">{{item.typeName}}</li>
-                        <!--<li>暹罗猫</li>-->
-                        <!--<li>布偶猫</li>-->
-                        <!--<li>虎斑猫</li>-->
-                        <!--<li>波斯猫</li>-->
-                        <!--<li>斯芬克斯</li>-->
+                        <!--<li-->
+                            <!--v-for="item in petmarket.filtrateType"-->
+                            <!--@click="setType(item.typeId)">{{item.typeName}}</li>-->
+                        <li>暹罗猫</li>
+                        <li>布偶猫</li>
+                        <li>虎斑猫</li>
+                        <li>波斯猫</li>
+                        <li>斯芬克斯</li>
                     </ul>
                 </div>
                 <div class="gender">   
@@ -225,16 +225,15 @@ export default {
         left: 0;
         width: 182px;
         height: 231px;
-        overflow:hidden;
         border-right: 1px solid #fff
     }
 
     .sizer .sizer1 .hide-sizer .variety p {
         cursor: pointer;
-        filter: gray;
         position: absolute;
         top: -38px;
-        left: 18px
+        left: 18px;
+        width:100px;
     }
 
     .sizer .sizer1 .hide-sizer .variety ul {

@@ -1,17 +1,17 @@
 <template>
     <div class="main_box">
         <div class="main">   
-            <div class="main_goods" v-for="(item,index) in $store.state.daily.dailyInfo.rows" :key="index">   
+            <div class="main_goods" v-for="(item,index) in $store.state.daily.dailyInfo" :key="index">
                 <dl class="goods">
-                    <dt><img src="../../assets/daily/img/gouliang.jpg" alt=""></dt>
+                    <dt><img :src="item.pic"></dt>
                     <dd class="goods_one">
-                        <span>{{item.productDescription}}</span>
-                        <span>{{item.productName}}</span>
+                        <span>满99减20</span>
+                        <span>{{item.goodsName}}</span>
                     </dd>
-                    <dd class="goods_two">{{item.productPrice}}</dd>
+                    <dd class="goods_two">{{item.price[1]}}</dd>
                     <dd class="goods_three">
-                        <span>{{item.productPrice}}</span>
-                        <span>{{item.productStock}}</span>
+                        <span>{{item.price[0]}}</span>
+                        <span>已售{{item.stock}}</span>
                     </dd>
                 </dl>
                 <!-- <dl class="goods">
@@ -123,7 +123,21 @@
 
 <script>
 export default {
-name:"commodity"
+name:"commodity",
+    data(){
+    return {
+        picurl:require("../../assets/daily/img/gouliang.jpg")
+    }
+    },
+    methods:{
+        getImg(){
+            var picSrc = document.querySelectorAll(".goods img");
+            for(let i = 0,len = picSrc.length;i <len;i++){
+                picSrc[i].src = this.$store.state.daily.dailyInfo.pic[i];
+
+            }
+        }
+    }
 }
 </script>
 
@@ -139,9 +153,6 @@ name:"commodity"
 .main{
     width:1340px;
     margin:0 auto;
-    overflow: hidden;
-}
-.main_goods{
     overflow: hidden;
 }
 .goods{
@@ -178,6 +189,9 @@ name:"commodity"
     width:182px;
     height:12px;
     padding-bottom:22px;
+}
+.goods_three span:nth-child(1){
+    text-decoration:line-through;
 }
 .goods_three span:first-child{
     float:left;

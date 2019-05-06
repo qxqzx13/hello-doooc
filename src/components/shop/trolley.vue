@@ -1,24 +1,61 @@
 <template>
     <!--购物车页判断有没有东西-->
     <div class="sss">
-        <gempty v-if="!shop.shopCar"></gempty><!--空车-->
+        <gempty v-if="!deleteOne&&!deleteTwo"></gempty><!--空车-->
         <div v-else class="details-cart">
             <h1 @click="$router.go(-1)"></h1>
             <div class="mattou">
-                <div class="matter" v-for="item in shop.shopCar">
+                <!--<div class="matter" v-for="item in shop.shopCar.data">-->
+                    <!--<ul>-->
+                        <!--<li class="pic"><img :src="item.icon" alt=""></li>-->
+                        <!--<li class="name">{{item.name}}</li>-->
+                        <!--<li>RMB</li>-->
+                        <!--<li>{{item.price}}</li>-->
+                        <!--<li>-->
+                            <!--<input type="button" @click="goodsDown(item.goodsNum)" value="-">-->
+                            <!--{{item.goodsNum}}-->
+                            <!--<input type="button" @click="goodsUp(item.goodsNum)" value="+">-->
+                        <!--</li>-->
+                        <!--<div v-if="item.pType === 1">-->
+                            <!--<li>口味</li>-->
+                            <!--<li>{{item.productDescription}}</li>-->
+                        <!--</div>-->
+                        <!--<div v-else>-->
+
+                        <!--</div>-->
+                        <!--<li @click="deleteCar(item.goodsId)">删除</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+                <div class="matter" v-if="deleteOne">
                     <ul>
-                        <li class="pic"></li>
-                        <li class="name">{{item.name}}</li>
+                        <li class="pic"><img src="../../assets/petmarket/img/20180820nsmqmz.jpg" alt=""></li>
+                        <li class="name">哈士奇</li>
                         <li>RMB</li>
-                        <li>{{item.price}}</li>
+                        <li>{{onePrice}}</li>
                         <li>
-                            <botton @click="goodsDown(item.goodsId)">-</botton>
-                            {{item.productNum}}
-                            <botton @click="goodsUp(item.goodsId)">+</botton>
+                            <input type="button" @click="goodsDown(-1)" value="-">
+                            {{goodsNumOne}}
+                            <input type="button" @click="goodsDown(1)" value="+">
                         </li>
-                        <li>口味</li>
-                        <li>{{item.productDescription}}</li>
-                        <li @click="deleteCar(item.goodsId)">删除</li>
+                        <li @click="deleteCar(1)">删除</li>
+                    </ul>
+                </div>
+                <div class="matter" v-if="deleteTwo">
+                    <ul>
+                        <li class="pic"><img src="../../assets/petmarket/img/4ce5c49d1451e641adacddcc5cbadfae.jpg" alt=""></li>
+                        <li class="name">鲜虾味大鸡腿</li>
+                        <li>RMB</li>
+                        <li>{{twoPrice}}</li>
+                        <li>
+                            <input type="button" @click="goodsUp(-1)" value="-">
+                            {{goodsNumTwo}}
+                            <input type="button" @click="goodsUp(1)" value="+">
+                        </li>
+                        <div>
+                        <li>口味:</li>
+                        <li>鲜虾味</li>
+                        </div>
+                        <li @click="deleteCar(2)">删除</li>
                     </ul>
                 </div>
             </div>
@@ -29,7 +66,7 @@
                     </el-row>
                 </li>
                 <li>合计:</li>
-                <li>RMB{{shop.priceSum}}</li>
+                <li>{{shop.sumPrice}}</li>
                 <li>
                     <el-row>
                         <el-button round @click="$router.push({path:'/account'})">结算</el-button>
@@ -59,67 +96,119 @@
             return {
                 isShow:true,
                 nowPage : 1,
-                value:''
+                value:'',
+                goodsNumOne:1,
+                goodsNumTwo:2,
+                deleteOne:true,
+                deleteTwo:true,
+                onePrice:2980,
+                twoPrice:549,
+                sumPrice:0
             }
         },
         computed:mapState(["shop","goodsMsg"]),
-        methods:Object.assign(mapActions(["getShoppingCar","deleteCarFood","shoppingCarGoodsNum","setGoodsTaste"]),{
+        methods:Object.assign(mapMutations(["CAHNGE_SHOP_SUM_PRICE"]),
+            {
+                goodsDown(num){
+                    this.goodsNumOne += num;
+                    if(this.goodsNumOne <= 1){
+                        this.goodsNumOne = 1
+                    }
+                    this.getSumPrice()
+                },goodsUp(num){
+                    this.goodsNumTwo += num;
+                    if(this.goodsNumTwo <= 1){
+                        this.goodsNumTwo = 1
+                    }
+                    this.getSumPrice()
+                },deleteCar(num){
+                    if(num === 1){
+                        this.deleteOne = false;
+                    }
+                    if(num === 2){
+                        this.deleteTwo = false;
+                    }
+                    this.getSumPrice()
+                },
+                getSumPrice(){
+                    if(this.deleteOne && this.deleteTwo){
+                        this.sumPrice = this.onePrice * this.goodsNumOne + this.twoPrice * this.goodsNumTwo
+                    }else if(this.deleteOne){
+                        this.sumPrice = this.onePrice * this.goodsNumOne
+                    }else if(this.deleteTwo){
+                        this.sumPrice = this.twoPrice * this.goodsNumTwo
+                    }
+                    this.$store.commit("CAHNGE_SHOP_SUM_PRICE",this.sumPrice)
+                }
+            }),
+        /*methods:Object.assign(mapActions(["getShoppingCar","deleteCarFood","shoppingCarGoodsNum","setGoodsTaste"]),{
             deleteCar(id){//删除物品
-                this.deleteCarFood(id);
+                if(id===1){
+                    this.deleteOne = false;
+                }
+                if(id===2){
+                    this.deleteTwo = false;
+                }
+               /!* this.deleteCarFood(id);
                 this.$router.push({
                     query:{
                         pageIndex:this.$route.query.pageIndex/1 || 1,
                     }
                 });
                 this.orShow();
-                this.getNowPage();
+                this.getNowPage();*!/
             },
-            downPage(){//上一页
-                if(this.$route.query.pageIndex == false){
-                    this.$route.query.pageIndex=1
-                }
-                this.$router.push({
-                    query:{
-                        pageIndex:this.$route.query.pageIndex/1-1 || 1,
-                    }
-                });
-                this.orShow();
-                this.getNowPage();
-            },
-            upPage(){//下一页
-                if(!this.$route.query.pageIndex){
-                    this.$route.query.pageIndex=1
-                }
-                this.$router.push({
-                    query:{
-                        pageIndex:this.$route.query.pageIndex/1+1 || 1,
-                    }
-                });
-                this.orShow();
-                this.getNowPage();
-            },
-            orShow(){//按钮显示或隐藏
-                if(this.$route.query.pageIndex/1 > this.shop.pageSum/1-1){
-                    this.isShow = false;
-                    this.nowPage = this.shop.pageSum/1
-                }else if(this.shop.pageSum/1 === 1){
-                    this.isShow = false;
-                }else{
-                    this.isShow = true;
-                }
-            },
-            getNowPage(){//获取现在页数
-                if(this.$route.query.pageIndex < 2){
-                    this.nowPage = 1;
-                }else if(this.$route.query.pageIndex/1 >= this.shop.pageSum/1){
-                    this.nowPage = this.shop.pageSum;
-                    this.$route.query.pageIndex = this.shop.pageSum/1;
-                }else{
-                    this.nowPage = this.$route.query.pageIndex/1 || 1;
-                }
-            },
-            goodsDown(id){//减少商品数量
-                this.shoppingCarGoodsNum({
+            // downPage(){//上一页
+            //     if(this.$route.query.pageIndex == false){
+            //         this.$route.query.pageIndex=1
+            //     }
+            //     this.$router.push({
+            //         query:{
+            //             pageIndex:this.$route.query.pageIndex/1-1 || 1,
+            //         }
+            //     });
+            //     this.orShow();
+            //     this.getNowPage();
+            // },
+            // upPage(){//下一页
+            //     if(!this.$route.query.pageIndex){
+            //         this.$route.query.pageIndex=1
+            //     }
+            //     this.$router.push({
+            //         query:{
+            //             pageIndex:this.$route.query.pageIndex/1+1 || 1,
+            //         }
+            //     });
+            //     this.orShow();
+            //     this.getNowPage();
+            // },
+            // orShow(){//按钮显示或隐藏
+            //     if(this.$route.query.pageIndex/1 > this.shop.pageSum/1-1){
+            //         this.isShow = false;
+            //         this.nowPage = this.shop.pageSum/1
+            //     }else if(this.shop.pageSum/1 === 1){
+            //         this.isShow = false;
+            //     }else{
+            //         this.isShow = true;
+            //     }
+            // },
+            // getNowPage(){//获取现在页数
+            //     if(this.$route.query.pageIndex < 2){
+            //         this.nowPage = 1;
+            //     }else if(this.$route.query.pageIndex/1 >= this.shop.pageSum/1){
+            //         this.nowPage = this.shop.pageSum;
+            //         this.$route.query.pageIndex = this.shop.pageSum/1;
+            //     }else{
+            //         this.nowPage = this.$route.query.pageIndex/1 || 1;
+            //     }
+            // },
+            goodsDown(id) {//减少商品数量
+                this.goodsNumOne += id;
+                if (this.goodsNumOne <= 1) {
+                    this.goodsNumOne = 1
+
+
+                /!*this.shoppingCarGoodsNum({
                     goodsId:id,
                     goodsNum:0
                 })
@@ -127,28 +216,29 @@
                     query:{
                         pageIndex:this.$route.query.pageIndex/1 || 1,
                     }
-                });
-            },
+                });*!/
+            }},
             goodsUp(id){//增加商品数量
-                this.shoppingCarGoodsNum({
-                    goodsId:id,
-                    goodsNum:1
-                });
-                this.$router.push({
-                    query:{
-                        pageIndex:this.$route.query.pageIndex/1 || 1,
-                    }
-                });
-            }
-        }
-    ),
+
+            //     this.shoppingCarGoodsNum({
+            //         goodsId:id,
+            //         goodsNum:1
+            //     });
+            //     this.$router.push({
+            //         query:{
+            //             pageIndex:this.$route.query.pageIndex/1 || 1,
+            //         }
+            //     });
+            // }
+        }),*/
     mounted(){
-        this.userId = sessionStorage.userId;
-        this.orShow();
-        this.getNowPage();
-        this.getShoppingCar({
-            pageIndex:this.$route.query.pageIndex/1 || 1,
-        });
+        this.getSumPrice();
+        this.userId = localStorage.userId;
+        // this.orShow();
+        // this.getNowPage();
+        // this.getShoppingCar({
+        //     pageIndex:this.$route.query.pageIndex/1 || 1,
+        // });
     }
 }
 </script>
@@ -201,6 +291,10 @@
         background: #fff;
 
     }
+    .pic img{
+        height:110px;
+        width:90px;
+    }
 
     .matter .name {
         height: 24px;
@@ -228,14 +322,20 @@
     .matter li:nth-of-type(5) {
         margin-right: 40px;
     }
-
+    .matter li:nth-of-type(5) input{
+        border:none;
+        height:20px;
+        width:20px;
+    }
     .matter li:nth-of-type(6) {
-        margin-right: 12px;
+        float:right;
+        margin-right:10px;
         font-size: 18px;
+        cursor: pointer;
     }
 
     .matter li:nth-of-type(7) {
-        margin-right: 30px;
+        margin-right: 10px;
     }
 
     .matter li:nth-of-type(8) {
